@@ -1,156 +1,106 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://drawable/BlueCircle.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Player.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Score.gd" type="Script" id=4]
+[ext_resource path="res://scenes/SkinBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Score.gd" type="Script" id=4]
 [ext_resource path="res://scenes/BackGround.tscn" type="PackedScene" id=5]
-[ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=6]
+[ext_resource path="res://styles/tab_texture.tres" type="StyleBox" id=6]
 [ext_resource path="res://scenes/Platform1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://scripts/Platform1.gd" type="Script" id=9]
-[ext_resource path="res://scenes/TapToStart.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/TapToStart.gd" type="Script" id=11]
+[ext_resource path="res://scripts/FailurePanel.gd" type="Script" id=10]
+[ext_resource path="res://scripts/TapToStart.gd" type="Script" id=11]
 [ext_resource path="res://scenes/DetectorLeft.tscn" type="PackedScene" id=12]
+[ext_resource path="res://drawable/pause.webp" type="Texture" id=13]
+[ext_resource path="res://scripts/PauseBnt.gd" type="Script" id=14]
+[ext_resource path="res://scripts/PausePanel.gd" type="Script" id=15]
+[ext_resource path="res://scripts/ResumeBtn.gd" type="Script" id=16]
+[ext_resource path="res://scripts/MenuBtn.gd" type="Script" id=17]
+[ext_resource path="res://drawable/Text.png" type="Texture" id=18]
+[ext_resource path="res://scripts/FailureBtn.gd" type="Script" id=19]
+[ext_resource path="res://styles/disabled_tab_texture.tres" type="StyleBox" id=20]
+[ext_resource path="res://scripts/SkinPanel.gd" type="Script" id=21]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 5.5 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 192, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 224, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 256, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
-region = Rect2( 288, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
-region = Rect2( 320, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
-region = Rect2( 352, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
-region = Rect2( 384, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
-region = Rect2( 416, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 1 )
-region = Rect2( 448, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 1 )
-region = Rect2( 480, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=18]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="Curve" id=19]
-_data = [ Vector2( 0, 0.130682 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Curve" id=20]
-min_value = -1.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.506073, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=1]
+size = 46
 font_data = ExtResource( 8 )
 
-[node name="Game" type="Node2D"]
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 26
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.882353, 0.678431, 0.678431, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 8 )
+
+[node name="Game" type="Node"]
 script = ExtResource( 2 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-z_index = 1
-script = ExtResource( 3 )
-
-[node name="PlayerShape" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 10 )
-shape = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
-position = Vector2( 0, -0.533936 )
-frames = SubResource( 18 )
-speed_scale = 4.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 0.103069, 11.395 )
-current = true
-zoom = Vector2( 0.3, 0.3 )
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Player"]
-z_index = -1
-emitting = false
-amount = 20
-lifetime = 2.0
-local_coords = false
-texture = ExtResource( 6 )
-emission_shape = 1
-emission_sphere_radius = 8.0
-direction = Vector2( -1, 0 )
-spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 50.0
-angular_velocity = 40.0
-angular_velocity_random = 0.5
-angle = 180.0
-angle_random = 1.0
-scale_amount = 0.4
-scale_amount_curve = SubResource( 19 )
-hue_variation = -0.84
-hue_variation_random = 1.0
-hue_variation_curve = SubResource( 20 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 305.257 )
 
 [node name="BackGround" parent="Player" instance=ExtResource( 5 )]
+scale = Vector2( 2.5, 2.5 )
 z_index = -1
 
-[node name="Score" type="Label" parent="Player"]
-margin_left = -35.1478
-margin_top = -66.5186
-margin_right = 36.8522
-margin_bottom = -50.5186
-custom_fonts/font = SubResource( 21 )
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0.103088, 11.395 )
+current = true
+smoothing_enabled = true
+smoothing_speed = 50.0
+
+[node name="GameHUD" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="ScorePanel" type="Control" parent="Player/Camera2D/GameHUD"]
+visible = false
+anchor_right = 1.0
+margin_bottom = 103.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseBnt" type="TextureButton" parent="Player/Camera2D/GameHUD/ScorePanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.898
+margin_top = -21.0
+margin_right = -44.8984
+margin_bottom = 21.0
+texture_normal = ExtResource( 13 )
+expand = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Player/Camera2D/GameHUD/ScorePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -23.5
+margin_right = 36.0
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 script = ExtResource( 4 )
@@ -158,15 +108,246 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Platform1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 103.271, 65.3685 )
-script = ExtResource( 9 )
+[node name="PausePanel" type="PanelContainer" parent="Player/Camera2D/GameHUD"]
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0.890196 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -125.0
+margin_right = 200.0
+margin_bottom = 125.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TapToStart" parent="." instance=ExtResource( 10 )]
-position = Vector2( -1.53967, 62.018 )
-scale = Vector2( 1.63465, 1.63465 )
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D/GameHUD/PausePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 393.0
+margin_bottom = 243.0
+size_flags_horizontal = 3
+
+[node name="ResumeBtn" type="Button" parent="Player/Camera2D/GameHUD/PausePanel/VBoxContainer"]
+margin_right = 386.0
+margin_bottom = 76.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "RESUME"
+flat = true
+script = ExtResource( 16 )
+
+[node name="OptionsBtn" type="Button" parent="Player/Camera2D/GameHUD/PausePanel/VBoxContainer"]
+margin_top = 80.0
+margin_right = 386.0
+margin_bottom = 156.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "OPTIONS"
+flat = true
+
+[node name="MenuBtn" type="Button" parent="Player/Camera2D/GameHUD/PausePanel/VBoxContainer"]
+margin_top = 160.0
+margin_right = 386.0
+margin_bottom = 236.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "MAIN MENU"
+flat = true
+script = ExtResource( 17 )
+
+[node name="TapToStart" type="Control" parent="Player/Camera2D/GameHUD"]
+pause_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -507.0
+margin_bottom = -170.0
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="DetectorLeft" parent="." instance=ExtResource( 12 )]
-position = Vector2( -97.4452, 0.326591 )
-[connection signal="body_entered" from="DetectorLeft" to="DetectorLeft" method="_on_DetectorLeft_body_entered"]
+[node name="TextureRect" type="TextureRect" parent="Player/Camera2D/GameHUD/TapToStart"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -172.0
+margin_top = -100.272
+margin_right = 172.0
+margin_bottom = -34.2717
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IgnoreZone" type="Control" parent="Player/Camera2D/GameHUD/TapToStart"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+margin_right = 368.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FailurePanel" type="PanelContainer" parent="Player/Camera2D/GameHUD"]
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0.964706 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.0
+margin_top = -184.0
+margin_right = 378.0
+margin_bottom = 130.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Player/Camera2D/GameHUD/FailurePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 741.0
+margin_bottom = 307.0
+
+[node name="Label" type="Label" parent="Player/Camera2D/GameHUD/FailurePanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -169.5
+margin_top = -115.596
+margin_right = 169.5
+margin_bottom = -17.5956
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+text = "YOUR SCORE:
+0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Player/Camera2D/GameHUD/FailurePanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -6.45901
+margin_right = 146.0
+margin_bottom = 63.541
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 4 )
+text = "BEST SCORE: 
+999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FailureMenuBtn" type="Button" parent="Player/Camera2D/GameHUD/FailurePanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.0
+margin_top = 79.1175
+margin_right = 137.0
+margin_bottom = 129.117
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
+text = "Menu"
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkinPanel" type="TabContainer" parent="Player/Camera2D/GameHUD"]
+pause_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -240.0
+margin_right = -18.0
+custom_styles/tab_fg = ExtResource( 6 )
+custom_styles/tab_bg = ExtResource( 20 )
+custom_styles/panel = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
+tab_align = 0
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="GridContainer" parent="Player/Camera2D/GameHUD/SkinPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="SkinBox" parent="Player/Camera2D/GameHUD/SkinPanel/Body" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 195.0
+margin_bottom = 168.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SkinBox2" parent="Player/Camera2D/GameHUD/SkinPanel/Body" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 199.0
+margin_right = 394.0
+margin_bottom = 168.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SkinBox3" parent="Player/Camera2D/GameHUD/SkinPanel/Body" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 398.0
+margin_right = 593.0
+margin_bottom = 168.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Scarf" type="GridContainer" parent="Player/Camera2D/GameHUD/SkinPanel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
+position = Vector2( -277.609, 23.7308 )
+scale = Vector2( 3, 3 )
+
+[node name="Platform1" parent="." instance=ExtResource( 7 )]
+position = Vector2( 552.507, 421.115 )
+scale = Vector2( 2, 2 )
+collision_mask = 2147483649
+script = ExtResource( 9 )
+[connection signal="failed" from="." to="Player/Camera2D/GameHUD/FailurePanel" method="failed"]
+[connection signal="start_game" from="." to="Player/Camera2D/GameHUD/SkinPanel" method="_on_Game_start_game"]
+[connection signal="pause_pressed" from="Player/Camera2D/GameHUD/ScorePanel/PauseBnt" to="Player/Camera2D/GameHUD/PausePanel" method="pause_pressed"]
+[connection signal="start_game" from="Player/Camera2D/GameHUD/TapToStart" to="." method="start_game"]
+[connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]

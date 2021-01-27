@@ -9,7 +9,6 @@ func _ready():
 	update_rate()
 
 func _physics_process(delta):
-	if (Game.pause): return
 	update_rate()
 	position.x -= speed
 	#if position.x < Game.Player.position.x - 256:
