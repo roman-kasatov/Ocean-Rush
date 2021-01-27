@@ -12,6 +12,7 @@ func add_points():
 
 
 func _ready():
+	print(rect_position)
 	text = "0"
 	timer = Timer.new()
 	timer.wait_time = time_for_score
