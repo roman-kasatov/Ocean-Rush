@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Platform_chipped_down.gd" type="Script" id=1]
+[ext_resource path="res://drawable/platforms/Platform_chipped_down.png" type="Texture" id=2]
+[ext_resource path="res://drawable/platforms/Grass_2_1.png" type="Texture" id=3]
+[ext_resource path="res://drawable/platforms/Grass_2_2.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.0337, 5.95773 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1.64805, 10 )
+
+[node name="Platform_chipped_down" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="SpritePlatform" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="SpriteGrass1" type="Sprite" parent="."]
+position = Vector2( -20.9926, -4.97876 )
+texture = ExtResource( 3 )
+
+[node name="SpriteGrass2" type="Sprite" parent="."]
+position = Vector2( 21.0054, 8.97641 )
+texture = ExtResource( 4 )
+
+[node name="Collision1" type="CollisionShape2D" parent="."]
+position = Vector2( -20.95, -6.98296 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="Collision2" type="CollisionShape2D" parent="."]
+position = Vector2( 20.2758, 6.94995 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="AreaForDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaForDetector"]
+position = Vector2( 30.3655, 0.118969 )
+shape = SubResource( 2 )

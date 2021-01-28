@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://scripts/Platform_crab.gd" type="Script" id=1]
 [ext_resource path="res://drawable/platforms/Platform_standart.png" type="Texture" id=2]
 [ext_resource path="res://drawable/platforms/Grass_1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Crab.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5415, 6.07756 )
@@ -9,8 +11,9 @@ extents = Vector2( 32.5415, 6.07756 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1.64805, 10 )
 
-[node name="Platform_chipped" type="StaticBody2D"]
+[node name="Platform_crab" type="StaticBody2D"]
 scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
 
 [node name="SpritePlatform" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -18,6 +21,9 @@ texture = ExtResource( 2 )
 [node name="SpriteGrass" type="Sprite" parent="."]
 position = Vector2( -1.98616, 2.01477 )
 texture = ExtResource( 3 )
+
+[node name="Crab" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -12.978 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 0 )
