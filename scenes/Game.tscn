@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scripts/FailureBtn.gd" type="Script" id=19]
 [ext_resource path="res://styles/disabled_tab_texture.tres" type="StyleBox" id=20]
 [ext_resource path="res://scripts/SkinPanel.gd" type="Script" id=21]
+[ext_resource path="res://scenes/PlatformManager.tscn" type="PackedScene" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -42,18 +43,59 @@ font_data = ExtResource( 8 )
 size = 26
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.882353, 0.678431, 0.678431, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 8 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )
 
+[node name="TapToStart" type="Control" parent="."]
+pause_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.86292
+margin_top = -584.67
+margin_right = 14.8629
+margin_bottom = -127.67
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TapToStart"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.529
+margin_top = -53.7862
+margin_right = 84.4713
+margin_bottom = -17.7862
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IgnoreZone" type="Control" parent="TapToStart"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 311.572
+margin_top = -85.946
+margin_right = 679.572
+margin_bottom = -5.94598
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 512, 305.257 )
+scale = Vector2( 2, 2 )
 
 [node name="BackGround" parent="Player" instance=ExtResource( 5 )]
 scale = Vector2( 2.5, 2.5 )
@@ -62,6 +104,7 @@ z_index = -1
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0.103088, 11.395 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 smoothing_speed = 50.0
 
@@ -160,43 +203,6 @@ text = "MAIN MENU"
 flat = true
 script = ExtResource( 17 )
 
-[node name="TapToStart" type="Control" parent="Player/Camera2D/GameHUD"]
-pause_mode = 2
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -507.0
-margin_bottom = -170.0
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Player/Camera2D/GameHUD/TapToStart"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -172.0
-margin_top = -100.272
-margin_right = 172.0
-margin_bottom = -34.2717
-texture = ExtResource( 18 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="IgnoreZone" type="Control" parent="Player/Camera2D/GameHUD/TapToStart"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -80.0
-margin_right = 368.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="FailurePanel" type="PanelContainer" parent="Player/Camera2D/GameHUD"]
 pause_mode = 2
 visible = false
@@ -278,6 +284,7 @@ __meta__ = {
 
 [node name="SkinPanel" type="TabContainer" parent="Player/Camera2D/GameHUD"]
 pause_mode = 2
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -286,8 +293,8 @@ margin_top = -240.0
 margin_right = -18.0
 custom_styles/tab_fg = ExtResource( 6 )
 custom_styles/tab_bg = ExtResource( 20 )
-custom_styles/panel = SubResource( 7 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/panel = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 tab_align = 0
 script = ExtResource( 21 )
 __meta__ = {
@@ -332,22 +339,23 @@ size_flags_vertical = 3
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 72.0
 
 [node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
 position = Vector2( -277.609, 23.7308 )
 scale = Vector2( 3, 3 )
 
 [node name="Platform1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 552.507, 421.115 )
+position = Vector2( 656.611, 418.057 )
 scale = Vector2( 2, 2 )
 collision_mask = 2147483649
 script = ExtResource( 9 )
+
+[node name="PlatformManager" parent="." instance=ExtResource( 22 )]
+position = Vector2( 991.504, 274.757 )
+scale = Vector2( 4, 4 )
 [connection signal="failed" from="." to="Player/Camera2D/GameHUD/FailurePanel" method="failed"]
 [connection signal="start_game" from="." to="Player/Camera2D/GameHUD/SkinPanel" method="_on_Game_start_game"]
+[connection signal="start_game" from="TapToStart" to="." method="start_game"]
 [connection signal="pause_pressed" from="Player/Camera2D/GameHUD/ScorePanel/PauseBnt" to="Player/Camera2D/GameHUD/PausePanel" method="pause_pressed"]
-[connection signal="start_game" from="Player/Camera2D/GameHUD/TapToStart" to="." method="start_game"]
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]

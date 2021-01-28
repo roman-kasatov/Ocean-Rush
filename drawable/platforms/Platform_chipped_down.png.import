@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Platform1.png-f597f1b0e741117cb3ad6930689be12d.stex"
+path="res://.import/Platform_chipped_down.png-5b559f9d4d90cc6a2c16a6c6057350f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/Platform1.png"
-dest_files=[ "res://.import/Platform1.png-f597f1b0e741117cb3ad6930689be12d.stex" ]
+source_file="res://drawable/platforms/Platform_chipped_down.png"
+dest_files=[ "res://.import/Platform_chipped_down.png-5b559f9d4d90cc6a2c16a6c6057350f1.stex" ]
 
 [params]
 
