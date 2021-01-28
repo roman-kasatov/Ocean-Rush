@@ -19,14 +19,14 @@ var dist_from_player = 500
 
 enum types {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB} # 0, 1, ...
 
-# sum should be equal zero
+#у кого сумма не равна 1, тот еблан!
 var chance = {
 	types.BASIC : 0.4, 
-	types.BROKEN : 0.6,
+	types.BROKEN : 0.55,
 	types.CHIPPED : 0.0, 
 	types.CHIPPED_UP : 0.0, 
 	types.CHIPPED_DOWN : 0.0, 
-	types.CRAB : 0.0
+	types.CRAB : 0.05
 }
 
 var nodes = {

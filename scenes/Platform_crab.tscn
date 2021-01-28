@@ -23,7 +23,8 @@ position = Vector2( -1.98616, 2.01477 )
 texture = ExtResource( 3 )
 
 [node name="Crab" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -12.978 )
+position = Vector2( -0.0993247, -13.1435 )
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 0 )
