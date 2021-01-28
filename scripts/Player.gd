@@ -17,6 +17,10 @@ func _ready():
 	update_rate()
 
 func _process(delta):
+	#	check failure
+	if position.y > 800:
+		Game.fail()
+	
 	update_rate()
 	if is_on_floor():
 		jump_left = true
