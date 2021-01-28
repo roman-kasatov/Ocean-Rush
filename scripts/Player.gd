@@ -16,7 +16,7 @@ var Air_part = preload("res://scenes/Air_particles.tscn")
 func _ready():
 	update_rate()
 
-func _process(delta):
+func _physics_process(delta):
 	#	check failure
 	if position.y > 800:
 		Game.fail()
@@ -28,6 +28,7 @@ func _process(delta):
 	if motion.y > max_fall_speed:
 		motion.y = max_fall_speed
 	move_and_slide(motion, Vector2.UP)
+	
 	
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -50,3 +51,8 @@ func update_rate():
 	
 func change_skin():
 	pass
+
+
+func _on_DetectorEvil_area_entered(area):
+	if area.get("evil") == true:
+		Game.fail()

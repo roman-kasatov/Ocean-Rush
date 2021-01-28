@@ -39,7 +39,7 @@ animations = [ {
 
 [node name="Shark_standart" type="AnimatedSprite"]
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
 script = ExtResource( 2 )
 
