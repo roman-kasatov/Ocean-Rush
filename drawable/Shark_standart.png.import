@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crab.png-7cc9b8c5a8232e5969bc6919fbf2ee91.stex"
+path="res://.import/Shark_standart.png-55b6ed56932ff588e36ac12fa985ace5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/crab.png"
-dest_files=[ "res://.import/crab.png-7cc9b8c5a8232e5969bc6919fbf2ee91.stex" ]
+source_file="res://drawable/Shark_standart.png"
+dest_files=[ "res://.import/Shark_standart.png-55b6ed56932ff588e36ac12fa985ace5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crab.png-7cc9b8c5a8232e5969bc6919fbf2ee91.stex"
+path="res://.import/Grass_2_1.png-1b635d39013346d7505fbb314e8f8615.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/crab.png"
-dest_files=[ "res://.import/crab.png-7cc9b8c5a8232e5969bc6919fbf2ee91.stex" ]
+source_file="res://drawable/platforms/Grass_2_1.png"
+dest_files=[ "res://.import/Grass_2_1.png-1b635d39013346d7505fbb314e8f8615.stex" ]
 
 [params]
 
