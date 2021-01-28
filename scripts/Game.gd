@@ -3,8 +3,9 @@ extends Node
 var rate : float = 35
 onready var Player = $Player
 onready var GameHUD = $Player/Camera2D/GameHUD
+onready var PlatformManager = $PlatformManager
 
-#var PlatformS = preload("res://scenes/PlatformS.tscn")
+
 #var plat_lines = []
 #var last_plat
 
@@ -17,7 +18,9 @@ func _ready():
 func _physics_process(delta):
 	manage_platforms()
 	check_failure()
-	
+
+
+
 func manage_platforms():
 #	if last_plat.position.x < Player.position.x + 700:
 #		for y in plat_lines:
@@ -44,6 +47,7 @@ func start_game():
 	$Player/CPUParticles2D.emitting = true
 	$Player/Camera2D/GameHUD/ScorePanel.visible = true
 	$Player/Camera2D/GameHUD/SkinPanel.visible = false
+	PlatformManager.place_section()
 	emit_signal("start_game")
 #	for i in range(-160, 160, 33):
 #		plat_lines.append(i + randi() % 20 - 10)
