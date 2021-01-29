@@ -13,13 +13,16 @@ func _ready():
 	timer.autostart = true
 	timer.connect("timeout", self, "destroy")
 
-
 func destroy():
+	var par = $CPUParticles2D
+	par.position = position
+	remove_child($CPUParticles2D)
+	Game.add_child(par)	
+	par.start()
+	par.emitting = true
 	queue_free()
 
-
-func _on_AreaForPlayer_body_entered(body):
-	if body is KinematicBody2D and !being_destroyed:
-		being_destroyed = true
-		$SpritePlatformAnim.play()
-		add_child(timer)
+func touch(player):
+	being_destroyed = true
+	$SpritePlatformAnim.play()
+	add_child(timer)
