@@ -97,16 +97,12 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
 
-[node name="BackGround" parent="Player" instance=ExtResource( 5 )]
-scale = Vector2( 2.5, 2.5 )
-z_index = -1
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0.103088, 11.395 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
-smoothing_enabled = true
-smoothing_speed = 50.0
+zoom = Vector2( 0.8, 0.8 )
+drag_margin_v_enabled = true
+smoothing_speed = 10.0
 
 [node name="GameHUD" type="CanvasLayer" parent="Player/Camera2D"]
 
@@ -344,6 +340,10 @@ margin_top = 72.0
 [node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
 position = Vector2( -277.609, 23.7308 )
 scale = Vector2( 3, 3 )
+
+[node name="BackGround" parent="Player" instance=ExtResource( 5 )]
+scale = Vector2( 2.5, 2.5 )
+z_index = -1
 
 [node name="Platform1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 656.611, 418.057 )
