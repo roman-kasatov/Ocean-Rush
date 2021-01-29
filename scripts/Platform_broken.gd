@@ -3,8 +3,6 @@ extends StaticBody2D
 onready var Game = get_parent()
 
 var timer
-
-var evil = false
 var being_destroyed = false
 
 func _ready():
@@ -15,14 +13,15 @@ func _ready():
 
 func destroy():
 	var par = $CPUParticles2D
-	par.position = position
 	remove_child($CPUParticles2D)
+	par.position = position
 	Game.add_child(par)	
 	par.start()
 	par.emitting = true
 	queue_free()
 
 func touch(player):
-	being_destroyed = true
-	$SpritePlatformAnim.play()
-	add_child(timer)
+	if not being_destroyed:
+		being_destroyed = true
+		$SpritePlatformAnim.play()
+		add_child(timer)
