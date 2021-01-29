@@ -4,10 +4,10 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 
 
-var lines = 10
+var lines = 15
 var columns = 3
-var min_in_column = 3
-var max_in_column = 4
+var min_in_column = 5
+var max_in_column = 8
 var dist_betw_lines = 80.0
 var dist_betw_columns = 170.0
 var last_plat

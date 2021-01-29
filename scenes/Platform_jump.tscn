@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://drawable/platforms/Platform_standart.png" type="Texture" id=1]
 [ext_resource path="res://drawable/platforms/Platform_jump.png" type="Texture" id=2]
@@ -31,10 +31,9 @@ extents = Vector2( 32.5415, 6.07756 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1.64805, 10 )
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 31.8325, 0.0915384 )
-
-[node name="Platform_jump" type="StaticBody2D"]
+[node name="Platform_jump" type="StaticBody2D" groups=[
+"touchable",
+]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 4 )
 
@@ -48,6 +47,7 @@ texture = ExtResource( 3 )
 [node name="SpritePlatformAnim" type="AnimatedSprite" parent="."]
 position = Vector2( -1, -2 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -62,11 +62,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaForDetector"]
 position = Vector2( 30.3655, 0.118969 )
 shape = SubResource( 6 )
-
-[node name="AreaForPlayer" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaForPlayer"]
-position = Vector2( -0.00855064, -6.05299 )
-shape = SubResource( 7 )
-one_way_collision = true
-[connection signal="body_entered" from="AreaForPlayer" to="." method="_on_AreaForPlayer_body_entered"]
