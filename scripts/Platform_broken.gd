@@ -5,6 +5,7 @@ onready var Game = get_parent()
 var timer
 
 var evil = false
+var being_destroyed = false
 
 func _ready():
 	timer = Timer.new()
@@ -17,7 +18,8 @@ func destroy():
 	queue_free()
 
 
-
 func _on_AreaForPlayer_body_entered(body):
-	if (body is KinematicBody2D):
+	if body is KinematicBody2D and !being_destroyed:
+		being_destroyed = true
+		$SpritePlatformAnim.play()
 		add_child(timer)
