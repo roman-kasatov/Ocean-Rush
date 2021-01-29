@@ -1,15 +1,16 @@
 extends Node
 
-var rate : float = 35
+var rate : float = 0
 onready var Player = $Player
 onready var GameHUD = $Player/Camera2D/GameHUD
 onready var PlatformManager = $PlatformManager
 
-#var plat_lines = []
-#var last_plat
-
 signal failed
 signal start_game
+
+func _physics_process(delta):
+	if (rate < 100):
+		rate += 3 * delta
 
 func _ready():
 	randomize()

@@ -5,7 +5,7 @@ var timer
 func _ready():
 	emitting = true
 	timer = Timer.new()
-	timer.wait_time = 0.2
+	timer.wait_time = 10
 	timer.autostart = true
 	add_child(timer)
 	timer.connect("timeout", self, "die")

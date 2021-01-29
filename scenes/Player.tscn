@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=2]
@@ -7,87 +7,83 @@
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 5.97516, 4.5231 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 6, 5.5 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 3 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 3 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 3 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 3 )
 region = Rect2( 192, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 3 )
 region = Rect2( 224, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 3 )
 region = Rect2( 256, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 3 )
 region = Rect2( 288, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 3 )
 region = Rect2( 320, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 3 )
 region = Rect2( 352, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 3 )
 region = Rect2( 384, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 3 )
 region = Rect2( 416, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 3 )
 region = Rect2( 448, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 3 )
 region = Rect2( 480, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=39]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve" id=19]
-_data = [ Vector2( 0, 0.130682 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
 [sub_resource type="Curve" id=20]
-min_value = -1.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.506073, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.557955 ), 0.0, 3.04615, 0, 0, Vector2( 0.200758, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.795455, 1 ), 0.0220586, 0.0, 0, 0 ]
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 512, 274.757 )
@@ -102,33 +98,31 @@ shape = SubResource( 21 )
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )
-shape = SubResource( 1 )
+shape = SubResource( 22 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.533936 )
-frames = SubResource( 18 )
+frames = SubResource( 39 )
 speed_scale = 4.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 z_index = -1
 emitting = false
 amount = 20
-lifetime = 2.0
+lifetime = 1.5
+randomness = 0.7
 local_coords = false
 texture = ExtResource( 2 )
 emission_shape = 1
-emission_sphere_radius = 8.0
+emission_sphere_radius = 9.35
 direction = Vector2( -1, 0 )
-spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 50.0
-angular_velocity = 40.0
-angular_velocity_random = 0.5
-angle = 180.0
-angle_random = 1.0
-scale_amount = 0.4
-scale_amount_curve = SubResource( 19 )
-hue_variation = -0.84
-hue_variation_random = 1.0
-hue_variation_curve = SubResource( 20 )
+gravity = Vector2( 0, -20 )
+initial_velocity = 26.66
+initial_velocity_random = 0.47
+scale_amount = 0.5
+scale_amount_random = 0.52
+scale_amount_curve = SubResource( 20 )
+hue_variation = -1.0
+hue_variation_random = 0.46
 [connection signal="area_entered" from="DetectorEvil" to="." method="_on_DetectorEvil_area_entered"]
