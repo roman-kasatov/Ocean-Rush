@@ -23,7 +23,6 @@ func fail():
 
 func start_game():
 	GameHUD.get_node("ScorePanel/Score").timer.start()
-	$Player/AnimatedSprite.playing = true
 	$Player/CPUParticles2D.emitting = true
 	$Player/Camera2D/GameHUD/ScorePanel.visible = true
 	$Player/Camera2D/GameHUD/SkinPanel.visible = false
