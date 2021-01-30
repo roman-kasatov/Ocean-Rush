@@ -5,33 +5,13 @@
 [ext_resource path="res://scripts/platforms/Platform_broken.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=4]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 65, 12 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
-region = Rect2( 65, 0, 65, 12 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 4 )
-region = Rect2( 130, 0, 65, 12 )
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": false,
-"name": "default",
-"speed": 23.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5415, 6.07756 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1.64805, 10 )
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=3]
 script/source = "extends CPUParticles2D
 
 var timer
@@ -48,24 +28,24 @@ func die():
 	queue_free()
 "
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 65, 12 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 65, 0, 65, 12 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
 region = Rect2( 130, 0, 65, 12 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": false,
 "name": "default",
-"speed": 12.0
+"speed": 23.0
 } ]
 
 [node name="Platform_broken" type="StaticBody2D" groups=[
@@ -77,7 +57,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="AreaForDetector" type="Area2D" parent="."]
@@ -86,7 +66,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaForDetector"]
 position = Vector2( 30.3655, 0.118969 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 0.466667, 0.462745, 0.462745, 1 )
@@ -102,12 +82,12 @@ gravity = Vector2( 0, 200 )
 initial_velocity = 20.0
 scale_amount = 5.0
 scale_amount_random = 0.5
-script = SubResource( 7 )
+script = SubResource( 3 )
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="SpritePlatformAnim" type="AnimatedSprite" parent="Sprites"]
-frames = SubResource( 4 )
+frames = SubResource( 7 )
 
 [node name="SpriteGrass" type="Sprite" parent="Sprites"]
 position = Vector2( -1.98616, 2.01477 )
