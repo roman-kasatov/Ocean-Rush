@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -6,9 +6,9 @@
 [ext_resource path="res://scripts/Score.gd" type="Script" id=4]
 [ext_resource path="res://scenes/BackGround.tscn" type="PackedScene" id=5]
 [ext_resource path="res://styles/tab_texture.tres" type="StyleBox" id=6]
-[ext_resource path="res://scenes/Platform1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/platforms/Platform1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://scripts/Platform1.gd" type="Script" id=9]
+[ext_resource path="res://scripts/platforms/Platform1.gd" type="Script" id=9]
 [ext_resource path="res://scripts/FailurePanel.gd" type="Script" id=10]
 [ext_resource path="res://scripts/TapToStart.gd" type="Script" id=11]
 [ext_resource path="res://scenes/DetectorLeft.tscn" type="PackedScene" id=12]
@@ -21,7 +21,9 @@
 [ext_resource path="res://scripts/FailureBtn.gd" type="Script" id=19]
 [ext_resource path="res://styles/disabled_tab_texture.tres" type="StyleBox" id=20]
 [ext_resource path="res://scripts/SkinPanel.gd" type="Script" id=21]
-[ext_resource path="res://scenes/PlatformManager.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/platforms/PlatformManager.tscn" type="PackedScene" id=22]
+[ext_resource path="res://drawable/background/Background_0.png" type="Texture" id=23]
+[ext_resource path="res://drawable/White32.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -98,9 +100,11 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+pause_mode = 2
 position = Vector2( 0.103088, 11.395 )
 current = true
 zoom = Vector2( 0.8, 0.8 )
+process_mode = 0
 drag_margin_v_enabled = true
 smoothing_speed = 10.0
 
@@ -342,6 +346,7 @@ position = Vector2( -277.609, 23.7308 )
 scale = Vector2( 3, 3 )
 
 [node name="BackGround" parent="Player" instance=ExtResource( 5 )]
+visible = false
 scale = Vector2( 2.5, 2.5 )
 z_index = -1
 
@@ -354,6 +359,28 @@ script = ExtResource( 9 )
 [node name="PlatformManager" parent="." instance=ExtResource( 22 )]
 position = Vector2( 991.504, 274.757 )
 scale = Vector2( 4, 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+pause_mode = 2
+
+[node name="FillBackground" type="Sprite" parent="ParallaxBackground"]
+modulate = Color( 0.317647, 0.521569, 0.627451, 1 )
+position = Vector2( 474.451, 323.975 )
+scale = Vector2( 40, 40 )
+z_index = -100
+z_as_relative = false
+texture = ExtResource( 24 )
+
+[node name="Laminaria" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.72549, 0.72549, 0.72549, 0.615686 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Laminaria"]
+scale = Vector2( 2, 3 )
+texture = ExtResource( 23 )
+centered = false
+offset = Vector2( 0, -100 )
 [connection signal="failed" from="." to="Player/Camera2D/GameHUD/FailurePanel" method="failed"]
 [connection signal="start_game" from="." to="Player/Camera2D/GameHUD/SkinPanel" method="_on_Game_start_game"]
 [connection signal="start_game" from="TapToStart" to="." method="start_game"]
