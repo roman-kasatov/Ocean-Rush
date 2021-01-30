@@ -7,7 +7,7 @@ var being_destroyed = false
 
 func _ready():
 	timer = Timer.new()
-	timer.wait_time = 0.5
+	timer.wait_time = 0.2
 	timer.autostart = true
 	timer.connect("timeout", self, "destroy")
 
