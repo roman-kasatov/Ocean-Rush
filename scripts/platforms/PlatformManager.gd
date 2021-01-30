@@ -9,11 +9,13 @@ var columns = 3
 var min_in_column = 5
 var max_in_column = 8
 var dist_betw_lines = 80.0
-var dist_betw_columns = 170.0
-var last_plat
+var dist_betw_columns = 250.0
 var dist_from_player = 500
+var last_plat
+var enemy_type
 
-enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP} # 0, 1, ...
+enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
+enum types_en {SHARK}
 
 #у кого сумма не равна 1, тот еблан!
 var chance_pl = {
@@ -26,6 +28,10 @@ var chance_pl = {
 	types_pl.JUMP : 0.05
 }
 
+var chance_en = {
+	types_en.SHARK : 0.5
+}
+
 var nodes_pl = {
 	types_pl.BASIC : preload("res://scenes/platforms/Platform_standart.tscn"),
 	types_pl.BROKEN : preload("res://scenes/platforms/Platform_broken.tscn"),
@@ -34,6 +40,10 @@ var nodes_pl = {
 	types_pl.CHIPPED_DOWN : preload("res://scenes/platforms/Platform_chipped_down.tscn"),
 	types_pl.CRAB : preload("res://scenes/platforms/Platform_crab.tscn"),
 	types_pl.JUMP : preload("res://scenes/platforms/Platform_jump.tscn")
+}
+
+var nodes_en = {
+	types_en.SHARK : preload("res://scenes/Shark_av.tscn")
 }
 
 func generate_section():
@@ -62,6 +72,15 @@ func generate_section():
 func _physics_process(delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
+		place_enemy()
+
+
+func place_enemy():
+	if (randf() < chance_en[types_en.SHARK]):
+		var enemy = nodes_en[types_en.SHARK].instance()
+		enemy.position = Vector2(180, 0)
+		enemy.coord_const = Player.position.y
+		Player.add_child(enemy)
 
 
 func place_section():
@@ -71,7 +90,8 @@ func place_section():
 			if (section[i][j] == -1):
 				continue
 			var plat = nodes_pl[section[i][j]].instance()
-			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines)
+			var additional_pos = Vector2((randf() - 0.5) * 40, (randf() - 0.5) * 40)
+			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
 	position.x += dist_betw_columns * columns
 

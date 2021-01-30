@@ -45,7 +45,6 @@ texture = ExtResource( 2 )
 [node name="Crab" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0993247, -13.1435 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Area" type="Area2D" parent="Crab" groups=[

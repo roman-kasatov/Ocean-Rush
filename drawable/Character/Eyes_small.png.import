@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fish.png-4145ed3210afba3058e74db94e6854e5.stex"
+path="res://.import/Eyes_small.png-963c424c18d45d19dd41d3644cbe9de9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/Fish.png"
-dest_files=[ "res://.import/Fish.png-4145ed3210afba3058e74db94e6854e5.stex" ]
+source_file="res://drawable/Character/Eyes_small.png"
+dest_files=[ "res://.import/Eyes_small.png-963c424c18d45d19dd41d3644cbe9de9.stex" ]
 
 [params]
 

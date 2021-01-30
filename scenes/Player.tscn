@@ -1,8 +1,12 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=2]
 [ext_resource path="res://drawable/BlueCircle.png" type="Texture" id=3]
+[ext_resource path="res://drawable/Character/Body_landing.png" type="Texture" id=4]
+[ext_resource path="res://drawable/Character/Mouth_long.png" type="Texture" id=5]
+[ext_resource path="res://drawable/Character/Eyes_small.png" type="Texture" id=6]
+[ext_resource path="res://drawable/Character/Legs.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.97516, 4.5231 )
@@ -82,7 +86,111 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve" id=20]
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 25, 26 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
+region = Rect2( 25, 0, 25, 26 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 50, 0, 25, 26 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 75, 0, 25, 26 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 14, 8 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 14, 0, 14, 8 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 17, 10 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 17, 0, 17, 10 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 34, 0, 17, 10 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 51, 0, 17, 10 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 7 )
+region = Rect2( 12, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 7 )
+region = Rect2( 36, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 7 )
+region = Rect2( 60, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 7 )
+region = Rect2( 72, 0, 12, 7 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 7 )
+region = Rect2( 84, 0, 12, 7 )
+
+[sub_resource type="SpriteFrames" id=41]
+animations = [ {
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+} ]
+
+[sub_resource type="Curve" id=42]
 _data = [ Vector2( 0, 0.557955 ), 0.0, 3.04615, 0, 0, Vector2( 0.200758, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.795455, 1 ), 0.0220586, 0.0, 0, 0 ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -101,12 +209,36 @@ position = Vector2( 0, 10 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -0.533936 )
+visible = false
+position = Vector2( 0, -0.5 )
 frames = SubResource( 19 )
 speed_scale = 4.0
 
+[node name="Body" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
+position = Vector2( 1.07837, -1.24658 )
+frames = SubResource( 24 )
+
+[node name="Eyes" type="AnimatedSprite" parent="Body"]
+position = Vector2( 0, -6 )
+frames = SubResource( 27 )
+frame = 1
+playing = true
+
+[node name="Mouth" type="AnimatedSprite" parent="Body"]
+position = Vector2( -2, 5 )
+frames = SubResource( 32 )
+frame = 2
+playing = true
+
+[node name="Legs" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
+position = Vector2( 0.0783691, 11.7534 )
+frames = SubResource( 41 )
+frame = 6
+playing = true
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
 z_index = -1
 emitting = false
 amount = 20
@@ -122,7 +254,7 @@ initial_velocity = 26.66
 initial_velocity_random = 0.47
 scale_amount = 0.5
 scale_amount_random = 0.52
-scale_amount_curve = SubResource( 20 )
+scale_amount_curve = SubResource( 42 )
 hue_variation = -1.0
 hue_variation_random = 0.46
 [connection signal="area_entered" from="DetectorEvil" to="." method="_on_DetectorEvil_area_entered"]
