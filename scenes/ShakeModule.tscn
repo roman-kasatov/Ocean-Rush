@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Timer
+
+export (Curve) var DAMP_EASING
+var last_shift = Vector2.ZERO
+var subject
+
+# SETTINGS --
+# also wait_time is a built-in property 
+export var amplitude : = 6
+export var die_on_timeout = true
+# --
+
+func _ready():
+	subject = get_parent()
+	if die_on_timeout:
+		connect(\"timeout\", self, \"die\")
+
+func _process(delta):
+	var damping = DAMP_EASING.interpolate(time_left / wait_time)
+	var shift = Vector2(
+		rand_range(-amplitude, amplitude) * damping,
+		rand_range(-amplitude, amplitude) * damping)
+	subject.position += shift - last_shift
+	last_shift = shift
+
+func die():
+	queue_free()
+"
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0107997, 0, 0, Vector2( 0.639241, 0.218182 ), 0.773427, 0.773427, 0, 0, Vector2( 1, 1 ), 4.88364, 0.0, 0, 0 ]
+
+[node name="ShakeModule" type="Timer"]
+pause_mode = 2
+process_mode = 0
+one_shot = true
+script = SubResource( 1 )
+DAMP_EASING = SubResource( 2 )
