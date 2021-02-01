@@ -9,7 +9,7 @@ signal start_game
 
 func _physics_process(delta):
 	if (rate < 100):
-		rate += 3 * delta
+		rate += 2 * delta
 
 func _ready():
 	$Player/Camera2D/Blackout.open()

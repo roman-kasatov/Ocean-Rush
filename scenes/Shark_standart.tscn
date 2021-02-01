@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://drawable/Shark_standart.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Shark_standart.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -35,7 +36,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=8]
 
 [node name="Shark_standart" type="AnimatedSprite"]
 position = Vector2( 0, 3 )
@@ -44,6 +45,12 @@ frames = SubResource( 7 )
 frame = 2
 playing = true
 script = ExtResource( 2 )
+
+[node name="ShakeModule" parent="." instance=ExtResource( 3 )]
+process_mode = 1
+wait_time = 5.893
+one_shot = false
+autostart = true
 
 [node name="Area" type="Area2D" parent="." groups=[
 "enemy",
@@ -54,4 +61,4 @@ scale = Vector2( 0.851643, 0.76561 )
 [node name="Collision" type="CollisionShape2D" parent="Area"]
 position = Vector2( -0.93581, 1.94942 )
 scale = Vector2( 4.05919, 0.417752 )
-shape = SubResource( 9 )
+shape = SubResource( 8 )

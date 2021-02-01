@@ -1,9 +1,15 @@
 extends KinematicBody2D
 
+onready var Eyes = $Body/Eyes
+onready var Mouth = $Body/Mouth
+onready var Shake = preload("res://scenes/ShakeModule.tscn")
+
+var timer : Timer
+
 var gravity = 30
 var max_fall_speed = 400
 var min_speed = 200
-var max_speed = 500
+var max_speed = 400
 var jump_speed = 700
 var height_to_fail #being calculated at the start at "PlatformManager" script
 var was_falling = true
@@ -16,10 +22,17 @@ var jump_left = 1
 var Floor_part = preload("res://scenes/Floor_particles.tscn")
 var Air_part = preload("res://scenes/Air_particles.tscn")
 
+
 func _ready():
 	update_rate()
+	timer = Timer.new()
+	timer.wait_time = 2
+	timer.one_shot = true
+	timer.connect("timeout", self, "change_anim_usual")
+	add_child(timer)
 
 func _physics_process(delta):
+	#print(timer.)
 	#	check failure
 	if position.y > height_to_fail:
 		blow_up()
@@ -50,6 +63,7 @@ func _physics_process(delta):
 		if coll.is_in_group("touchable"):
 			coll.touch(self)
 
+
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
@@ -65,16 +79,31 @@ func _unhandled_input(event):
 				particles.position = get_global_position() + Vector2(0, 16)
 				get_tree().get_root().call_deferred("add_child", particles)
 
+
 func update_rate():
 	motion.x = lerp(min_speed, max_speed, Game.rate / 100)
+
 
 func _on_DetectorEvil_area_entered(area):
 	if area.is_in_group("enemy"):
 		blow_up()
 		Game.fail()
-		
+
+
 func blow_up():
-		$DeathParticles.emitting = true
-		$Legs.visible = false
-		$Body.visible = false
-		$CPUParticles2D.emitting = false	
+	$DeathParticles.emitting = true
+	$Legs.visible = false
+	$Body.visible = false
+	$CPUParticles2D.emitting = false
+
+
+func change_anim_scared():
+	timer.start()
+	Eyes.animation = "big"
+	Mouth.animation = "fast"
+	#Eyes.add_child(Shake)
+
+
+func change_anim_usual():
+	Eyes.animation = "small"
+	Mouth.animation = "usual"

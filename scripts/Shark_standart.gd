@@ -17,6 +17,5 @@ func _process(delta):
 	else:
 		speed_y = max_speed_y
 		accel_y *= -1
-	position.x -= speed_x
-	position.y += speed_y
+	position += Vector2(-speed_x, speed_y)
 	
