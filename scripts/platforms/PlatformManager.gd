@@ -17,15 +17,15 @@ var enemy_type
 enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
 enum types_en {SHARK}
 
-#у кого сумма не равна 1, тот еблан!
+# the values are relative
 var chance_pl = {
-	types_pl.BASIC : 0.5, 
-	types_pl.BROKEN : 0.1,
-	types_pl.CHIPPED : 0.1, 
-	types_pl.CHIPPED_UP : 0.1, 
-	types_pl.CHIPPED_DOWN : 0.1, 
-	types_pl.CRAB : 0.05,
-	types_pl.JUMP : 0.05
+	types_pl.BASIC : 10, 
+	types_pl.BROKEN : 2,
+	types_pl.CHIPPED : 2, 
+	types_pl.CHIPPED_UP : 2, 
+	types_pl.CHIPPED_DOWN : 2, 
+	types_pl.CRAB : 1,
+	types_pl.JUMP : 1
 }
 
 var chance_en = {
@@ -98,5 +98,11 @@ func place_section():
 
 func _ready():
 	Player.height_to_fail = lines * dist_betw_lines + 400
+	var sum = 0.0
+	for i in len(chance_pl):
+		sum += chance_pl[i]
+	for i in len(chance_pl):
+		chance_pl[i] /= sum
+	print(chance_pl)
 	for type in range(1, len(types_pl)):
 		chance_pl[type] += chance_pl[type - 1]
