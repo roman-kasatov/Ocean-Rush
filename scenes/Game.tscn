@@ -12,7 +12,7 @@
 [ext_resource path="res://scripts/FailurePanel.gd" type="Script" id=10]
 [ext_resource path="res://scripts/TapToStart.gd" type="Script" id=11]
 [ext_resource path="res://scenes/DetectorLeft.tscn" type="PackedScene" id=12]
-[ext_resource path="res://drawable/pause.webp" type="Texture" id=13]
+[ext_resource path="res://drawable/Pause.png" type="Texture" id=13]
 [ext_resource path="res://scripts/PauseBnt.gd" type="Script" id=14]
 [ext_resource path="res://scripts/PausePanel.gd" type="Script" id=15]
 [ext_resource path="res://scripts/ResumeBtn.gd" type="Script" id=16]
@@ -157,10 +157,11 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -110.898
 margin_top = -21.0
-margin_right = -44.8984
-margin_bottom = 21.0
+margin_right = -46.898
+margin_bottom = 43.0
 texture_normal = ExtResource( 13 )
 expand = true
+stretch_mode = 6
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

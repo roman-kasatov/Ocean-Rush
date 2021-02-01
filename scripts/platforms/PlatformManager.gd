@@ -6,8 +6,8 @@ onready var Player = Game.get_node("Player")
 
 var lines = 15
 var columns = 3
-var min_in_column = 5
-var max_in_column = 8
+var min_in_column = 6
+var max_in_column = 9
 var dist_betw_lines = 80.0
 var dist_betw_columns = 250.0
 var dist_from_player = 500
@@ -15,9 +15,9 @@ var last_plat
 var enemy_type
 
 enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
+
 enum types_en {SHARK}
 
-# the values are relative
 var chance_pl = {
 	types_pl.BASIC : 10, 
 	types_pl.BROKEN : 2,
@@ -90,7 +90,7 @@ func place_section():
 			if (section[i][j] == -1):
 				continue
 			var plat = nodes_pl[section[i][j]].instance()
-			var additional_pos = Vector2((randf() - 0.5) * 40, (randf() - 0.5) * 40)
+			var additional_pos = Vector2(132 * (i % 2), 0)
 			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
 	position.x += dist_betw_columns * columns
