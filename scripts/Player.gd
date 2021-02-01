@@ -6,6 +6,8 @@ var min_speed = 200
 var max_speed = 500
 var jump_speed = 700
 var height_to_fail #being calculated at the start at "PlatformManager" script
+var was_falling = true
+var shifted_time_left = 0
 
 var motion = Vector2(0, 0)
 onready var Game = get_parent()
@@ -20,11 +22,23 @@ func _ready():
 func _physics_process(delta):
 	#	check failure
 	if position.y > height_to_fail:
+		blow_up()
 		Game.fail()
-	
 	update_rate()
+	
+	if shifted_time_left > 0:
+		shifted_time_left -= delta
+		if shifted_time_left <= 0:
+			shifted_time_left = 0
+			$Body.position.y -= 1
+	
 	if is_on_floor():
 		jump_left = 1
+		if was_falling:
+			was_falling = false
+			shifted_time_left = 0.1
+			$Body.position.y += 1
+		
 	motion.y += gravity
 	if motion.y > max_fall_speed:
 		motion.y = max_fall_speed
@@ -41,11 +55,10 @@ func _unhandled_input(event):
 		if event.is_pressed():
 			if is_on_floor():
 				motion.y = -jump_speed
-				jump_left -= 1
 				var particles = Floor_part.instance()
 				particles.position = get_global_position() + Vector2(0, 16)
 				get_tree().get_root().call_deferred("add_child", particles)
-			elif jump_left:
+			elif jump_left > 0:
 				motion.y = -jump_speed
 				jump_left -= 1
 				var particles = Air_part.instance()
@@ -57,4 +70,11 @@ func update_rate():
 
 func _on_DetectorEvil_area_entered(area):
 	if area.is_in_group("enemy"):
+		blow_up()
 		Game.fail()
+		
+func blow_up():
+		$DeathParticles.emitting = true
+		$Legs.visible = false
+		$Body.visible = false
+		$CPUParticles2D.emitting = false	

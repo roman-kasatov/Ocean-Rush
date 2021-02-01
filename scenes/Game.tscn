@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -22,8 +22,10 @@
 [ext_resource path="res://styles/disabled_tab_texture.tres" type="StyleBox" id=20]
 [ext_resource path="res://scripts/SkinPanel.gd" type="Script" id=21]
 [ext_resource path="res://scenes/platforms/PlatformManager.tscn" type="PackedScene" id=22]
-[ext_resource path="res://drawable/background/Background_0.png" type="Texture" id=23]
+[ext_resource path="res://drawable/background/Laminaria.png" type="Texture" id=23]
 [ext_resource path="res://drawable/White32.png" type="Texture" id=24]
+[ext_resource path="res://drawable/background/Coral.png" type="Texture" id=25]
+[ext_resource path="res://drawable/background/Coras.png" type="Texture" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -51,6 +53,35 @@ bg_color = Color( 0.882353, 0.678431, 0.678431, 1 )
 [sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 8 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Sprite
+
+var step = 0
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(\"m = \", modulate.a)
+	set_physics_process(false)
+	var screen_size = get_viewport_rect().size
+	scale = Vector2.ONE * ceil(max(screen_size.x, screen_size.y) / 32)
+	
+func hide(step = 0.5):
+	set_physics_process(true)
+	self.step = step
+	
+func open(step = 0.5):
+	set_physics_process(true)
+	self.step = -step
+	
+func _physics_process(delta):
+	modulate.a += step * delta
+	if modulate.a == 0 or modulate.a == 1:
+		set_physics_process(false)
+	
+
+"
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )
@@ -111,6 +142,7 @@ smoothing_speed = 10.0
 [node name="GameHUD" type="CanvasLayer" parent="Player/Camera2D"]
 
 [node name="ScorePanel" type="Control" parent="Player/Camera2D/GameHUD"]
+pause_mode = 1
 visible = false
 anchor_right = 1.0
 margin_bottom = 103.0
@@ -341,6 +373,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 72.0
 
+[node name="Blackout" type="Sprite" parent="Player/Camera2D"]
+pause_mode = 2
+modulate = Color( 0.00784314, 0.00784314, 0.0705882, 1 )
+position = Vector2( -254.103, -148.773 )
+scale = Vector2( 5, 5 )
+z_index = 100
+texture = ExtResource( 24 )
+centered = false
+script = SubResource( 8 )
+
 [node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
 position = Vector2( -277.609, 23.7308 )
 scale = Vector2( 3, 3 )
@@ -364,24 +406,44 @@ scale = Vector2( 4, 4 )
 pause_mode = 2
 
 [node name="FillBackground" type="Sprite" parent="ParallaxBackground"]
-modulate = Color( 0.317647, 0.521569, 0.627451, 1 )
+modulate = Color( 0.145098, 0.435294, 0.607843, 1 )
 position = Vector2( 474.451, 323.975 )
 scale = Vector2( 40, 40 )
 z_index = -100
 z_as_relative = false
 texture = ExtResource( 24 )
 
+[node name="Coras" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.239216, 0.329412, 0.47451, 0.588235 )
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 3000, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Coras"]
+position = Vector2( 1753.14, 524.64 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
 [node name="Laminaria" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 0.72549, 0.72549, 0.72549, 0.615686 )
+modulate = Color( 0.447059, 0.470588, 0.764706, 0.615686 )
 motion_scale = Vector2( 0.5, 0.5 )
 motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Laminaria"]
+position = Vector2( 0, 70 )
 scale = Vector2( 2, 3 )
 texture = ExtResource( 23 )
 centered = false
 offset = Vector2( 0, -100 )
-[connection signal="failed" from="." to="Player/Camera2D/GameHUD/FailurePanel" method="failed"]
+
+[node name="Coral" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.419608, 0.458824, 0.760784, 0.815686 )
+motion_mirroring = Vector2( 6501, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Coral"]
+position = Vector2( 0, 665.556 )
+scale = Vector2( 1, 2 )
+texture = ExtResource( 25 )
+centered = false
 [connection signal="start_game" from="." to="Player/Camera2D/GameHUD/SkinPanel" method="_on_Game_start_game"]
 [connection signal="start_game" from="TapToStart" to="." method="start_game"]
 [connection signal="pause_pressed" from="Player/Camera2D/GameHUD/ScorePanel/PauseBnt" to="Player/Camera2D/GameHUD/PausePanel" method="pause_pressed"]
