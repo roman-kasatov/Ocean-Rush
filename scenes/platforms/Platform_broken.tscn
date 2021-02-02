@@ -4,14 +4,12 @@
 [ext_resource path="res://drawable/platforms/Platform_broken_ANIM.png" type="Texture" id=2]
 [ext_resource path="res://scripts/platforms/Platform_broken.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5415, 6.07756 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1.64805, 10 )
-
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends CPUParticles2D
 
 var timer
@@ -28,21 +26,21 @@ func die():
 	queue_free()
 "
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 65, 12 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 65, 0, 65, 12 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 130, 0, 65, 12 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "default",
 "speed": 23.0
@@ -60,14 +58,6 @@ position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 one_way_collision = true
 
-[node name="AreaForDetector" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaForDetector"]
-position = Vector2( 30.3655, 0.118969 )
-shape = SubResource( 2 )
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 0.466667, 0.462745, 0.462745, 1 )
 emitting = false
@@ -82,12 +72,12 @@ gravity = Vector2( 0, 200 )
 initial_velocity = 20.0
 scale_amount = 5.0
 scale_amount_random = 0.5
-script = SubResource( 3 )
+script = SubResource( 2 )
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="SpritePlatformAnim" type="AnimatedSprite" parent="Sprites"]
-frames = SubResource( 7 )
+frames = SubResource( 6 )
 
 [node name="SpriteGrass" type="Sprite" parent="Sprites"]
 position = Vector2( -1.98616, 2.01477 )
@@ -96,3 +86,6 @@ texture = ExtResource( 1 )
 [node name="ShakeModule" parent="Sprites" instance=ExtResource( 4 )]
 wait_time = 0.5
 amplitude = 3
+
+[node name="DestructModule" parent="." instance=ExtResource( 5 )]
+position = Vector2( 26.9588, 0.433884 )

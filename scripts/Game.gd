@@ -2,7 +2,7 @@ extends Node
 
 var rate : float = 0
 onready var Player = $Player
-onready var GameHUD = $Player/Camera2D/GameHUD
+onready var GameHUD = $GameHUD
 onready var PlatformManager = $PlatformManager
 
 signal start_game
@@ -34,7 +34,7 @@ func reset():
 func start_game():
 	GameHUD.get_node("ScorePanel/Score").timer.start()
 	$Player/CPUParticles2D.emitting = true
-	$Player/Camera2D/GameHUD/ScorePanel.visible = true
-	$Player/Camera2D/GameHUD/SkinPanel.visible = false
+	GameHUD.get_node("ScorePanel").visible = true
+	GameHUD.get_node("SkinPanel").visible = false
 	PlatformManager.place_section()
 	emit_signal("start_game")
