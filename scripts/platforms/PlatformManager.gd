@@ -2,7 +2,7 @@ extends Node2D
 
 onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
-
+onready var FishManager = Game.get_node("FishManager")
 
 var lines = 15
 var columns = 3
@@ -14,9 +14,10 @@ var dist_from_player = 500
 var last_plat
 var enemy_type
 
-enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
+var section_cnt_of_broken_pl = 0
+var section_cnt_of_crab_pl = 0
 
-enum types_en {SHARK}
+enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
 
 var chance_pl = {
 	types_pl.BASIC : 10, 
@@ -28,9 +29,7 @@ var chance_pl = {
 	types_pl.JUMP : 1
 }
 
-var chance_en = {
-	types_en.SHARK : 0.5
-}
+var shark_spawn_chance = 0.5
 
 var nodes_pl = {
 	types_pl.BASIC : preload("res://scenes/platforms/Platform_standart.tscn"),
@@ -42,9 +41,8 @@ var nodes_pl = {
 	types_pl.JUMP : preload("res://scenes/platforms/Platform_jump.tscn")
 }
 
-var nodes_en = {
-	types_en.SHARK : preload("res://scenes/Shark_av.tscn")
-}
+var Shark = preload("res://scenes/Shark_av.tscn")
+
 
 func generate_section():
 	var line = []
@@ -61,27 +59,38 @@ func generate_section():
 			while not section[ind][j] == -1:
 				ind = (ind + 1) % lines
 
+			if (section_cnt_of_broken_pl):
+				section[ind][j] = 1
+				continue
+			elif (section_cnt_of_crab_pl):
+				section[ind][j] = 5
+				continue
+
 			var rnd = randf()
 			for type in types_pl:
 				if rnd < chance_pl[types_pl[type]]:
 					section[ind][j] = types_pl[type]
 					break
+	if (section_cnt_of_broken_pl):
+		section_cnt_of_broken_pl -= 1
+	if (section_cnt_of_crab_pl):
+		section_cnt_of_crab_pl -= 1
 	return section
 
 
 func _physics_process(delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
-		place_enemy()
+		if (randf() < shark_spawn_chance):
+			place_enemy()
 
 
 func place_enemy():
-	if (randf() < chance_en[types_en.SHARK]):
-		var enemy = nodes_en[types_en.SHARK].instance()
-		enemy.position = Vector2(180, 0)
-		enemy.coord_const = Player.position.y
-		Player.add_child(enemy)
-
+	var enemy = Shark.instance()
+	enemy.position = Vector2(180, (randf() - 0.5) * 140)
+	enemy.coord_const = Player.position.y
+	Player.add_child(enemy)
+var t = true#
 
 func place_section():
 	var section = generate_section()
@@ -94,10 +103,12 @@ func place_section():
 			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
 	position.x += dist_betw_columns * columns
-
+	if (t):#
+		t = false#
+		FishManager.create_danger_fishes()#
 
 func _ready():
-	Player.height_to_fail = lines * dist_betw_lines + 400
+	Player.height_to_fail = lines * dist_betw_lines + 600
 	var sum = 0.0
 	for i in len(chance_pl):
 		sum += chance_pl[i]
