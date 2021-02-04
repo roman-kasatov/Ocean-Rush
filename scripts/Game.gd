@@ -12,14 +12,14 @@ func _physics_process(delta):
 		rate += 2 * delta
 
 func _ready():
-	$Player/Camera2D/Blackout.open()
+	$CanvasLayer/Blackout.open()
 	randomize()
 	get_tree().paused = true
 
 func fail():
 	get_tree().paused = true
 	#set_physics_process(false)
-	$Player/Camera2D/Blackout.hide()
+	$CanvasLayer/Blackout.hide()
 	var timer = Timer.new()
 	timer.wait_time = 2
 	timer.autostart = true
@@ -36,5 +36,6 @@ func start_game():
 	$Player/CPUParticles2D.emitting = true
 	GameHUD.get_node("ScorePanel").visible = true
 	GameHUD.get_node("SkinPanel").visible = false
+	GameHUD.get_node("SkinSwitches").visible = false
 	PlatformManager.place_section()
 	emit_signal("start_game")

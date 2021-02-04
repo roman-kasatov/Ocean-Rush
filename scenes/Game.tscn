@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -26,19 +26,19 @@
 [ext_resource path="res://drawable/White32.png" type="Texture" id=24]
 [ext_resource path="res://drawable/background/Coral.png" type="Texture" id=25]
 [ext_resource path="res://drawable/background/Coras.png" type="Texture" id=26]
+[ext_resource path="res://drawable/left_arrow.png" type="Texture" id=27]
+[ext_resource path="res://drawable/right_arrow.png" type="Texture" id=28]
+[ext_resource path="res://drawable/Character/Circle.png" type="Texture" id=29]
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Sprite
 
 var step = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	print(\"m = \", modulate.a)
+	var view_size = get_viewport_rect().size
+	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)
 	set_physics_process(false)
-	var screen_size = get_viewport_rect().size
-	scale = Vector2.ONE * ceil(max(screen_size.x, screen_size.y) / 32)
 	
 func hide(step = 0.5):
 	set_physics_process(true)
@@ -56,32 +56,40 @@ func _physics_process(delta):
 
 "
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 46
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 42
-font_data = ExtResource( 8 )
-
 [sub_resource type="DynamicFont" id=4]
-size = 26
+size = 42
 font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 26
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="DynamicFont" id=6]
+size = 26
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.882353, 0.678431, 0.678431, 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 font_data = ExtResource( 8 )
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Sprite
+
+func _ready():
+	var view_size = get_viewport_rect().size
+	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)
+"
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )
@@ -91,22 +99,11 @@ scale = Vector2( 2, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 pause_mode = 2
-position = Vector2( 0.103088, 11.395 )
 current = true
 zoom = Vector2( 0.8, 0.8 )
 process_mode = 0
 drag_margin_v_enabled = true
 smoothing_speed = 10.0
-
-[node name="Blackout" type="Sprite" parent="Player/Camera2D"]
-pause_mode = 2
-modulate = Color( 0.00784314, 0.00784314, 0.0705882, 1 )
-position = Vector2( -254.103, -148.773 )
-scale = Vector2( 1.15551, 1.10591 )
-z_index = 100
-texture = ExtResource( 24 )
-centered = false
-script = SubResource( 8 )
 
 [node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
 position = Vector2( -419.314, 33.2445 )
@@ -127,54 +124,15 @@ script = ExtResource( 9 )
 position = Vector2( 991.504, 274.757 )
 scale = Vector2( 4, 4 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-pause_mode = 2
-
-[node name="FillBackground" type="Sprite" parent="ParallaxBackground"]
-modulate = Color( 0.145098, 0.435294, 0.607843, 1 )
-position = Vector2( 474.451, 323.975 )
-scale = Vector2( 40, 40 )
-z_index = -100
-z_as_relative = false
-texture = ExtResource( 24 )
-
-[node name="Coras" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 0.239216, 0.329412, 0.47451, 0.588235 )
-motion_scale = Vector2( 0.2, 0.2 )
-motion_mirroring = Vector2( 3000, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Coras"]
-position = Vector2( 1753.14, 524.64 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 26 )
-
-[node name="Laminaria" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 0.447059, 0.470588, 0.764706, 0.615686 )
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 2048, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Laminaria"]
-position = Vector2( 0, 70 )
-scale = Vector2( 2, 3 )
-texture = ExtResource( 23 )
-centered = false
-offset = Vector2( 0, -100 )
-
-[node name="Coral" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 0.419608, 0.458824, 0.760784, 0.815686 )
-motion_mirroring = Vector2( 6501, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Coral"]
-position = Vector2( 0, 665.556 )
-scale = Vector2( 1, 2 )
-texture = ExtResource( 25 )
-centered = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="White32" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 16.901, 293.18 )
+[node name="Blackout" type="Sprite" parent="CanvasLayer"]
+pause_mode = 2
+modulate = Color( 0.00784314, 0.00784314, 0.0705882, 1 )
+z_index = 100
 texture = ExtResource( 24 )
+centered = false
+script = SubResource( 1 )
 
 [node name="GameHUD" type="CanvasLayer" parent="."]
 
@@ -213,7 +171,7 @@ margin_left = -36.0
 margin_top = -23.5
 margin_right = 36.0
 margin_bottom = 23.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 script = ExtResource( 4 )
@@ -249,7 +207,7 @@ size_flags_horizontal = 3
 margin_right = 386.0
 margin_bottom = 76.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "RESUME"
 flat = true
 script = ExtResource( 16 )
@@ -259,7 +217,7 @@ margin_top = 80.0
 margin_right = 386.0
 margin_bottom = 156.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "OPTIONS"
 flat = true
 
@@ -268,7 +226,7 @@ margin_top = 160.0
 margin_right = 386.0
 margin_bottom = 236.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "MENU"
 flat = true
 script = ExtResource( 17 )
@@ -307,7 +265,7 @@ margin_right = 169.5
 margin_bottom = -17.5956
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "YOUR SCORE:
 0"
 align = 1
@@ -326,7 +284,7 @@ margin_right = 146.0
 margin_bottom = 63.541
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "BEST SCORE: 
 999"
 align = 1
@@ -345,7 +303,7 @@ margin_right = 137.0
 margin_bottom = 129.117
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Menu"
 script = ExtResource( 19 )
 __meta__ = {
@@ -363,8 +321,8 @@ margin_top = -240.0
 margin_right = -18.0
 custom_styles/tab_fg = ExtResource( 6 )
 custom_styles/tab_bg = ExtResource( 20 )
-custom_styles/panel = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/panel = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 tab_align = 0
 script = ExtResource( 21 )
 __meta__ = {
@@ -448,6 +406,134 @@ margin_bottom = -5.94598
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SkinSwitches" type="GridContainer" parent="GameHUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -323.0
+margin_top = 154.0
+margin_right = 268.0
+margin_bottom = 274.0
+custom_constants/hseparation = 50
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="GameHUD/SkinSwitches"]
+margin_right = 270.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="GameHUD/SkinSwitches/GridContainer"]
+margin_right = 87.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 27 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="GameHUD/SkinSwitches/GridContainer"]
+margin_left = 91.0
+margin_right = 178.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureButton2" type="TextureButton" parent="GameHUD/SkinSwitches/GridContainer"]
+margin_left = 182.0
+margin_right = 269.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 28 )
+expand = true
+stretch_mode = 5
+
+[node name="GridContainer2" type="GridContainer" parent="GameHUD/SkinSwitches"]
+margin_left = 320.0
+margin_right = 590.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="GameHUD/SkinSwitches/GridContainer2"]
+margin_right = 87.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 27 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="GameHUD/SkinSwitches/GridContainer2"]
+margin_left = 91.0
+margin_right = 178.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureButton2" type="TextureButton" parent="GameHUD/SkinSwitches/GridContainer2"]
+margin_left = 182.0
+margin_right = 269.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 28 )
+expand = true
+stretch_mode = 5
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+pause_mode = 2
+
+[node name="FillBackground" type="Sprite" parent="ParallaxBackground"]
+modulate = Color( 0.145098, 0.435294, 0.607843, 1 )
+scale = Vector2( 53.2623, 52.9877 )
+z_index = -100
+z_as_relative = false
+texture = ExtResource( 24 )
+centered = false
+script = SubResource( 9 )
+
+[node name="Coras" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.239216, 0.329412, 0.47451, 0.588235 )
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 3000, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Coras"]
+position = Vector2( 1753.14, 524.64 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="Laminaria" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.447059, 0.470588, 0.764706, 0.615686 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Laminaria"]
+position = Vector2( 0, 70 )
+scale = Vector2( 2, 3 )
+texture = ExtResource( 23 )
+centered = false
+offset = Vector2( 0, -100 )
+
+[node name="Coral" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.419608, 0.458824, 0.760784, 0.815686 )
+motion_mirroring = Vector2( 6502, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Coral"]
+position = Vector2( 0, 665 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+centered = false
 [connection signal="start_game" from="." to="GameHUD/SkinPanel" method="_on_Game_start_game"]
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
 [connection signal="pause_pressed" from="GameHUD/ScorePanel/PauseBnt" to="GameHUD/PausePanel" method="pause_pressed"]
