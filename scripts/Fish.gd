@@ -16,8 +16,9 @@ var timer_bubbles : Timer
 # 3 - moving away
 var status = 0
 onready var Bubble = preload("res://scenes/BubbleEnemy.tscn")
-onready var Player = get_parent()
-onready var Game = Player.get_parent()
+onready var Canvas = get_parent()
+onready var Game = Canvas.get_parent()
+onready var Player = Game.get_node("Player")
 
 func _ready():
 	position = position_start
@@ -45,7 +46,6 @@ func _physics_process(delta):
 			queue_free()
 
 func shoot_bubble():
-	print(1)
 	if !bubbles_count:
 		timer_bubbles.queue_free()
 		status = 3
@@ -57,10 +57,14 @@ func shoot_bubble():
 	elif type == "down":
 		bubble.angle_min += 180
 		bubble.angle_max += 180
-	bubble.position = position
-	Player.add_child(bubble)
+	var ctrans = get_canvas_transform()
+
+	var min_pos = -ctrans.get_origin() / ctrans.get_scale()
+	var view_size = get_viewport_rect().size / ctrans.get_scale()
+	var max_pos = min_pos + view_size
+	bubble.position = (max_pos - Vector2(256, 256))
+	Game.add_child(bubble)
 
 func _on_Fish_animation_finished():
 	status = 2
-	print(2)
 	add_child(timer_bubbles)

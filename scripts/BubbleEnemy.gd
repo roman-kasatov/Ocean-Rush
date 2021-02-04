@@ -1,6 +1,9 @@
 extends AnimatedSprite
 
-var speed = 4.0
+onready var Game = get_parent()
+
+
+var speed = 2.0
 var time_to_live = 5.0
 var angle_min = 30.0
 var angle_max = 60.0
@@ -9,7 +12,8 @@ var angle = 0.0
 var timer : Timer
 
 func _ready():
-	angle = (angle_min + randf() * (angle_max - angle_min)) * PI / 2
+	print(1, position)
+	angle = (angle_min + randf() * (angle_max - angle_min)) * PI / 180
 	timer = Timer.new()
 	timer.wait_time = time_to_live
 	timer.autostart = true
