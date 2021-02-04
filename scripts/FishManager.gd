@@ -71,8 +71,8 @@ func create_danger_fishes():
 	fish_down.position_start = Vector2(220, 100)
 	fish_up.position_designated = Vector2(180, -100)
 	fish_down.position_designated = Vector2(180, 100)
-	Player.get_node("Camera2D").get_node("GameHUD").add_child(fish_up)
-	Player.get_node("Camera2D").get_node("GameHUD").add_child(fish_down)
+	Game.get_node("GameHUD").add_child(fish_up)
+	Game.get_node("GameHUD").add_child(fish_down)
 
 func add_shark():
 	PlatformManager.place_enemy()

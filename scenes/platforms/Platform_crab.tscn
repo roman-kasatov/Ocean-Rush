@@ -4,6 +4,7 @@
 [ext_resource path="res://drawable/platforms/Grass_1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/platforms/Platform_crab.gd" type="Script" id=3]
 [ext_resource path="res://drawable/crab.png" type="Texture" id=4]
+[ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -26,9 +27,6 @@ extents = Vector2( 6.33271, 4.48256 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32.5415, 6.07756 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 1.64805, 10 )
 
 [node name="Platform_crab" type="StaticBody2D"]
 scale = Vector2( 2, 2 )
@@ -60,10 +58,5 @@ position = Vector2( -0.5, 0 )
 shape = SubResource( 5 )
 one_way_collision = true
 
-[node name="AreaForDetector" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaForDetector"]
-position = Vector2( 30.3655, 0.118969 )
-shape = SubResource( 6 )
+[node name="DestructModule" parent="." instance=ExtResource( 5 )]
+position = Vector2( 23.7934, -4.90337 )
