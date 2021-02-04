@@ -6,6 +6,7 @@
 extents = Vector2( 9.03519, 139.545 )
 
 [node name="DetectorLeft" type="Area2D"]
+scale = Vector2( 1, 4.2 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )

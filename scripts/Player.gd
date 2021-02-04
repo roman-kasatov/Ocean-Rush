@@ -4,7 +4,7 @@ onready var Eyes = $Body/Eyes
 onready var Mouth = $Body/Mouth
 onready var Shake = preload("res://scenes/ShakeModule.tscn")
 
-var timer : Timer
+var timer_anim : Timer
 
 var gravity = 30
 var max_fall_speed = 400
@@ -25,15 +25,13 @@ var Air_part = preload("res://scenes/Air_particles.tscn")
 
 func _ready():
 	update_rate()
-	timer = Timer.new()
-	timer.wait_time = 2
-	timer.one_shot = true
-	timer.connect("timeout", self, "change_anim_usual")
-	add_child(timer)
+	timer_anim = Timer.new()
+	timer_anim.wait_time = 2
+	timer_anim.one_shot = true
+	timer_anim.connect("timeout", self, "change_anim_usual")
+	add_child(timer_anim)
 
 func _physics_process(delta):
-	#print(timer.)
-	#	check failure
 	if position.y > height_to_fail:
 		blow_up()
 		Game.fail()
@@ -97,13 +95,14 @@ func blow_up():
 	$CPUParticles2D.emitting = false
 
 
-func change_anim_scared():
-	timer.start()
+func change_anim_scared(time):
+	timer_anim.wait_time = time
 	Eyes.animation = "big"
 	Mouth.animation = "fast"
+	timer_anim.start()
 	#Eyes.add_child(Shake)
 
 
 func change_anim_usual():
 	Eyes.animation = "small"
-	Mouth.animation = "usual"
+	Mouth.animation = "slow"
