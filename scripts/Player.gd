@@ -60,6 +60,8 @@ func _physics_process(delta):
 		var coll = get_slide_collision(i).collider
 		if coll.is_in_group("touchable"):
 			coll.touch(self)
+	
+	Game.get_node("Scarf").set_start_point(position)
 
 
 func _unhandled_input(event):
