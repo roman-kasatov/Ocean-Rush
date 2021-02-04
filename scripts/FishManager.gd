@@ -3,7 +3,7 @@ extends Node2D
 onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 onready var PlatformManager = Game.get_node("PlatformManager")
-onready var CameraPlayer = Player.get_node("Camera2D")
+onready var Canvas = Game.get_node("CanvasLayer")
 onready var DarkScreen = preload("res://scenes/Dark_Screen.tscn")#Player.get_node("Dark_Screen")
 onready var Fish = preload("res://scenes/Fish.tscn")
 
@@ -67,12 +67,12 @@ func create_danger_fishes():
 	var fish_down = Fish.instance()
 	fish_up.type = "up"
 	fish_down.type = "down"
-	fish_up.position_start = Vector2(220, -100)
-	fish_down.position_start = Vector2(220, 100)
-	fish_up.position_designated = Vector2(180, -100)
-	fish_down.position_designated = Vector2(180, 100)
-	Game.get_node("GameHUD").add_child(fish_up)
-	Game.get_node("GameHUD").add_child(fish_down)
+	fish_up.position_start = Vector2(930, 80 - 200)
+	fish_down.position_start = Vector2(930, 520 + 200)
+	fish_up.position_designated = Vector2(930, 80)
+	fish_down.position_designated = Vector2(930, 520)
+	Canvas.add_child(fish_up)
+	Canvas.add_child(fish_down)
 
 func add_shark():
 	PlatformManager.place_enemy()

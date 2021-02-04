@@ -79,7 +79,7 @@ func _unhandled_input(event):
 
 
 func update_rate():
-	motion.x = lerp(min_speed, max_speed, Game.rate / 100)
+	motion.x = 0#lerp(min_speed, max_speed, Game.rate / 100)
 
 
 func _on_DetectorEvil_area_entered(area):
