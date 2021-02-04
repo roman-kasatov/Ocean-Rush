@@ -59,6 +59,7 @@ shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+pause_mode = 2
 modulate = Color( 0.466667, 0.462745, 0.462745, 1 )
 emitting = false
 amount = 60
