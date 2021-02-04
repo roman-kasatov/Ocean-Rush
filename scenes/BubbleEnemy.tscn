@@ -24,14 +24,13 @@ radius = 15.0749
 
 [node name="BubbleEnemy" type="AnimatedSprite"]
 position = Vector2( -0.00087738, 0.000876427 )
-scale = Vector2( 0.613657, 0.613657 )
+scale = Vector2( 1.45366, 1.45366 )
 frames = SubResource( 3 )
 frame = 1
+playing = true
 script = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="." groups=[
-"enemy",
-]]
+[node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 4 )
