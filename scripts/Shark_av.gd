@@ -24,5 +24,5 @@ func start_moving():
 	shark.position.y = coord_const
 	shark.position.x += 400
 	Game.add_child(shark)
-	Player.change_anim_scared()
+	Player.change_anim_scared(1.8)
 	queue_free()

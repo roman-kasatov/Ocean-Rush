@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://drawable/White32.png" type="Texture" id=24]
 [ext_resource path="res://drawable/background/Coral.png" type="Texture" id=25]
 [ext_resource path="res://drawable/background/Coras.png" type="Texture" id=26]
+[ext_resource path="res://scripts/FishManager.gd" type="Script" id=27]
+[ext_resource path="res://scenes/Dark_Screen.tscn" type="PackedScene" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -129,6 +131,11 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
+
+[node name="Dark_Screen" parent="Player" instance=ExtResource( 28 )]
+visible = false
+position = Vector2( 60, 20 )
+scale = Vector2( 1.19926, 0.671349 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 pause_mode = 2
@@ -403,12 +410,15 @@ script = ExtResource( 9 )
 position = Vector2( 991.504, 274.757 )
 scale = Vector2( 4, 4 )
 
+[node name="FishManager" type="Node2D" parent="."]
+script = ExtResource( 27 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 pause_mode = 2
 
 [node name="FillBackground" type="Sprite" parent="ParallaxBackground"]
 modulate = Color( 0.145098, 0.435294, 0.607843, 1 )
-position = Vector2( 474.451, 323.975 )
+position = Vector2( 475.081, 324.605 )
 scale = Vector2( 40, 40 )
 z_index = -100
 z_as_relative = false
