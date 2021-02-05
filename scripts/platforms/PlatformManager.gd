@@ -114,6 +114,5 @@ func _ready():
 		sum += chance_pl[i]
 	for i in len(chance_pl):
 		chance_pl[i] /= sum
-	print(chance_pl)
 	for type in range(1, len(types_pl)):
 		chance_pl[type] += chance_pl[type - 1]
