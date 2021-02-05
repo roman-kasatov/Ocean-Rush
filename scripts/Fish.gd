@@ -57,12 +57,9 @@ func shoot_bubble():
 	elif type == "down":
 		bubble.angle_min += 180
 		bubble.angle_max += 180
-	var ctrans = get_canvas_transform()
 
-	var min_pos = -ctrans.get_origin() / ctrans.get_scale()
-	var view_size = get_viewport_rect().size / ctrans.get_scale()
-	var max_pos = min_pos + view_size
-	bubble.position = (max_pos - Vector2(256, 256))
+	# position also changes in _ready method of bubble
+	bubble.position = position * 0.8
 	Game.add_child(bubble)
 
 func _on_Fish_animation_finished():

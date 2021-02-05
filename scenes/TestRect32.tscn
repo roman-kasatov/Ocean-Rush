@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://drawable/White32.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+
+func _ready():
+	print(\"Was born on \", position)
+
+func _input(event):
+	$Label.text = str(position.x) + \"\\n\" + str(position.y)
+"
+
+[node name="TestRect32" type="Sprite"]
+pause_mode = 2
+z_index = 100
+texture = ExtResource( 1 )
+script = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.3513
+margin_top = -31.1487
+margin_right = 5.64865
+margin_bottom = -1.14865
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "coords"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

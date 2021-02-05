@@ -79,10 +79,8 @@ func _unhandled_input(event):
 				particles.position = get_global_position() + Vector2(0, 16)
 				get_tree().get_root().call_deferred("add_child", particles)
 
-
 func update_rate():
-	motion.x = 0#lerp(min_speed, max_speed, Game.rate / 100)
-
+	motion.x = lerp(min_speed, max_speed, Game.rate / 100)
 
 func _on_DetectorEvil_area_entered(area):
 	if area.is_in_group("enemy"):
@@ -95,7 +93,6 @@ func blow_up():
 	$Legs.visible = false
 	$Body.visible = false
 	$CPUParticles2D.emitting = false
-
 
 func change_anim_scared(time):
 	timer_anim.wait_time = time

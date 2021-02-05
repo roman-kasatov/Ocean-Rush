@@ -379,6 +379,7 @@ animations = [ {
 } ]
 
 [node name="Fish" type="AnimatedSprite"]
+position = Vector2( 16.4814, 0 )
 scale = Vector2( 2.92, 2.92 )
 frames = SubResource( 91 )
 animation = "fish_down"
