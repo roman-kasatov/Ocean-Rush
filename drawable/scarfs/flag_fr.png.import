@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flag1.png-c0668a7cb479b6b4a95b9b369021211d.stex"
+path="res://.import/flag_fr.png-ea8ddb9880c012e530ef88383c7181b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/flag1.png"
-dest_files=[ "res://.import/flag1.png-c0668a7cb479b6b4a95b9b369021211d.stex" ]
+source_file="res://drawable/scarfs/flag_fr.png"
+dest_files=[ "res://.import/flag_fr.png-ea8ddb9880c012e530ef88383c7181b3.stex" ]
 
 [params]
 

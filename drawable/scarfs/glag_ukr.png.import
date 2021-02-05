@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flag_rf.png-6fa004c16bfaa2129fe61819310fea33.stex"
+path="res://.import/glag_ukr.png-8adc98ba9b55ac28e09687ecf7580362.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/flag_rf.png"
-dest_files=[ "res://.import/flag_rf.png-6fa004c16bfaa2129fe61819310fea33.stex" ]
+source_file="res://drawable/scarfs/glag_ukr.png"
+dest_files=[ "res://.import/glag_ukr.png-8adc98ba9b55ac28e09687ecf7580362.stex" ]
 
 [params]
 
