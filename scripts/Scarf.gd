@@ -25,7 +25,7 @@ func _ready():
 	count = get_count(length)
 	resize_arrays()
 	init_position()
-	
+
 func get_count(length: float):
 	var new_count = ceil(length / constrain)
 	return new_count
@@ -55,27 +55,9 @@ func update_points(delta):
 func update_distance():
 	for i in range(count - 1):
 		var distance = pos[i].distance_to(pos[i+1])
-#		var difference = constrain - distance
-#		var percent = difference / distance
-#		var vec2 = pos[i+1] - pos[i]
-#		if i == 0:
-#			if start_pin:
-#				pos[i+1] += vec2 * percent
-#			else:
-#				pos[i] -= vec2 * (percent/2)
-#				pos[i+1] += vec2 * (percent/2)
-#		elif i == count-1:
-#			pass
-#		else:
-#			if i+1 == count-1 && end_pin:
-#				pos[i] -= vec2 * percent
-#			else:
-#				pos[i] -= vec2 * (percent/2)
-#				pos[i+1] += vec2 * (percent/2)
 		var delta = pos[i + 1] - pos[i]
 		pos[i + 1] = pos[i] + delta * constrain / distance
 		
-				
 func set_start_point(position):
 	pos[0] = position
 	pos_ex[0] = position
@@ -85,4 +67,3 @@ func calculate_friction(p1, p2):
 	delta.x *= friction_x
 	delta.y *= friction_y
 	return delta
-	#return (p1 - p2) * friction # * atan(friction_mult * (p1 - p2).length())
