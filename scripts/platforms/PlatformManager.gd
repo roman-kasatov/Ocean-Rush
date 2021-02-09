@@ -77,7 +77,6 @@ func generate_section():
 		section_cnt_of_crab_pl -= 1
 	return section
 
-
 func _physics_process(delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
@@ -87,10 +86,11 @@ func _physics_process(delta):
 
 func place_enemy():
 	var enemy = Shark.instance()
-	enemy.position = Vector2(180, (randf() - 0.5) * 140)
+	var view_size = get_viewport_rect().size
+	# coourds accounting Player's scale = 2	
+	enemy.position = Vector2(0.18 * view_size.x, (randf() - 0.5) * 140)
 	enemy.coord_const = Player.position.y
 	Player.add_child(enemy)
-var t = true#
 
 func place_section():
 	var section = generate_section()
@@ -103,9 +103,6 @@ func place_section():
 			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
 	position.x += dist_betw_columns * columns
-	if (t):#
-		t = false#
-		FishManager.create_danger_fishes()#
 
 func _ready():
 	Player.height_to_fail = lines * dist_betw_lines + 600

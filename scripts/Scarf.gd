@@ -1,9 +1,10 @@
 extends Node2D
 
 var length = 300
-var constrain = 20
+var constrain : float = 5
 var gravity = Vector2(0, 4)
-var friction = 0.5
+var friction_x = 0
+var friction_y = 0.2
 var friction_mult = 10
 var start_pin = true
 var end_pin = false
@@ -13,13 +14,20 @@ var pos_ex: PoolVector2Array
 var count: int
 
 func _ready():
+	# texture has height 80 px and width about 150-300
+	#var scarf_texture = load("res://drawable/linear_combination.png")
+	var scarf_texture = load("res://drawable/flag_rus_600_80.png")
+	$Line2D.texture = scarf_texture
+	# 80 is a scarf heigth === width, 
+	# I really don't know why it should be devided by 2
+	length = 80 * scarf_texture.get_size().x / scarf_texture.get_size().y / 2
+	
 	count = get_count(length)
 	resize_arrays()
 	init_position()
-	$Line2D.texture = load("res://drawable/flag_rf.png")
-
-func get_count(distance: float):
-	var new_count = ceil(distance / constrain)
+	
+func get_count(length: float):
+	var new_count = ceil(length / constrain)
 	return new_count
 
 func resize_arrays():
@@ -45,31 +53,36 @@ func update_points(delta):
 			pos[i] += vec2 + (gravity * delta)
 
 func update_distance():
-	for i in range(count):
-		if i == count-1:
-			return
+	for i in range(count - 1):
 		var distance = pos[i].distance_to(pos[i+1])
-		var difference = constrain - distance
-		var percent = difference / distance
-		var vec2 = pos[i+1] - pos[i]
-		if i == 0:
-			if start_pin:
-				pos[i+1] += vec2 * percent
-			else:
-				pos[i] -= vec2 * (percent/2)
-				pos[i+1] += vec2 * (percent/2)
-		elif i == count-1:
-			pass
-		else:
-			if i+1 == count-1 && end_pin:
-				pos[i] -= vec2 * percent
-			else:
-				pos[i] -= vec2 * (percent/2)
-				pos[i+1] += vec2 * (percent/2)
+#		var difference = constrain - distance
+#		var percent = difference / distance
+#		var vec2 = pos[i+1] - pos[i]
+#		if i == 0:
+#			if start_pin:
+#				pos[i+1] += vec2 * percent
+#			else:
+#				pos[i] -= vec2 * (percent/2)
+#				pos[i+1] += vec2 * (percent/2)
+#		elif i == count-1:
+#			pass
+#		else:
+#			if i+1 == count-1 && end_pin:
+#				pos[i] -= vec2 * percent
+#			else:
+#				pos[i] -= vec2 * (percent/2)
+#				pos[i+1] += vec2 * (percent/2)
+		var delta = pos[i + 1] - pos[i]
+		pos[i + 1] = pos[i] + delta * constrain / distance
+		
 				
 func set_start_point(position):
 	pos[0] = position
 	pos_ex[0] = position
 
 func calculate_friction(p1, p2):
-	return atan(friction_mult * (p1 - p2).length()) * (p1 - p2) * friction
+	var delta = p1 - p2
+	delta.x *= friction_x
+	delta.y *= friction_y
+	return delta
+	#return (p1 - p2) * friction # * atan(friction_mult * (p1 - p2).length())
