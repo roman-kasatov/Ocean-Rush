@@ -16,7 +16,7 @@ func _ready():
 	count = get_count(length)
 	resize_arrays()
 	init_position()
-	$Line2D.texture = load("res://drawable/scarfs/flag_bel.png")
+	$Line2D.texture = load("res://drawable/scarfs/q6.jpg")
 
 func get_count(distance: float):
 	var new_count = ceil(distance / constrain)
