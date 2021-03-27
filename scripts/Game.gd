@@ -18,8 +18,10 @@ func _ready():
 
 func fail():
 	get_tree().paused = true
-	#set_physics_process(false)
 	$CanvasLayer/Blackout.hide()
+	$Scarf.start_pin = false
+	$Scarf.gravity *= 2
+	
 	var timer = Timer.new()
 	timer.wait_time = 2
 	timer.autostart = true

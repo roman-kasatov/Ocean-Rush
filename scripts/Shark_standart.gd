@@ -8,7 +8,6 @@ var speed_y = 0.0
 var max_speed_y = 3
 var accel_y = 0.15
 
-
 func _process(delta):
 	if (speed_x < max_speed_x):
 		speed_x += accel_x
