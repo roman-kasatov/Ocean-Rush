@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glag_ukr.png-8adc98ba9b55ac28e09687ecf7580362.stex"
+path="res://.import/lottery.png-b82125c1b5cb1039e0aaca2aaaeb318c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/scarfs/glag_ukr.png"
-dest_files=[ "res://.import/glag_ukr.png-8adc98ba9b55ac28e09687ecf7580362.stex" ]
+source_file="res://drawable/lottery.png"
+dest_files=[ "res://.import/lottery.png-b82125c1b5cb1039e0aaca2aaaeb318c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
