@@ -63,14 +63,17 @@ func create_danger_dark_screen():
 	timer.start()
 
 func create_danger_fishes():
+	print("screen size = ", get_viewport_rect()) 
 	var fish_up = Fish.instance()
 	var fish_down = Fish.instance()
 	fish_up.type = "up"
 	fish_down.type = "down"
-	fish_up.position_start = Vector2(930, 80 - 200)
-	fish_down.position_start = Vector2(930, 520 + 200)
-	fish_up.position_designated = Vector2(930, 80)
-	fish_down.position_designated = Vector2(930, 520)
+	var view_size = get_viewport_rect().size
+	var v_shift : float = view_size.y / 5
+	fish_up.position_start = Vector2(0.9 * view_size.x, 0.13 * view_size.y - v_shift)
+	fish_down.position_start = Vector2(0.9 * view_size.x, 0.87 * view_size.y + v_shift)
+	fish_up.position_designated = Vector2(0.9 * view_size.x, 0.13 * view_size.y)
+	fish_down.position_designated = Vector2(0.9 * view_size.x, 0.87 * view_size.y)	
 	Canvas.add_child(fish_up)
 	Canvas.add_child(fish_down)
 
