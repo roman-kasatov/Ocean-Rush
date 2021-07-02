@@ -16,7 +16,7 @@ var count: int
 func _ready():
 	# texture has height 80 px and width about 150-300
 	#var scarf_texture = load("res://drawable/linear_combination.png")
-	var scarf_texture = load("res://drawable/flag_rus_600_80.png")
+	var scarf_texture = load("res://drawable/scarfs/q6.jpg")
 	$Line2D.texture = scarf_texture
 	# 80 is a scarf heigth === width, 
 	# I really don't know why it should be devided by 2

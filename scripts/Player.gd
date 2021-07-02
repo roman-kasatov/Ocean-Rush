@@ -19,8 +19,8 @@ var motion = Vector2(0, 0)
 onready var Game = get_parent()
 var jump_left = 1
 
-var Floor_part = preload("res://scenes/Floor_particles.tscn")
-var Air_part = preload("res://scenes/Air_particles.tscn")
+var Floor_part = preload("res://scenes/particles/Floor_particles.tscn")
+var Air_part = preload("res://scenes/particles/Air_particles.tscn")
 
 
 func _ready():

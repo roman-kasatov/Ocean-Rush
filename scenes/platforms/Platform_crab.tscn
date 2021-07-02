@@ -3,8 +3,9 @@
 [ext_resource path="res://drawable/platforms/Platform_standart.png" type="Texture" id=1]
 [ext_resource path="res://drawable/platforms/Grass_1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/platforms/Platform_crab.gd" type="Script" id=3]
-[ext_resource path="res://drawable/crab.png" type="Texture" id=4]
+[ext_resource path="res://drawable/enemies/crab.png" type="Texture" id=4]
 [ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
