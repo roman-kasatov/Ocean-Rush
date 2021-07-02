@@ -41,7 +41,7 @@ var nodes_pl = {
 	types_pl.JUMP : preload("res://scenes/platforms/Platform_jump.tscn")
 }
 
-var Shark = preload("res://scenes/Shark_av.tscn")
+var Shark = preload("res://scenes/enemies/Shark_av.tscn")
 
 
 func generate_section():

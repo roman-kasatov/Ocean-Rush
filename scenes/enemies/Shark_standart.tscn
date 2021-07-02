@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/enemies/Shark_standart.gd" type="Script" id=3]
+[ext_resource path="res://drawable/enemies/Shark_standart.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 84, 34 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 84, 0, 84, 34 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 168, 0, 84, 34 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 252, 0, 84, 34 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 336, 0, 84, 34 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 420, 0, 84, 34 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=8]
+
+[node name="Shark_standart" type="AnimatedSprite"]
+position = Vector2( 0, 3 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 7 )
+frame = 3
+playing = true
+script = ExtResource( 3 )
+
+[node name="ShakeModule" parent="." instance=ExtResource( 2 )]
+process_mode = 1
+wait_time = 5.893
+one_shot = false
+autostart = true
+
+[node name="Area" type="Area2D" parent="." groups=[
+"enemy",
+]]
+position = Vector2( -0.838039, -0.486887 )
+scale = Vector2( 0.851643, 0.76561 )
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+position = Vector2( -0.93581, 1.94942 )
+scale = Vector2( 4.05919, 0.417752 )
+shape = SubResource( 8 )
+
+[node name="DestructModule" parent="." instance=ExtResource( 1 )]
+position = Vector2( 31.4645, 0.318108 )
