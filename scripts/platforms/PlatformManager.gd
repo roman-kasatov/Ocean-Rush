@@ -4,6 +4,9 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 onready var FishManager = Game.get_node("FishManager")
 
+var shild_bn_chance = 0.1
+var jump_bn_chance = 0.1
+
 var lines = 15
 var columns = 3
 var min_in_column = 6
@@ -18,6 +21,12 @@ var section_cnt_of_broken_pl = 0
 var section_cnt_of_crab_pl = 0
 
 enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
+
+var bonus_platforms = [
+	types_pl.BASIC, 
+	types_pl.BROKEN,
+	types_pl.CHIPPED
+]
 
 var chance_pl = {
 	types_pl.BASIC : 10, 
@@ -41,20 +50,23 @@ var nodes_pl = {
 	types_pl.JUMP : preload("res://scenes/platforms/Platform_jump.tscn")
 }
 
+var shield_bonus = preload("res://scenes/bonuses/ShieldBonus.tscn")
+var jump_bonus = preload("res://scenes/bonuses/JumpBonus.tscn")
+
 var Shark = preload("res://scenes/enemies/Shark_av.tscn")
 
 
 func generate_section():
 	var line = []
 	var section = []
-	for i in range(columns):
+	for _i in range(columns):
 		line.push_back(-1) # -1 is nothing
-	for i in range(lines):
+	for _i in range(lines):
 		section.push_back(line.slice(0, columns))
 
 	for j in range(columns):
 		var quant = min_in_column + randi() % (max_in_column - min_in_column + 1)
-		for t in range(quant):
+		for _t in range(quant):
 			var ind = randi() % lines
 			while not section[ind][j] == -1:
 				ind = (ind + 1) % lines
@@ -77,7 +89,7 @@ func generate_section():
 		section_cnt_of_crab_pl -= 1
 	return section
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
 		if (randf() < shark_spawn_chance):
@@ -96,12 +108,22 @@ func place_section():
 	var section = generate_section()
 	for i in range(lines):
 		for j in range(columns):
-			if (section[i][j] == -1):
+			var plat_type = section[i][j]
+			if (plat_type == -1):
 				continue
-			var plat = nodes_pl[section[i][j]].instance()
+			var plat = nodes_pl[plat_type].instance()
 			var additional_pos = Vector2(132 * (i % 2), 0)
 			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
+			if plat_type in bonus_platforms:
+				if randf() < shild_bn_chance:
+					var bonus = shield_bonus.instance()
+					bonus.position = plat.position + Vector2(0, -32)
+					Game.add_child(bonus)
+				elif randf() < jump_bn_chance:
+					var bonus = jump_bonus.instance()
+					bonus.position = plat.position + Vector2(0, -32)
+					Game.add_child(bonus)
 	position.x += dist_betw_columns * columns
 
 func _ready():

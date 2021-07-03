@@ -19,6 +19,9 @@ var motion = Vector2(0, 0)
 onready var Game = get_parent()
 var jump_left = 1
 
+var shield_bn_left = 0
+var jump_bn_left = 0
+
 var Floor_part = preload("res://scenes/particles/Floor_particles.tscn")
 var Air_part = preload("res://scenes/particles/Air_particles.tscn")
 
@@ -44,7 +47,10 @@ func _physics_process(delta):
 			$Body.position.y -= 1
 	
 	if is_on_floor():
-		jump_left = 1
+		if jump_bn_left > 0:
+			jump_left = 2
+		else:
+			jump_left = 1
 		if was_falling:
 			was_falling = false
 			shifted_time_left = 0.1
@@ -63,6 +69,9 @@ func _physics_process(delta):
 	
 	Game.get_node("Scarf").set_start_point(position)
 
+	# bonuses
+	shield_bn_left -= delta if shield_bn_left > 0 else 0
+	jump_bn_left -= delta if jump_bn_left > 0 else 0
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -84,8 +93,9 @@ func update_rate():
 
 func _on_DetectorEvil_area_entered(area):
 	if area.is_in_group("enemy"):
-		blow_up()
-		Game.fail()
+		if shield_bn_left <= 0:
+			blow_up()
+			Game.fail()
 
 
 func blow_up():
@@ -105,3 +115,9 @@ func change_anim_scared(time):
 func change_anim_usual():
 	Eyes.animation = "small"
 	Mouth.animation = "slow"
+	
+func add_bonus(type):
+	if type == 'shield_bonus':
+		shield_bn_left = 4
+	elif type == 'jump_bonus':
+		jump_bn_left = 4
