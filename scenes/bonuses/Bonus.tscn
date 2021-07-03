@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://drawable/bonuses/shield.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+var type = 'shield_bonus'
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28.25, 28.625 )
+
+[node name="Bonus" type="Area2D" groups=[
+"gatherable",
+]]
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.375, -0.75 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
