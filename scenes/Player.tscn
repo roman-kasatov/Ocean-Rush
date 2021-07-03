@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://drawable/Character/Eyes_small.png" type="Texture" id=6]
 [ext_resource path="res://drawable/Character/Legs.png" type="Texture" id=7]
 [ext_resource path="res://drawable/Character/Mouth_short.png" type="Texture" id=8]
+[ext_resource path="res://scripts/GatherArea.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.97516, 13.9638 )
@@ -56,73 +57,76 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 15, 10 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 3 )
-region = Rect2( 15, 0, 15, 10 )
-
-[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 14, 8 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 6 )
 region = Rect2( 14, 0, 14, 8 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 15, 10 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 15, 0, 15, 10 )
 
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "big",
-"speed": 4.0
+"name": "small",
+"speed": 2.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "small",
-"speed": 2.0
+"name": "big",
+"speed": 4.0
 } ]
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 5 )
 region = Rect2( 17, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 17, 10 )
+region = Rect2( 34, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 5 )
-region = Rect2( 17, 0, 17, 10 )
+region = Rect2( 51, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 5 )
-region = Rect2( 34, 0, 17, 10 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 5 )
-region = Rect2( 51, 0, 17, 10 )
+atlas = ExtResource( 8 )
+region = Rect2( 17, 0, 17, 10 )
 
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "fast",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "slow",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "fast",
+"speed": 10.0
 } ]
 
 [sub_resource type="Curve" id=24]
 _data = [ Vector2( 0, 0.557955 ), 0.0, 3.04615, 0, 0, Vector2( 0.200758, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.795455, 1 ), 0.0220586, 0.0, 0, 0 ]
+
+[sub_resource type="CapsuleShape2D" id=25]
+height = 8.40363
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 512, 274.757 )
@@ -143,7 +147,7 @@ shape = SubResource( 2 )
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 11 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Body" type="Sprite" parent="."]
@@ -155,14 +159,13 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 16 )
 animation = "small"
-frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 23 )
 animation = "slow"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -207,4 +210,11 @@ scale_amount_random = 0.4
 color = Color( 0.105882, 0.435294, 0.858824, 1 )
 hue_variation = 0.1
 hue_variation_random = 1.0
+
+[node name="GatherArea" type="Area2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GatherArea"]
+shape = SubResource( 25 )
 [connection signal="area_entered" from="DetectorEvil" to="." method="_on_DetectorEvil_area_entered"]
+[connection signal="area_entered" from="GatherArea" to="GatherArea" method="_area_entered"]

@@ -6,7 +6,6 @@
 [ext_resource path="res://drawable/enemies/crab.png" type="Texture" id=4]
 [ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=5]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 15, 13 )
@@ -43,7 +42,6 @@ texture = ExtResource( 2 )
 [node name="Crab" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0993247, -13.1435 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Area" type="Area2D" parent="Crab" groups=[
