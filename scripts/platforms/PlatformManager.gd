@@ -4,8 +4,10 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 onready var FishManager = Game.get_node("FishManager")
 
-var shild_bn_chance = 0.1
-var jump_bn_chance = 0.1
+var chance_bn = {
+	'shield_bonus': 0.1,
+	'jump_bonus': 0.1
+}
 
 var lines = 15
 var columns = 3
@@ -50,8 +52,9 @@ var nodes_pl = {
 	types_pl.JUMP : preload("res://scenes/platforms/Platform_jump.tscn")
 }
 
-var shield_bonus = preload("res://scenes/bonuses/ShieldBonus.tscn")
-var jump_bonus = preload("res://scenes/bonuses/JumpBonus.tscn")
+#var shield_bonus = preload("res://scenes/bonuses/ShieldBonus.tscn")
+#var jump_bonus = preload("res://scenes/bonuses/JumpBonus.tscn")
+var Bonus = preload("res://scenes/bonuses/Bonus.tscn")
 
 var shark = preload("res://scenes/enemies/Shark_av.tscn")
 
@@ -116,14 +119,15 @@ func place_section():
 			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
 			if plat_type in bonus_platforms:
-				if randf() < shild_bn_chance:
-					var bonus = shield_bonus.instance()
-					bonus.position = plat.position + Vector2(0, -32)
-					Game.add_child(bonus)
-				elif randf() < jump_bn_chance:
-					var bonus = jump_bonus.instance()
-					bonus.position = plat.position + Vector2(0, -32)
-					Game.add_child(bonus)
+				var chance = randf()
+				for bn_type in chance_bn:
+					chance -= chance_bn[bn_type]
+					if chance < 0:
+						var bonus = Bonus.instance()
+						bonus.initiate(bn_type)
+						bonus.position = plat.position + Vector2(0, -32)
+						Game.add_child(bonus)
+						break
 	position.x += dist_betw_columns * columns
 
 func _ready():
