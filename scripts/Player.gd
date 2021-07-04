@@ -29,7 +29,7 @@ var Air_part = preload("res://scenes/particles/Air_particles.tscn")
 func _ready():
 	update_rate()
 	timer_anim = Timer.new()
-	timer_anim.wait_time = 2
+	timer_anim.wait_time = 2.0
 	timer_anim.one_shot = true
 	timer_anim.connect("timeout", self, "change_anim_usual")
 	add_child(timer_anim)
@@ -105,7 +105,8 @@ func blow_up():
 	$CPUParticles2D.emitting = false
 
 func change_anim_scared(time):
-	timer_anim.wait_time = time
+	
+	timer_anim.set_wait_time(time)
 	Eyes.animation = "big"
 	Mouth.animation = "fast"
 	timer_anim.start()

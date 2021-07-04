@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var Game = get_parent()
+onready var Game = get_parent().get_parent()
 onready var Player = Game.get_node("Player")
 onready var PlatformManager = Game.get_node("PlatformManager")
 onready var Canvas = Game.get_node("CanvasLayer")
@@ -43,7 +43,7 @@ func create_danger_speedup():
 	Game.rate = speedup_rate
 	timer.wait_time = speedup_time
 	timer.connect("timeout", self, "change_time_to_saved")
-	Player.change_anim_scared(speedup_time + 0.3)
+	#Player.change_anim_scared(speedup_time + 0.3) #пофиксить
 	timer.start()
 
 func create_danger_broken_platforms():
@@ -59,7 +59,7 @@ func create_danger_dark_screen():
 	dark_screen.position = Vector2(60, 20)
 	dark_screen.scale = Vector2(1.2, 0.67)
 	Player.add_child(dark_screen)
-	Player.change_anim_scared(dark_screen_time + 0.3)
+	#Player.change_anim_scared(dark_screen_time + 0.3)
 	timer.start()
 
 func create_danger_fishes():
