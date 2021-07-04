@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.685227 ), -0.302326, 0.0, 0, 0 ]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends CPUParticles2D
+
+
+func _ready():
+	self.emitting = true
+	var timer = Timer.new()
+	timer.wait_time = 10
+	timer.one_shot = true
+	timer.connect(\"timeout\", self, \"queue_free\")
+	add_child(timer)
+	
+"
+
+[node name="BootsAwayParticles" type="CPUParticles2D"]
+emitting = false
+amount = 2
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_points = PoolVector2Array( -3, 0, 3, 0 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( -1, -1 )
+spread = 65.29
+initial_velocity = 40.0
+initial_velocity_random = 0.42
+angular_velocity = 40.56
+scale_amount = 4.0
+scale_amount_curve = SubResource( 1 )
+color = Color( 0.756863, 0.772549, 0.133333, 1 )
+script = SubResource( 2 )

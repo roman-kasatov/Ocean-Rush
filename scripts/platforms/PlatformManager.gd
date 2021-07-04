@@ -5,8 +5,8 @@ onready var Player = Game.get_node("Player")
 onready var FishManager = Game.get_node("FishManager")
 
 var chance_bn = {
-	'shield_bonus': 0.1,
-	'jump_bonus': 0.1
+	'shield_bonus': 0.5,
+	'jump_bonus': 0.5
 }
 
 var lines = 15
