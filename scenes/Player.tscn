@@ -184,17 +184,23 @@ shape = SubResource( 1 )
 position = Vector2( 0, 10 )
 shape = SubResource( 2 )
 
+[node name="Bubble" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.627451 )
+scale = Vector2( 1.2, 1.2 )
+z_index = 1
+texture = ExtResource( 2 )
+
 [node name="Legs" type="AnimatedSprite" parent="."]
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 11 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 34 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="Body" type="Sprite" parent="."]
@@ -206,13 +212,14 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 16 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 23 )
 animation = "slow"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
