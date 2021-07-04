@@ -72,6 +72,10 @@ func _physics_process(delta):
 	# bonuses
 	shield_bn_left -= delta if shield_bn_left > 0 else 0
 	jump_bn_left -= delta if jump_bn_left > 0 else 0
+	if shield_bn_left <= 0:
+		$Bubble.visible = false
+	if jump_bn_left <= 0:
+		$Boots.visible = false
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -120,5 +124,7 @@ func change_anim_usual():
 func add_bonus(type):
 	if type == 'shield_bonus':
 		shield_bn_left = 4
+		$Bubble.visible = true
 	elif type == 'jump_bonus':
 		jump_bn_left = 4
+		$Boots.visible = true

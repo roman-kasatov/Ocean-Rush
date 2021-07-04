@@ -6,6 +6,14 @@
 script/source = "extends Area2D
 
 var type = 'shield_bonus'
+# also jump_bonus
+
+func initiate(type):
+	self.type = type
+	if type == 'shield_bonus':
+		$Sprite.texture = load(\"res://drawable/bonuses/shield.png\")
+	elif type == 'jump_bonus':
+		$Sprite.texture = load(\"res://drawable/bonuses/jump.png\")
 "
 
 [sub_resource type="RectangleShape2D" id=2]
