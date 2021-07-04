@@ -53,7 +53,7 @@ var nodes_pl = {
 var shield_bonus = preload("res://scenes/bonuses/ShieldBonus.tscn")
 var jump_bonus = preload("res://scenes/bonuses/JumpBonus.tscn")
 
-var Shark = preload("res://scenes/enemies/Shark_av.tscn")
+var shark = preload("res://scenes/enemies/Shark_av.tscn")
 
 
 func generate_section():
@@ -97,7 +97,7 @@ func _physics_process(_delta):
 
 
 func place_enemy():
-	var enemy = Shark.instance()
+	var enemy = shark.instance()
 	var view_size = get_viewport_rect().size
 	# coourds accounting Player's scale = 2	
 	enemy.position = Vector2(0.18 * view_size.x, (randf() - 0.5) * 140)
