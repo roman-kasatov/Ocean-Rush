@@ -19,7 +19,8 @@ var motion = Vector2(0, 0)
 onready var Game = get_parent()
 var jump_left = 1
 
-var shield_bn_left = 0
+# bonuses
+var shield_bn_active = false
 var jump_bn_left = 0
 
 var Floor_part = preload("res://scenes/particles/Floor_particles.tscn")
@@ -70,12 +71,12 @@ func _physics_process(delta):
 	Game.get_node("Scarf").set_start_point(position)
 
 	# bonuses
-	shield_bn_left -= delta if shield_bn_left > 0 else 0
 	jump_bn_left -= delta if jump_bn_left > 0 else 0
-	if shield_bn_left <= 0:
-		$Bubble.visible = false
 	if jump_bn_left <= 0:
-		$Boots.visible = false
+		if $Boots.visible:
+			$Boots.boots_away()
+			$Boots.visible = false
+		
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -97,7 +98,10 @@ func update_rate():
 
 func _on_DetectorEvil_area_entered(area):
 	if area.is_in_group("enemy"):
-		if shield_bn_left <= 0:
+		if shield_bn_active:
+			shield_bn_active = false
+			$Bubble.blow_up()
+		else:
 			blow_up()
 			Game.fail()
 
@@ -123,8 +127,9 @@ func change_anim_usual():
 	
 func add_bonus(type):
 	if type == 'shield_bonus':
-		shield_bn_left = 4
-		$Bubble.visible = true
+		if not shield_bn_active:
+			shield_bn_active = true
+			$Bubble.appear()
 	elif type == 'jump_bonus':
 		jump_bn_left = 4
 		$Boots.visible = true
