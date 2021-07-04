@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lottery.png-465d762afdd86d18dac7ff69633db8ce.stex"
+path="res://.import/Legs_boots.png-96291cb3801e967ad2959945c6c14fe6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/enemies/lottery.png"
-dest_files=[ "res://.import/lottery.png-465d762afdd86d18dac7ff69633db8ce.stex" ]
+source_file="res://drawable/Character/Legs_boots.png"
+dest_files=[ "res://.import/Legs_boots.png-96291cb3801e967ad2959945c6c14fe6.stex" ]
 
 [params]
 
