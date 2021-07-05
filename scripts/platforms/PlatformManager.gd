@@ -2,7 +2,6 @@ extends Node2D
 
 onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
-onready var FishManager = Game.get_node("FishManager")
 
 var chance_bn = {
 	'shield_bonus': 0.5,
