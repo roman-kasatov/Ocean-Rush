@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/enemies/Shark_standart.gd" type="Script" id=3]
 [ext_resource path="res://drawable/enemies/Shark_standart.png" type="Texture" id=4]
+[ext_resource path="res://scenes/particles/particles_shark_moving.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -43,7 +44,7 @@ animations = [ {
 position = Vector2( 0, 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
-frame = 2
+frame = 4
 playing = true
 script = ExtResource( 3 )
 
@@ -66,3 +67,7 @@ shape = SubResource( 8 )
 
 [node name="DestructModule" parent="." instance=ExtResource( 1 )]
 position = Vector2( 31.4645, 0.318108 )
+
+[node name="CPUParticles2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 22.8922, 0.743252 )
+z_index = -1

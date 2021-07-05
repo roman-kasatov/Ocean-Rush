@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+scale = Vector2( 6, 1 )
+amount = 30
+lifetime = 10.0
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 5 )
+spread = 8.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 6.0
+linear_accel = 25.0
+linear_accel_random = 0.5
