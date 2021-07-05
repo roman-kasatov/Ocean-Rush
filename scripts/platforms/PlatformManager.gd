@@ -124,7 +124,7 @@ func place_section():
 					if chance < 0:
 						var bonus = Bonus.instance()
 						bonus.initiate(bn_type)
-						bonus.position = plat.position + Vector2(0, -32)
+						bonus.position = plat.position + Vector2(0, -64)
 						Game.add_child(bonus)
 						break
 	position.x += dist_betw_columns * columns

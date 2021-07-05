@@ -159,5 +159,5 @@ texture = ExtResource( 3 )
 position = Vector2( -1.55907, -2.33861 )
 frames = SubResource( 16 )
 animation = "shield"
-frame = 6
+frame = 4
 playing = true
