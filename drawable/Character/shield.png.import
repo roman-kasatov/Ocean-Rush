@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coin.png-02b3e5599c564c292b71e10e85e2dd98.stex"
+path="res://.import/shield.png-d47a0c36e4c8144a37349a98302596b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/coin.png"
-dest_files=[ "res://.import/coin.png-02b3e5599c564c292b71e10e85e2dd98.stex" ]
+source_file="res://drawable/Character/shield.png"
+dest_files=[ "res://.import/shield.png-d47a0c36e4c8144a37349a98302596b1.stex" ]
 
 [params]
 

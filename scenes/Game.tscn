@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://drawable/ui/left_arrow.png" type="Texture" id=27]
 [ext_resource path="res://drawable/ui/right_arrow.png" type="Texture" id=28]
 [ext_resource path="res://drawable/Character/Circle.png" type="Texture" id=29]
+[ext_resource path="res://scenes/bonuses/Coin.tscn" type="PackedScene" id=30]
 [ext_resource path="res://scenes/enemies/Dark_Screen.tscn" type="PackedScene" id=31]
 [ext_resource path="res://scenes/Scarf.tscn" type="PackedScene" id=32]
 [ext_resource path="res://scenes/enemies/Boss.tscn" type="PackedScene" id=33]
@@ -549,6 +550,9 @@ position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 centered = false
+
+[node name="Coin" parent="." instance=ExtResource( 30 )]
+position = Vector2( 647.661, 197.553 )
 [connection signal="start_game" from="." to="GameHUD/SkinPanel" method="_on_Game_start_game"]
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
 [connection signal="pause_pressed" from="GameHUD/ScorePanel/PauseBnt" to="GameHUD/PausePanel" method="pause_pressed"]

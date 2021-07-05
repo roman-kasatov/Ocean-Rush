@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scripts/GatherArea.gd" type="Script" id=9]
 [ext_resource path="res://drawable/Character/Legs_boots.png" type="Texture" id=10]
 [ext_resource path="res://scenes/bonuses/Bubble.tscn" type="PackedScene" id=11]
+[ext_resource path="res://drawable/Character/shield.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.97516, 13.9638 )
@@ -200,19 +201,22 @@ position = Vector2( 0, 10 )
 shape = SubResource( 2 )
 
 [node name="Bubble" parent="." instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 1 )
+scale = Vector2( 0.704261, 0.704261 )
+texture = ExtResource( 12 )
 
 [node name="Legs" type="AnimatedSprite" parent="."]
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 11 )
-frame = 6
+frame = 4
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 20 )
-frame = 6
+frame = 4
 playing = true
 script = SubResource( 21 )
 
@@ -225,7 +229,6 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 26 )
 animation = "small"
-frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
