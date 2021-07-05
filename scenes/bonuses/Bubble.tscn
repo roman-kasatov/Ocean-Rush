@@ -12,12 +12,6 @@ func appear():
 	self.visible = true
 
 func blow_up():
-	#var particles = Particles.instance()
-	#particles.visible = true
-	#get_parent().add_child(particles)
-	#particles.position = get_global_position() + Vector2(0, 16)
-	#get_tree().get_root().call_deferred(\"add_child\", particles)
-	#add_child(particles)
 	var particles = Particles.instance()
 	particles.emitting = true
 	particles.position = get_global_position() + Vector2(0, 16)
