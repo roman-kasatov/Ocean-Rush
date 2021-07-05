@@ -1,26 +1,146 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://drawable/bonuses/bubble.png" type="Texture" id=1]
+[ext_resource path="res://drawable/bonuses/shield.png" type="Texture" id=1]
 [ext_resource path="res://drawable/bonuses/jump.png" type="Texture" id=2]
+[ext_resource path="res://drawable/bonuses/bubble.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
 var type = 'shield_bonus'
 var Bubble = load(\"res://drawable/bonuses/bubble.png\")
-var Jump = load(\"res://drawable/bonuses/jump.png\")
-var Shield = load(\"res://drawable/bonuses/shield.png\")
 
 func initiate(type):
 	self.type = type
 	if type == 'shield_bonus':
-		$Bonus_icon.texture = Shield
+		$Bonus_icon.animation = \"shield\"
 	elif type == 'jump_bonus':
-		$Bonus_icon.texture = Jump
+		$Bonus_icon.animation = \"jump\"
 "
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28.25, 28.625 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 114, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 171, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 228, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 285, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 342, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 399, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 1 )
+region = Rect2( 456, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 1 )
+region = Rect2( 513, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 1 )
+region = Rect2( 570, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 1 )
+region = Rect2( 627, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 1 )
+region = Rect2( 684, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 741, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 1 )
+region = Rect2( 798, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 855, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 57, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 114, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 171, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 228, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 285, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 342, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 399, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 456, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 513, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 570, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 627, 0, 57, 57 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 684, 0, 57, 57 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "shield",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "jump",
+"speed": 13.0
+} ]
 
 [node name="Bonus" type="Area2D" groups=[
 "gatherable",
@@ -33,7 +153,11 @@ shape = SubResource( 2 )
 
 [node name="Bubble" type="Sprite" parent="."]
 z_index = 1
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
-[node name="Bonus_icon" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Bonus_icon" type="AnimatedSprite" parent="."]
+position = Vector2( -1.55907, -2.33861 )
+frames = SubResource( 16 )
+animation = "shield"
+frame = 11
+playing = true
