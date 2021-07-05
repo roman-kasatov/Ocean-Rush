@@ -10,12 +10,23 @@ script/source = "extends Area2D
 var type = 'shield_bonus'
 var Bubble = load(\"res://drawable/bonuses/bubble.png\")
 
+var phase = 0.0
+var speed = 0.25
+var position_standart = position
+
 func initiate(type):
 	self.type = type
 	if type == 'shield_bonus':
 		$Bonus_icon.animation = \"shield\"
 	elif type == 'jump_bonus':
 		$Bonus_icon.animation = \"jump\"
+
+func _ready():
+	position_standart = position
+
+func _process(delta):
+	phase += speed
+	position = position_standart + Vector2(0, sin(phase) * 15)
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -156,8 +167,8 @@ z_index = 1
 texture = ExtResource( 3 )
 
 [node name="Bonus_icon" type="AnimatedSprite" parent="."]
-position = Vector2( -1.55907, -2.33861 )
+position = Vector2( -1.43407, -1.58861 )
 frames = SubResource( 16 )
 animation = "shield"
-frame = 4
+frame = 8
 playing = true
