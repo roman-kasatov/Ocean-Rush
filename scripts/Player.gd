@@ -52,6 +52,8 @@ func _physics_process(delta):
 			motion.y = -4 * jump_speed
 			change_anim_scared(2.0)
 			jetpack_bn_active = false
+			$Jetpack.launch()
+			safe_enter(4.0)
 		else:
 			blow_up()
 			Game.fail()
@@ -116,11 +118,13 @@ func update_rate():
 
 func _on_DetectorEvil_area_entered(area):
 	if area.is_in_group("enemy"):
+		if safe:
+			return
 		if shield_bn_active:
 			shield_bn_active = false
 			$Bubble.blow_up()
 			safe_enter(1.5)
-		elif !safe:
+		else:
 			blow_up()
 			Game.fail()
 
@@ -176,6 +180,7 @@ func add_bonus(type):
 			$Bubble.appear()
 	elif type == 'jump_bonus':
 		jump_bn_left = 4
-		$Boots.visible = true
+		$Boots.appear()
 	elif type == 'jetpack_bonus':
+		$Jetpack.appear()
 		jetpack_bn_active = true

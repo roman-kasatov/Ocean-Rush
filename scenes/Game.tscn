@@ -134,6 +134,7 @@ z_index = -1
 
 [node name="Scarf" parent="." instance=ExtResource( 32 )]
 position = Vector2( 511.376, 274.397 )
+z_index = -5
 
 [node name="Platform1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 656.611, 418.057 )
