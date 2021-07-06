@@ -27,7 +27,7 @@ var jump_left = 1
 var shield_bn_active = false
 var jetpack_bn_active = false
 var jump_bn_left = 0
-onready var shining_parts = [Scarf, $Legs, $Body, $Boots]
+onready var shining_parts = [Scarf, $Legs, $Body, $Boots, $Jetpack]
 
 var Floor_part = preload("res://scenes/particles/Floor_particles.tscn")
 var Air_part = preload("res://scenes/particles/Air_particles.tscn")
@@ -91,9 +91,7 @@ func _physics_process(delta):
 	# bonuses
 	jump_bn_left -= delta if jump_bn_left > 0 else 0
 	if jump_bn_left <= 0:
-		if $Boots.visible:
-			$Boots.boots_away()
-			$Boots.visible = false
+		$Boots.disappear()
 		
 
 func _unhandled_input(event):
@@ -122,7 +120,7 @@ func _on_DetectorEvil_area_entered(area):
 			return
 		if shield_bn_active:
 			shield_bn_active = false
-			$Bubble.blow_up()
+			$Bubble.disappear()
 			safe_enter(1.5)
 		else:
 			blow_up()
@@ -134,9 +132,8 @@ func blow_up():
 	$Legs.visible = false
 	$Body.visible = false
 	$CPUParticles2D.emitting = false
-	if $Boots.visible:
-		$Boots.boots_away()
-		$Boots.visible = false
+	$Boots.disappear()
+	$Jetpack.disappear()
 
 func change_anim_scared(time):
 	timer_anim.set_wait_time(time)

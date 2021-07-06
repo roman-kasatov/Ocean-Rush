@@ -6,7 +6,9 @@ onready var Player = get_parent()
 func appear():
 	self.visible = true
 
-func blow_up():
+func disappear():
+	if !visible:
+		return
 	var particles = Particles.instance()
 	particles.emitting = true
 	particles.position = get_global_position() + Vector2(0, 16)
