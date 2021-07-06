@@ -12,6 +12,8 @@ func appear():
 	visible = true
 
 func disappear():
+	if !visible:
+		return
 	var particles = Particles.instance()
 	particles.emitting = true
 	particles.position = get_global_position() + Vector2(0, 16)
@@ -22,7 +24,7 @@ func launch():
 	if Fuel.playing:
 		return
 	Fuel.playing = true
-	Fire.visible = true
+	Fire.emitting = true
 
 func _on_Fuel_animation_finished():
 	disappear()
