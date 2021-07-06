@@ -117,8 +117,8 @@ scale = Vector2( 1.19926, 0.671349 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 pause_mode = 2
+position = Vector2( 0, 12.5 )
 current = true
-zoom = Vector2( 0.8, 0.8 )
 process_mode = 0
 drag_margin_v_enabled = true
 smoothing_speed = 10.0
@@ -157,14 +157,11 @@ centered = false
 script = SubResource( 1 )
 
 [node name="GameHUD" type="CanvasLayer" parent="."]
-offset = Vector2( 100, 30 )
-scale = Vector2( 0.8, 0.8 )
-transform = Transform2D( 0.8, 0, 0, 0.8, 100, 30 )
 
 [node name="ScorePanel" type="Control" parent="GameHUD"]
 pause_mode = 1
 anchor_right = 1.0
-margin_bottom = 103.0
+margin_bottom = 74.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -204,10 +201,15 @@ __meta__ = {
 }
 
 [node name="Coins" type="Label" parent="GameHUD/ScorePanel"]
-margin_right = 40.0
-margin_bottom = 31.0
-text = "0
-"
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 39.2862
+margin_top = -23.5
+margin_right = 111.286
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 2 )
+text = "Coins: 0"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

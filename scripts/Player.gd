@@ -25,6 +25,7 @@ var jump_left = 1
 
 # bonuses
 var shield_bn_active = false
+var jetpack_bn_active = false
 var jump_bn_left = 0
 onready var shining_parts = [Scarf, $Legs, $Body, $Boots]
 
@@ -46,9 +47,14 @@ func _ready():
 	timer_safe.connect("timeout", self, "safe_stop")
 
 func _physics_process(delta):
-	if position.y > height_to_fail:
-		blow_up()
-		Game.fail()
+	if position.y > height_to_fail and motion.y >= 0:
+		if jetpack_bn_active:
+			motion.y = -4 * jump_speed
+			change_anim_scared(2.0)
+			jetpack_bn_active = false
+		else:
+			blow_up()
+			Game.fail()
 	update_rate()
 	
 	if shifted_time_left > 0:
@@ -171,3 +177,5 @@ func add_bonus(type):
 	elif type == 'jump_bonus':
 		jump_bn_left = 4
 		$Boots.visible = true
+	elif type == 'jetpack_bonus':
+		jetpack_bn_active = true
