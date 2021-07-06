@@ -4,9 +4,10 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 
 var chance_bn = {
-	'shield_bonus': 0.5,
-	'jump_bonus': 0.5
-}
+	'shield_bonus': 0,
+	'jump_bonus': 0,
+	'jetpack_bonus': 1
+} # sum should be less or equal than 1
 
 var lines = 15
 var columns = 3

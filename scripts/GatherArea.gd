@@ -7,7 +7,7 @@ func _area_entered(area):
 	if not(area.is_in_group("gatherable")):
 		return
 	var type = area.type
-	if type in ['shield_bonus', 'jump_bonus']:
+	if type in ['shield_bonus', 'jump_bonus', 'jetpack_bonus']:
 		get_parent().add_bonus(type)
 	elif type == 'coin':
 		pass
