@@ -22,3 +22,4 @@ func _process(delta):
 	position += Vector2(-speed_x, speed_y)
 	phase_rot += speed_rot
 	rotation = sin(phase_rot) / 7
+	$CPUParticles2D.rotation = -rotation

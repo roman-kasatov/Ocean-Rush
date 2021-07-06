@@ -25,6 +25,7 @@ var jump_bn_left = 0
 
 var Floor_part = preload("res://scenes/particles/Floor_particles.tscn")
 var Air_part = preload("res://scenes/particles/Air_particles.tscn")
+var Air_part_boots = preload("res://scenes/particles/particles_air_boots.tscn")
 
 
 func _ready():
@@ -90,6 +91,8 @@ func _unhandled_input(event):
 				motion.y = -jump_speed
 				jump_left -= 1
 				var particles = Air_part.instance()
+				if jump_left == 0 and jump_bn_left > 0:
+					particles = Air_part_boots.instance()
 				particles.position = get_global_position() + Vector2(0, 16)
 				get_tree().get_root().call_deferred("add_child", particles)
 
