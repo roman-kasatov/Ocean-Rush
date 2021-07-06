@@ -114,6 +114,9 @@ func blow_up():
 	$Legs.visible = false
 	$Body.visible = false
 	$CPUParticles2D.emitting = false
+	if $Boots.visible:
+		$Boots.boots_away()
+		$Boots.visible = false
 
 func change_anim_scared(time):
 	
