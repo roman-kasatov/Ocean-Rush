@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=2]
@@ -10,14 +10,82 @@
 [ext_resource path="res://drawable/Character/Mouth_short.png" type="Texture" id=8]
 [ext_resource path="res://scripts/GatherArea.gd" type="Script" id=9]
 [ext_resource path="res://drawable/Character/Legs_boots.png" type="Texture" id=10]
+[ext_resource path="res://drawable/Character/jetpack.png" type="Texture" id=11]
 [ext_resource path="res://drawable/Character/shield.png" type="Texture" id=12]
 [ext_resource path="res://scenes/bonuses/Bubble.gd" type="Script" id=13]
+[ext_resource path="res://scripts/bonuses/Jetpack.gd" type="Script" id=14]
+[ext_resource path="res://drawable/Character/jetpack_fuel.png" type="Texture" id=15]
+[ext_resource path="res://scenes/particles/particles_fuel.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.97516, 13.9638 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6, 5.5 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 15 )
+region = Rect2( 1, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 15 )
+region = Rect2( 2, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 15 )
+region = Rect2( 3, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 15 )
+region = Rect2( 4, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 15 )
+region = Rect2( 5, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 15 )
+region = Rect2( 6, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 15 )
+region = Rect2( 7, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 15 )
+region = Rect2( 8, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 15 )
+region = Rect2( 9, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 15 )
+region = Rect2( 10, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 15 )
+region = Rect2( 11, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 15 )
+region = Rect2( 12, 0, 1, 13 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 15 )
+region = Rect2( 13, 0, 1, 13 )
+
+[sub_resource type="SpriteFrames" id=57]
+animations = [ {
+"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 56 ), SubResource( 56 ), SubResource( 56 ), SubResource( 56 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 12 )
@@ -137,12 +205,15 @@ script/source = "extends AnimatedSprite
 onready var Particles = preload(\"res://scenes/particles/particles_boots_falling.tscn\")
 onready var Player = get_parent()
 
+func appear():
+	visible = true
+
 func boots_away():
 	var particles = Particles.instance()
 	particles.emitting = true
 	particles.position = get_global_position() + Vector2(0, 16)
 	Player.get_parent().add_child(particles)
-	self.visible = false
+	visible = false
 "
 
 [sub_resource type="AtlasTexture" id=29]
@@ -232,6 +303,22 @@ shape = SubResource( 1 )
 position = Vector2( 0, 10 )
 shape = SubResource( 2 )
 
+[node name="Jetpack" type="Sprite" parent="."]
+visible = false
+position = Vector2( -10.9247, -2.09915 )
+texture = ExtResource( 11 )
+script = ExtResource( 14 )
+
+[node name="Fuel" type="AnimatedSprite" parent="Jetpack"]
+position = Vector2( -0.994476, -2.00012 )
+frames = SubResource( 57 )
+
+[node name="Fire" parent="Jetpack" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( -0.750854, 10.4284 )
+rotation = 0.201538
+z_index = -1
+
 [node name="Bubble" type="AnimatedSprite" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.662745 )
@@ -239,6 +326,7 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 9 )
+frame = 12
 playing = true
 script = ExtResource( 13 )
 
@@ -246,14 +334,14 @@ script = ExtResource( 13 )
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 18 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 27 )
-frame = 2
+frame = 7
 playing = true
 script = SubResource( 28 )
 
@@ -266,13 +354,14 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 33 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 40 )
 animation = "slow"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -324,4 +413,6 @@ script = ExtResource( 9 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GatherArea"]
 shape = SubResource( 42 )
 [connection signal="area_entered" from="DetectorEvil" to="." method="_on_DetectorEvil_area_entered"]
+[connection signal="animation_finished" from="Jetpack/Fuel" to="Jetpack" method="_on_Fuel_animation_finished"]
+[connection signal="frame_changed" from="Jetpack/Fuel" to="Jetpack" method="_on_Fuel_frame_changed"]
 [connection signal="area_entered" from="GatherArea" to="GatherArea" method="_area_entered"]
