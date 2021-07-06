@@ -5,6 +5,8 @@ onready var Mouth = $Body/Mouth
 onready var Shake = preload("res://scenes/ShakeModule.tscn")
 
 var timer_anim : Timer
+var timer_safe_tick : Timer
+var timer_safe : Timer
 
 var gravity = 30
 var max_fall_speed = 400
@@ -14,14 +16,17 @@ var jump_speed = 700
 var height_to_fail #being calculated at the start at "PlatformManager" script
 var was_falling = true
 var shifted_time_left = 0
+var safe = 0
 
 var motion = Vector2(0, 0)
 onready var Game = get_parent()
+onready var Scarf = Game.get_node("Scarf")
 var jump_left = 1
 
 # bonuses
 var shield_bn_active = false
 var jump_bn_left = 0
+onready var shining_parts = [Scarf, $Legs, $Body, $Boots]
 
 var Floor_part = preload("res://scenes/particles/Floor_particles.tscn")
 var Air_part = preload("res://scenes/particles/Air_particles.tscn")
@@ -35,6 +40,10 @@ func _ready():
 	timer_anim.one_shot = true
 	timer_anim.connect("timeout", self, "change_anim_usual")
 	add_child(timer_anim)
+	timer_safe_tick = Timer.new()
+	timer_safe_tick.connect("timeout", self, "safe_tick")
+	timer_safe = Timer.new()
+	timer_safe.connect("timeout", self, "safe_stop")
 
 func _physics_process(delta):
 	if position.y > height_to_fail:
@@ -104,7 +113,8 @@ func _on_DetectorEvil_area_entered(area):
 		if shield_bn_active:
 			shield_bn_active = false
 			$Bubble.blow_up()
-		else:
+			safe_enter(1.5)
+		elif !safe:
 			blow_up()
 			Game.fail()
 
@@ -119,13 +129,35 @@ func blow_up():
 		$Boots.visible = false
 
 func change_anim_scared(time):
-	
 	timer_anim.set_wait_time(time)
 	Eyes.animation = "big"
 	Mouth.animation = "fast"
 	timer_anim.start()
 	#Eyes.add_child(Shake)
 
+func safe_enter(time):
+	timer_safe.wait_time = time
+	timer_safe_tick.wait_time = 0.06
+	add_child(timer_safe_tick)
+	add_child(timer_safe)
+	timer_safe_tick.start()
+	timer_safe.start()
+	safe = 1
+
+func safe_tick():
+	for i in shining_parts:
+		if !i:
+			continue
+		i.modulate.a = 0.4 if i.modulate.a == 1 else 1
+
+func safe_stop():
+	timer_safe_tick.stop()
+	for i in shining_parts:
+		if !i:
+			continue
+		i.modulate.a = 1
+	remove_child(timer_safe)
+	safe = 0
 
 func change_anim_usual():
 	Eyes.animation = "small"
