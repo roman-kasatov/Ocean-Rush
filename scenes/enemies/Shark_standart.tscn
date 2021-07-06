@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=2]
@@ -40,11 +40,14 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=8]
 
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.774834, 1 )
+colors = PoolColorArray( 0.215686, 0.14902, 0.686275, 1, 0.215686, 0.14902, 0.686275, 0.819608, 0.215686, 0.14902, 0.686275, 0 )
+
 [node name="Shark_standart" type="AnimatedSprite"]
 position = Vector2( 0, 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 script = ExtResource( 3 )
 
@@ -71,3 +74,12 @@ position = Vector2( 31.4645, 0.318108 )
 [node name="CPUParticles2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 22.8922, 0.743252 )
 z_index = -1
+amount = 14
+lifetime = 1.0
+explosiveness = 0.0
+emission_shape = 0
+spread = 65.0
+linear_accel = 60.0
+angle = 31.0
+angle_random = 0.43
+color_ramp = SubResource( 9 )
