@@ -145,14 +145,14 @@ func safe_tick():
 	for i in shining_parts:
 		if !i:
 			continue
-		i.modulate.a = 0 if i.modulate.a == 255 else 255
+		i.modulate.a = 0.4 if i.modulate.a == 1 else 1
 
 func safe_stop():
 	timer_safe_tick.stop()
 	for i in shining_parts:
 		if !i:
 			continue
-		i.modulate.a = 255
+		i.modulate.a = 1
 	remove_child(timer_safe)
 	safe = 0
 
