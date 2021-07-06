@@ -93,8 +93,12 @@ font_data = ExtResource( 8 )
 script/source = "extends Sprite
 
 func _ready():
+	fill_screen()
+	get_tree().root.connect(\"size_changed\", self, \"fill_screen\")
+
+func fill_screen():
 	var view_size = get_viewport_rect().size
-	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)
+	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)	
 "
 
 [node name="Game" type="Node"]
@@ -153,10 +157,12 @@ centered = false
 script = SubResource( 1 )
 
 [node name="GameHUD" type="CanvasLayer" parent="."]
+offset = Vector2( 100, 30 )
+scale = Vector2( 0.8, 0.8 )
+transform = Transform2D( 0.8, 0, 0, 0.8, 100, 30 )
 
 [node name="ScorePanel" type="Control" parent="GameHUD"]
 pause_mode = 1
-visible = false
 anchor_right = 1.0
 margin_bottom = 103.0
 __meta__ = {
@@ -193,6 +199,15 @@ custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="GameHUD/ScorePanel"]
+margin_right = 40.0
+margin_bottom = 31.0
+text = "0
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -424,6 +439,7 @@ __meta__ = {
 }
 
 [node name="SkinSwitches" type="GridContainer" parent="GameHUD"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
