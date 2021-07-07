@@ -347,7 +347,6 @@ __meta__ = {
 
 [node name="SkinPanel" type="TabContainer" parent="GameHUD"]
 pause_mode = 2
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -407,7 +406,7 @@ margin_top = 72.0
 [node name="TapToStart" type="Control" parent="GameHUD"]
 pause_mode = 2
 anchor_right = 1.0
-margin_bottom = 415.0
+margin_bottom = 434.0
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -429,19 +428,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IgnoreZone" type="Control" parent="GameHUD/TapToStart"]
-anchor_top = 1.0
+[node name="TapZone" type="Control" parent="GameHUD/TapToStart"]
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 311.572
-margin_top = -85.946
-margin_right = 679.572
-margin_bottom = -5.94598
+margin_left = -747.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SkinSwitches" type="GridContainer" parent="GameHUD"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
