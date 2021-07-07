@@ -133,6 +133,7 @@ func blow_up():
 	$Body.visible = false
 	$CPUParticles2D.emitting = false
 	$Boots.disappear()
+	$Bubble.disappear()
 	$Jetpack.disappear()
 
 func change_anim_scared(time):
