@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
@@ -60,6 +60,17 @@ font_data = ExtResource( 7 )
 [sub_resource type="Theme" id=9]
 default_font = SubResource( 8 )
 Panel/styles/panel = SubResource( 7 )
+
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	COLOR.a = 1.0 - UV.x;
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
 
 [node name="GameHUD" type="CanvasLayer"]
 
@@ -284,6 +295,7 @@ __meta__ = {
 }
 
 [node name="SkinPanel" type="NinePatchRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -309,7 +321,6 @@ __meta__ = {
 }
 
 [node name="Menu" type="HBoxContainer" parent="SkinPanel/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -473,6 +484,7 @@ margin_right = 324.0
 margin_bottom = 200.0
 
 [node name="Control" type="ItemList" parent="SkinPanel/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -485,6 +497,7 @@ max_text_lines = 2
 margin_bottom = 200.0
 
 [node name="Body" type="ScrollContainer" parent="SkinPanel/TabContainer/Control"]
+material = SubResource( 11 )
 margin_left = 198.0
 margin_right = 710.0
 margin_bottom = 200.0
