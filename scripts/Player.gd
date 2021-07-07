@@ -17,6 +17,7 @@ var height_to_fail #being calculated at the start at "PlatformManager" script
 var was_falling = true
 var shifted_time_left = 0
 var safe = 0
+var can_pick = 1
 
 var motion = Vector2(0, 0)
 onready var Game = get_parent()
@@ -54,6 +55,7 @@ func _physics_process(delta):
 			jetpack_bn_active = false
 			$Jetpack.launch()
 			safe_enter(4.0)
+			can_pick = 0
 		else:
 			blow_up()
 			Game.fail()
@@ -97,6 +99,8 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
+			if $Jetpack.working:
+				return
 			if is_on_floor():
 				motion.y = -jump_speed
 				var particles = Floor_part.instance()
@@ -159,6 +163,7 @@ func safe_tick():
 		i.modulate.a = 0.4 if i.modulate.a == 1 else 1
 
 func safe_stop():
+	can_pick = 1
 	timer_safe_tick.stop()
 	for i in shining_parts:
 		if !i:
