@@ -9,7 +9,7 @@ var start_pause = true
 
 signal start_game
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	speed += accel
 	if (abs(speed) > abs(max_speed)):
 		accel = -accel
@@ -22,8 +22,7 @@ func _physics_process(delta):
 			
 func _input(event):
 	if start_pause and event is InputEventScreenTouch and event.is_pressed():
-		print(Rect2($IgnoreZone.rect_position, $IgnoreZone.rect_size), event.position)
-		if not Rect2($IgnoreZone.get_global_rect().position, $IgnoreZone.rect_size).has_point(event.position):
+		if Rect2($TapZone.get_global_rect().position, $TapZone.rect_size).has_point(event.position):
 			get_tree().paused = false
 			emit_signal("start_game")
 			need_to_erase = true
