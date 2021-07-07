@@ -45,7 +45,7 @@ func _physics_process(delta):
 
 "
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Sprite
 
 func _ready():
@@ -125,7 +125,7 @@ z_index = -100
 z_as_relative = false
 texture = ExtResource( 24 )
 centered = false
-script = SubResource( 9 )
+script = SubResource( 2 )
 
 [node name="Coras" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 0.239216, 0.329412, 0.47451, 0.588235 )
