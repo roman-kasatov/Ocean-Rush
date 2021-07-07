@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5415, 6.07756 )
 
-[node name="Platform_chipped" type="StaticBody2D"]
+[node name="Platform_standart" type="StaticBody2D"]
 scale = Vector2( 2, 2 )
 
 [node name="SpritePlatform" type="Sprite" parent="."]
@@ -24,3 +24,33 @@ one_way_collision = true
 
 [node name="DestructModule" parent="." instance=ExtResource( 3 )]
 position = Vector2( 29.6206, 0.367889 )
+
+[node name="CoinSpawners" type="Node2D" parent="."]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="CoinSpawner1" type="Node2D" parent="CoinSpawners"]
+
+[node name="Place1" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -38.449, -29.4628 )
+
+[node name="Place2" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 0, -29.463 )
+
+[node name="Place3" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 38.449, -29.463 )
+
+[node name="Place4" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -19.3536, -55.5657 )
+
+[node name="Place5" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 19.354, -55.566 )
