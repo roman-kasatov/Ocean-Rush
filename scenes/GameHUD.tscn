@@ -1,0 +1,527 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://scripts/Score.gd" type="Script" id=3]
+[ext_resource path="res://skintypeSwitcher_buttongroup.tres" type="ButtonGroup" id=4]
+[ext_resource path="res://drawable/Character/Circle.png" type="Texture" id=5]
+[ext_resource path="res://scenes/UI/SkinBlock.tscn" type="PackedScene" id=6]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://drawable/ui/Pause.png" type="Texture" id=8]
+[ext_resource path="res://drawable/ui/Text.png" type="Texture" id=9]
+[ext_resource path="res://drawable/ui/left_arrow.png" type="Texture" id=10]
+[ext_resource path="res://drawable/ui/right_arrow.png" type="Texture" id=11]
+[ext_resource path="res://scripts/ui/SkinPanel.gd" type="Script" id=12]
+[ext_resource path="res://scripts/ui/FailurePanel.gd" type="Script" id=13]
+[ext_resource path="res://scripts/ui/PausePanel.gd" type="Script" id=14]
+[ext_resource path="res://scripts/ui/MenuBtn.gd" type="Script" id=15]
+[ext_resource path="res://scripts/ui/TapToStart.gd" type="Script" id=16]
+[ext_resource path="res://scripts/ui/FailureBtn.gd" type="Script" id=17]
+[ext_resource path="res://scripts/ui/PauseBnt.gd" type="Script" id=18]
+[ext_resource path="res://scripts/ui/ResumeBtn.gd" type="Script" id=19]
+[ext_resource path="res://scenes/SkinBox.tscn" type="PackedScene" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 26
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxFlat" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="DynamicFont" id=22]
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=18]
+default_font = SubResource( 22 )
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = SubResource( 11 )
+HScrollBar/styles/scroll_focus = null
+Panel/styles/panel = SubResource( 20 )
+TabContainer/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
+TabContainer/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+TabContainer/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )
+TabContainer/constants/hseparation = 4
+TabContainer/constants/label_valign_bg = 2
+TabContainer/constants/label_valign_fg = 0
+TabContainer/constants/side_margin = 8
+TabContainer/constants/top_margin = 24
+TabContainer/fonts/font = null
+TabContainer/icons/decrement = null
+TabContainer/icons/decrement_highlight = null
+TabContainer/icons/increment = null
+TabContainer/icons/increment_highlight = null
+TabContainer/icons/menu = null
+TabContainer/icons/menu_highlight = null
+TabContainer/styles/panel = SubResource( 21 )
+TabContainer/styles/tab_bg = null
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_fg = null
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = SubResource( 19 )
+VScrollBar/styles/scroll_focus = null
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 7 )
+
+[node name="GameHUD" type="CanvasLayer"]
+
+[node name="ScorePanel" type="Control" parent="."]
+pause_mode = 1
+anchor_right = 1.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseBnt" type="TextureButton" parent="ScorePanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.898
+margin_top = -21.0
+margin_right = -46.898
+margin_bottom = 43.0
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="ScorePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -23.5
+margin_right = 36.0
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="ScorePanel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 39.2862
+margin_top = -23.5
+margin_right = 111.286
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PausePanel" type="PanelContainer" parent="."]
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0.890196 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -125.0
+margin_right = 200.0
+margin_bottom = 125.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 393.0
+margin_bottom = 243.0
+size_flags_horizontal = 3
+
+[node name="ResumeBtn" type="Button" parent="PausePanel/VBoxContainer"]
+margin_right = 386.0
+margin_bottom = 76.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "RESUME"
+flat = true
+script = ExtResource( 19 )
+
+[node name="OptionsBtn" type="Button" parent="PausePanel/VBoxContainer"]
+margin_top = 80.0
+margin_right = 386.0
+margin_bottom = 156.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "OPTIONS"
+flat = true
+
+[node name="MenuBtn" type="Button" parent="PausePanel/VBoxContainer"]
+margin_top = 160.0
+margin_right = 386.0
+margin_bottom = 236.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "MENU"
+flat = true
+script = ExtResource( 15 )
+
+[node name="FailurePanel" type="PanelContainer" parent="."]
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0.964706 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.0
+margin_top = -184.0
+margin_right = 378.0
+margin_bottom = 130.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="FailurePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 741.0
+margin_bottom = 307.0
+
+[node name="Label" type="Label" parent="FailurePanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -169.5
+margin_top = -115.596
+margin_right = 169.5
+margin_bottom = -17.5956
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+text = "YOUR SCORE:
+0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="FailurePanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -6.45901
+margin_right = 146.0
+margin_bottom = 63.541
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 4 )
+text = "BEST SCORE: 
+999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FailureMenuBtn" type="Button" parent="FailurePanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.0
+margin_top = 79.1175
+margin_right = 137.0
+margin_bottom = 129.117
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
+text = "Menu"
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TapToStart" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+margin_bottom = 434.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TapToStart"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.529
+margin_top = -53.7862
+margin_right = 84.4713
+margin_bottom = -17.7862
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TapZone" type="Control" parent="TapToStart"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -747.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkinSwitches" type="GridContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -323.0
+margin_top = 154.0
+margin_right = 268.0
+margin_bottom = 274.0
+custom_constants/hseparation = 50
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="SkinSwitches"]
+margin_right = 270.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="SkinSwitches/GridContainer"]
+margin_right = 87.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="SkinSwitches/GridContainer"]
+margin_left = 91.0
+margin_right = 178.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureButton2" type="TextureButton" parent="SkinSwitches/GridContainer"]
+margin_left = 182.0
+margin_right = 269.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="GridContainer2" type="GridContainer" parent="SkinSwitches"]
+margin_left = 320.0
+margin_right = 590.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="SkinSwitches/GridContainer2"]
+margin_right = 87.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="SkinSwitches/GridContainer2"]
+margin_left = 91.0
+margin_right = 178.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureButton2" type="TextureButton" parent="SkinSwitches/GridContainer2"]
+margin_left = 182.0
+margin_right = 269.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="SkintypeSwitcher" type="GridContainer" parent="."]
+pause_mode = 2
+margin_left = 32.0
+margin_top = 94.0
+margin_right = 150.0
+margin_bottom = 355.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="SkintypeSwitcher"]
+margin_right = 44.0
+margin_bottom = 20.0
+toggle_mode = true
+pressed = true
+group = ExtResource( 4 )
+text = "Hat"
+
+[node name="Button2" type="Button" parent="SkintypeSwitcher"]
+margin_top = 24.0
+margin_right = 44.0
+margin_bottom = 44.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "Body"
+
+[node name="Button3" type="Button" parent="SkintypeSwitcher"]
+margin_top = 48.0
+margin_right = 44.0
+margin_bottom = 68.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "Shirt"
+
+[node name="Button4" type="Button" parent="SkintypeSwitcher"]
+margin_top = 72.0
+margin_right = 44.0
+margin_bottom = 92.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "Flag"
+
+[node name="SkinPanel" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -365.0
+margin_top = -213.0
+margin_right = 365.0
+theme = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="SkinPanel"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 7 )
+tab_align = 0
+tabs_visible = false
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SkinPanel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SkinPanel/TabContainer/ScrollContainer"]
+margin_right = 324.0
+margin_bottom = 200.0
+
+[node name="SkinBlock" parent="SkinPanel/TabContainer/ScrollContainer/HBoxContainer" instance=ExtResource( 6 )]
+margin_bottom = 200.0
+
+[node name="SkinBlock2" parent="SkinPanel/TabContainer/ScrollContainer/HBoxContainer" instance=ExtResource( 6 )]
+margin_left = 164.0
+margin_right = 324.0
+margin_bottom = 200.0
+
+[node name="Body" type="GridContainer" parent="SkinPanel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="SkinBox" parent="SkinPanel/TabContainer/Body" instance=ExtResource( 20 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 194.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SkinBox2" parent="SkinPanel/TabContainer/Body" instance=ExtResource( 20 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 198.0
+margin_right = 392.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SkinBox3" parent="SkinPanel/TabContainer/Body" instance=ExtResource( 20 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 396.0
+margin_right = 590.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Scarf" type="GridContainer" parent="SkinPanel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+[connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]
