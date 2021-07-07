@@ -4,6 +4,7 @@ var rate : float = 0
 onready var Player = $Player
 onready var GameHUD = $GameHUD
 onready var PlatformManager = $PlatformManager
+onready var Coins = $GameHUD/ScorePanel/Coins
 
 signal start_game
 

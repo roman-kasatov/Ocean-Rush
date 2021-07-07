@@ -209,8 +209,7 @@ margin_top = -23.5
 margin_right = 111.286
 margin_bottom = 23.5
 custom_fonts/font = SubResource( 2 )
-text = "Coins: 0"
-align = 1
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }

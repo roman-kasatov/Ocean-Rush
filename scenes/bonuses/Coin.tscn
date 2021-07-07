@@ -5,7 +5,10 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
-var type = 'coin'"
+var type = 'coin'
+
+var value = 1
+"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 22.5579, 28.625 )
@@ -57,5 +60,5 @@ shape = SubResource( 2 )
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
 frames = SubResource( 9 )
-frame = 4
+frame = 1
 playing = true
