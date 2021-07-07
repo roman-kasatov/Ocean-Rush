@@ -328,7 +328,7 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
-frame = 15
+frame = 10
 playing = true
 script = ExtResource( 13 )
 
@@ -336,14 +336,14 @@ script = ExtResource( 13 )
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 33 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 42 )
-frame = 3
+frame = 4
 playing = true
 script = SubResource( 43 )
 

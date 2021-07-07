@@ -9,6 +9,13 @@ var chance_bn = {
 	'jetpack_bonus': 0.08
 } # sum should be less or equal than 1
 
+var chance_having_coins = {
+	'coin1': 0.4,
+	'coin2': 0.4,
+	'coin5': 0.015,
+	'coin10': 0.05
+} # sum should be less or equal than 1
+
 var lines = 15
 var columns = 3
 var min_in_column = 6
@@ -52,8 +59,6 @@ var nodes_pl = {
 	types_pl.JUMP : preload("res://scenes/platforms/Platform_jump.tscn")
 }
 
-#var shield_bonus = preload("res://scenes/bonuses/ShieldBonus.tscn")
-#var jump_bonus = preload("res://scenes/bonuses/JumpBonus.tscn")
 var Bonus = preload("res://scenes/bonuses/Bonus.tscn")
 
 var shark = preload("res://scenes/enemies/Shark_av.tscn")
