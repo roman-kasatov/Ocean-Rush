@@ -308,7 +308,8 @@ shape = SubResource( 2 )
 
 [node name="Jetpack" type="Sprite" parent="."]
 visible = false
-position = Vector2( -10.9247, -2.09915 )
+position = Vector2( -10.9635, -0.500547 )
+scale = Vector2( 0.875976, 0.875976 )
 texture = ExtResource( 11 )
 script = ExtResource( 14 )
 
@@ -317,8 +318,8 @@ position = Vector2( -0.994476, -2.00012 )
 frames = SubResource( 17 )
 
 [node name="Fire" parent="." instance=ExtResource( 16 )]
-position = Vector2( -11.6756, 8.32925 )
-rotation = 0.201538
+position = Vector2( -10.7392, 7.86102 )
+rotation = 0.0738437
 z_index = -1
 emitting = false
 
@@ -329,7 +330,7 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
-frame = 13
+frame = 16
 playing = true
 script = ExtResource( 13 )
 
@@ -357,14 +358,12 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 48 )
 animation = "small"
-frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 55 )
 animation = "slow"
-frame = 2
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -401,9 +400,10 @@ lifetime_randomness = 0.3
 emission_shape = 1
 emission_sphere_radius = 8.0
 spread = 180.0
-initial_velocity = 123.46
+initial_velocity = 125.0
 initial_velocity_random = 1.0
 linear_accel = -50.0
+angle = 45.0
 scale_amount = 3.0
 scale_amount_random = 0.4
 color = Color( 0.105882, 0.435294, 0.858824, 1 )
