@@ -17,6 +17,7 @@ var height_to_fail #being calculated at the start at "PlatformManager" script
 var was_falling = true
 var shifted_time_left = 0
 var safe = 0
+var shining = 0
 var can_pick = 1
 
 var motion = Vector2(0, 0)
@@ -54,7 +55,7 @@ func _physics_process(delta):
 			change_anim_scared(2.0)
 			jetpack_bn_active = false
 			$Jetpack.launch()
-			safe_enter(4.0)
+			safe_enter(3.5, 0)
 			can_pick = 0
 		else:
 			blow_up()
@@ -147,7 +148,7 @@ func change_anim_scared(time):
 	timer_anim.start()
 	#Eyes.add_child(Shake)
 
-func safe_enter(time):
+func safe_enter(time, need_to_shine = 1):
 	timer_safe.wait_time = time
 	timer_safe_tick.wait_time = 0.06
 	add_child(timer_safe_tick)
@@ -155,8 +156,11 @@ func safe_enter(time):
 	timer_safe_tick.start()
 	timer_safe.start()
 	safe = 1
+	shining = need_to_shine
 
 func safe_tick():
+	if !shining:
+		return
 	for i in shining_parts:
 		if !i:
 			continue
@@ -171,6 +175,7 @@ func safe_stop():
 		i.modulate.a = 1
 	remove_child(timer_safe)
 	safe = 0
+	shining = 0
 
 func change_anim_usual():
 	Eyes.animation = "small"
