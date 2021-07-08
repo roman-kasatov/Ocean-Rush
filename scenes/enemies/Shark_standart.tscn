@@ -48,6 +48,7 @@ colors = PoolColorArray( 0.215686, 0.14902, 0.686275, 1, 0.215686, 0.14902, 0.68
 position = Vector2( 0, 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
+frame = 5
 playing = true
 script = ExtResource( 3 )
 
