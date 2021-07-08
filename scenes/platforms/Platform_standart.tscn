@@ -81,3 +81,50 @@ position = Vector2( -0.208332, -54.6543 )
 "CoinSpawnerLevel1",
 ]]
 position = Vector2( -0.208332, -82.8954 )
+
+[node name="Place6" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -31.764, -82.895 )
+
+[node name="Place7" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 31.764, -82.895 )
+
+[node name="CoinSpawner3" type="Node2D" parent="CoinSpawners"]
+
+[node name="Place1" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -19.562, -25.921 )
+
+[node name="Place2" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel2",
+]]
+position = Vector2( 0, -42.327 )
+
+[node name="Place3" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 19.562, -25.921 )
+
+[node name="Place4" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -19.5619, -59.631 )
+
+[node name="Place5" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 19.1457, -59.631 )
+
+[node name="Place6" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -38.454, -42.327 )
+
+[node name="Place7" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 38.454, -42.327 )

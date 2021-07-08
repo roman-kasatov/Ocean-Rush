@@ -10,16 +10,16 @@ var chance_bn = {
 } # sum should be less or equal than 1
 
 var chances_coins_spawner_1 = {
-	'coin1': 0.4,
-	'coin2': 0.4,
-	'coin4': 0.15,
-	'coin8': 0.05
+	'coin1': 0.8,
+	'coin2': 0.2,
+	'coin4': 0,
+	'coin8': 0
 } # sum should be less or equal than 1
 
 var chances_coins_spawner_2 = {
-	'coin1': 0,
+	'coin1': 0.2,
 	'coin2': 0.5,
-	'coin4': 0.4,
+	'coin4': 0.2,
 	'coin8': 0.1
 } # sum should be less or equal than 1
 
@@ -164,10 +164,10 @@ func place_coins(plat, chance):
 	for i in range(0, plat.get_node("CoinSpawners").get_child(spawner).get_child_count()):
 		var coin = Coin.instance()
 		chance = randf()
-		var chances = chances_coins_spawner_1
-		if coin.is_in_group("CoinSpawnerLevel1"):
+		var chances = chances_coins_spawner_2
+		if plat.get_node("CoinSpawners").get_child(spawner).get_child(i).is_in_group("CoinSpawnerLevel1"):
 			chances = chances_coins_spawner_1
-		if coin.is_in_group("CoinSpawnerLevel2"):
+		elif plat.get_node("CoinSpawners").get_child(spawner).get_child(i).is_in_group("CoinSpawnerLevel2"):
 			chances = chances_coins_spawner_2
 		for j in chances.keys():
 			chance -= chances[j]
