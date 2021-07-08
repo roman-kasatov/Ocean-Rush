@@ -6,22 +6,25 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
-var type = 'coin'
+var type = \"coin\"
 var value = 1
 
 func _ready():
 	$AnimatedSprite.frame = 0
 	$AnimatedSprite2.frame = 0
 
-func initiate(new_value):
-	value = new_value
-	if new_value == 1:
+func initiate(type):
+	if type == \"coin1\":
+		value = 1
 		$AnimatedSprite.modulate = \"fff500\"
-	elif new_value == 2:
+	if type == \"coin2\":
+		value = 2
 		$AnimatedSprite.modulate = \"79e742\"
-	elif new_value == 5:
+	if type == \"coin4\":
+		value = 4
 		$AnimatedSprite.modulate = \"4496f7\"
-	elif new_value == 10:
+	if type == \"coin8\":
+		value = 8
 		$AnimatedSprite.modulate = \"f96c35\"
 "
 
@@ -84,7 +87,7 @@ region = Rect2( 48, 0, 12, 16 )
 atlas = ExtResource( 2 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
@@ -96,7 +99,7 @@ animations = [ {
 "gatherable",
 "money",
 ]]
-scale = Vector2( 0.6, 0.6 )
+scale = Vector2( 0.845296, 0.845296 )
 script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -108,12 +111,12 @@ shape = SubResource( 2 )
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
 frames = SubResource( 9 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
-frames = SubResource( 17 )
-frame = 5
+frames = SubResource( 16 )
+frame = 3
 playing = true

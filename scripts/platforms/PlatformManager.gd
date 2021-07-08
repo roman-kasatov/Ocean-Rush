@@ -9,11 +9,18 @@ var chance_bn = {
 	'jetpack_bonus': 0.08
 } # sum should be less or equal than 1
 
-var chance_having_coins = {
+var chances_coins_spawner_1 = {
 	'coin1': 0.4,
 	'coin2': 0.4,
-	'coin5': 0.015,
-	'coin10': 0.05
+	'coin4': 0.15,
+	'coin8': 0.05
+} # sum should be less or equal than 1
+
+var chances_coins_spawner_2 = {
+	'coin1': 0,
+	'coin2': 0.5,
+	'coin4': 0.4,
+	'coin8': 0.1
 } # sum should be less or equal than 1
 
 var lines = 15
@@ -31,6 +38,18 @@ var section_cnt_of_crab_pl = 0
 
 enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
 
+onready var Coin = preload("res://scenes/bonuses/Coin.tscn")
+
+var chances_having_coins = {
+	types_pl.BASIC : 1,
+	types_pl.BROKEN : 0,
+	types_pl.CHIPPED : 0, 
+	types_pl.CHIPPED_UP : 0, 
+	types_pl.CHIPPED_DOWN : 0, 
+	types_pl.CRAB : 0,
+	types_pl.JUMP : 0
+} # sum should be less or equal than 1
+
 var bonus_platforms = [
 	types_pl.BASIC, 
 	types_pl.BROKEN,
@@ -38,11 +57,11 @@ var bonus_platforms = [
 ]
 
 var chance_pl = {
-	types_pl.BASIC : 10, 
-	types_pl.BROKEN : 2,
+	types_pl.BASIC : 9, 
+	types_pl.BROKEN : 4,
 	types_pl.CHIPPED : 2, 
-	types_pl.CHIPPED_UP : 2, 
-	types_pl.CHIPPED_DOWN : 2, 
+	types_pl.CHIPPED_UP : 1, 
+	types_pl.CHIPPED_DOWN : 1, 
 	types_pl.CRAB : 1,
 	types_pl.JUMP : 1
 }
@@ -123,8 +142,8 @@ func place_section():
 			var additional_pos = Vector2(132 * (i % 2), 0)
 			plat.position = position + Vector2(j * dist_betw_columns, i * dist_betw_lines) + additional_pos
 			Game.add_child(plat)
+			var chance = randf()
 			if plat_type in bonus_platforms:
-				var chance = randf()
 				for bn_type in chance_bn:
 					chance -= chance_bn[bn_type]
 					if chance < 0:
@@ -133,7 +152,30 @@ func place_section():
 						bonus.position = plat.position + Vector2(0, -64)
 						Game.add_child(bonus)
 						break
+			if chance >= 0: #если нет бонуса
+				place_coins(plat, chances_having_coins[plat_type])
 	position.x += dist_betw_columns * columns
+
+func place_coins(plat, chance):
+	if chance - randf() < 0:
+		return
+	var spawner = randi() % plat.get_node("CoinSpawners").get_child_count()
+	#print(plat.get_child_count())
+	for i in range(0, plat.get_node("CoinSpawners").get_child(spawner).get_child_count()):
+		var coin = Coin.instance()
+		chance = randf()
+		var chances = chances_coins_spawner_1
+		if coin.is_in_group("CoinSpawnerLevel1"):
+			chances = chances_coins_spawner_1
+		if coin.is_in_group("CoinSpawnerLevel2"):
+			chances = chances_coins_spawner_2
+		for j in chances.keys():
+			chance -= chances[j]
+			if chance < 0:
+				coin.initiate(j)
+				break
+		#coin.position = i.position
+		plat.get_node("CoinSpawners").get_child(spawner).get_child(i).add_child(coin)
 
 func _ready():
 	Player.height_to_fail = lines * dist_betw_lines + 600
