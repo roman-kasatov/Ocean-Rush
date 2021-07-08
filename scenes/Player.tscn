@@ -316,8 +316,8 @@ script = ExtResource( 14 )
 position = Vector2( -0.994476, -2.00012 )
 frames = SubResource( 17 )
 
-[node name="Fire" parent="Jetpack" instance=ExtResource( 16 )]
-position = Vector2( -0.750854, 10.4284 )
+[node name="Fire" parent="." instance=ExtResource( 16 )]
+position = Vector2( -11.6756, 8.32925 )
 rotation = 0.201538
 z_index = -1
 emitting = false
@@ -329,6 +329,7 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
+frame = 13
 playing = true
 script = ExtResource( 13 )
 
@@ -336,14 +337,14 @@ script = ExtResource( 13 )
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 33 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 42 )
-frame = 7
+frame = 4
 playing = true
 script = SubResource( 43 )
 
@@ -356,13 +357,14 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 48 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 55 )
 animation = "slow"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

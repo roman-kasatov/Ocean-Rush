@@ -6,7 +6,7 @@ onready var Jetpack_without_fuel = preload("res://drawable/Character/jetpack.png
 onready var Player = get_parent()
 
 onready var Fuel = $Fuel
-onready var Fire = $Fire
+onready var Fire = Player.get_node("Fire")
 
 onready var working = 0
 
