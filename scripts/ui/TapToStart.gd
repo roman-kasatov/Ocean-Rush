@@ -24,6 +24,6 @@ func _input(event):
 	if start_pause and event is InputEventScreenTouch and event.is_pressed():
 		if Rect2($TapZone.get_global_rect().position, $TapZone.rect_size).has_point(event.position):
 			get_tree().paused = false
-			emit_signal("start_game")
+			Events.emit_signal('start_game')
 			need_to_erase = true
 			start_pause = false
