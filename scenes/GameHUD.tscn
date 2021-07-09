@@ -1,8 +1,7 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Score.gd" type="Script" id=3]
 [ext_resource path="res://scripts/ui/SkinMenuBtn.gd" type="Script" id=5]
 [ext_resource path="res://scenes/UI/SkinBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=7]
@@ -111,7 +110,6 @@ margin_bottom = 23.5
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
