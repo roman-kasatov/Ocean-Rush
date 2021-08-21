@@ -21,7 +21,7 @@ func _ready():
 
 
 func fail():
-	get_tree().paused = true
+	get_tree().paused = true #надо чтоб ничего кроме камеры не останавливалось
 	$CanvasLayer/Blackout.hide()
 	$Scarf.start_pin = false
 	$Scarf.gravity *= 2
