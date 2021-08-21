@@ -21,10 +21,10 @@ func initiate(type):
 		value = 2
 		$AnimatedSprite.modulate = \"79e742\"
 	if type == \"coin4\":
-		value = 4
+		value = 3
 		$AnimatedSprite.modulate = \"4496f7\"
 	if type == \"coin8\":
-		value = 8
+		value = 4
 		$AnimatedSprite.modulate = \"f96c35\"
 "
 
@@ -111,12 +111,11 @@ shape = SubResource( 2 )
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
 frames = SubResource( 9 )
-frame = 5
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
 frames = SubResource( 16 )
-frame = 3
+frame = 4
 playing = true

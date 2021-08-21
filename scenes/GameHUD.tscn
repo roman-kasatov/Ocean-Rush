@@ -1,12 +1,15 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
+[ext_resource path="res://drawable/coin.png" type="Texture" id=3]
+[ext_resource path="res://drawable/coin_shine.png" type="Texture" id=4]
 [ext_resource path="res://scripts/ui/SkinMenuBtn.gd" type="Script" id=5]
 [ext_resource path="res://scenes/UI/SkinBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://drawable/ui/Pause.png" type="Texture" id=8]
 [ext_resource path="res://drawable/ui/Text.png" type="Texture" id=9]
+[ext_resource path="res://scripts/ui/Coin_UI.gd" type="Script" id=10]
 [ext_resource path="res://scripts/ui/SkinPanel.gd" type="Script" id=12]
 [ext_resource path="res://scripts/ui/FailurePanel.gd" type="Script" id=13]
 [ext_resource path="res://scripts/ui/PausePanel.gd" type="Script" id=14]
@@ -20,27 +23,91 @@
 size = 46
 font_data = ExtResource( 7 )
 
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 12, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 36, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 60, 0, 12, 16 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 12, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 24, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 60, 0, 12, 16 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
 [sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=18]
 size = 42
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=19]
 size = 26
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=20]
 size = 26
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=21]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.54902, 0.886275, 0.862745, 0.337255 )
 border_width_left = 12
 border_width_top = 12
@@ -53,14 +120,14 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=23]
 font_data = ExtResource( 7 )
 
 [sub_resource type="Theme" id=9]
-default_font = SubResource( 8 )
-Panel/styles/panel = SubResource( 7 )
+default_font = SubResource( 23 )
+Panel/styles/panel = SubResource( 22 )
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=24]
 code = "shader_type canvas_item;
 
 void fragment(){
@@ -68,8 +135,8 @@ void fragment(){
 	COLOR.a = 1.0 - UV.x;
 }"
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+[sub_resource type="ShaderMaterial" id=25]
+shader = SubResource( 24 )
 
 [node name="GameHUD" type="CanvasLayer"]
 
@@ -117,15 +184,25 @@ __meta__ = {
 [node name="Coins" type="Label" parent="ScorePanel"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 39.2862
+margin_left = 59.4798
 margin_top = -23.5
-margin_right = 111.286
+margin_right = 131.48
 margin_bottom = 23.5
 custom_fonts/font = SubResource( 1 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Coin" type="AnimatedSprite" parent="ScorePanel/Coins"]
+self_modulate = Color( 0.976471, 0.94902, 0.301961, 1 )
+position = Vector2( -26.2245, 20.7448 )
+scale = Vector2( 2.66462, 2.66462 )
+frames = SubResource( 16 )
+script = ExtResource( 10 )
+
+[node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
+frames = SubResource( 17 )
 
 [node name="PausePanel" type="PanelContainer" parent="."]
 pause_mode = 2
@@ -213,7 +290,7 @@ margin_right = 169.5
 margin_bottom = -17.5956
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 18 )
 text = "YOUR SCORE:
 0"
 align = 1
@@ -232,7 +309,7 @@ margin_right = 146.0
 margin_bottom = 63.541
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 19 )
 text = "BEST SCORE: 
 999"
 align = 1
@@ -251,7 +328,7 @@ margin_right = 137.0
 margin_bottom = 129.117
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 20 )
 text = "Menu"
 script = ExtResource( 17 )
 __meta__ = {
@@ -310,7 +387,7 @@ __meta__ = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 21 )
 tab_align = 0
 tabs_visible = false
 script = ExtResource( 12 )
@@ -495,7 +572,7 @@ max_text_lines = 2
 margin_bottom = 200.0
 
 [node name="Body" type="ScrollContainer" parent="SkinPanel/TabContainer/Control"]
-material = SubResource( 11 )
+material = SubResource( 25 )
 margin_left = 198.0
 margin_right = 710.0
 margin_bottom = 200.0
@@ -516,4 +593,5 @@ margin_bottom = 200.0
 margin_left = 200.0
 margin_right = 360.0
 margin_bottom = 200.0
+
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]
