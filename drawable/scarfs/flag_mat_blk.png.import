@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flag_cnt_blm.png-5bc1cea69a3dd25081705e1a076b0750.stex"
+path="res://.import/flag_mat_blk.png-249a494add9e2664e6acaa57101c3239.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/scarfs/flag_cnt_blm.png"
-dest_files=[ "res://.import/flag_cnt_blm.png-5bc1cea69a3dd25081705e1a076b0750.stex" ]
+source_file="res://drawable/scarfs/flag_mat_blk.png"
+dest_files=[ "res://.import/flag_mat_blk.png-249a494add9e2664e6acaa57101c3239.stex" ]
 
 [params]
 

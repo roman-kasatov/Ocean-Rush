@@ -16,12 +16,12 @@ var count: int
 
 func _ready():
 	# texture has height 80 px and width about 150-300
-	var scarf_texture = load("res://drawable/scarfs/flag_painting_4.jpg")
+	var scarf_texture = load("res://drawable/scarfs/flag_abstr_7.png")
 	$Line2D.texture = scarf_texture
 	# 80 is a scarf heigth === width, 
 	# I really don't know why it should be devided by 2
 	if scarf_texture.get_size().x == 1:
-		length_add = 199
+		length_add = 129
 	length = 80 * scarf_texture.get_size().x / scarf_texture.get_size().y / 2 + length_add
 	
 	count = get_count(length)
