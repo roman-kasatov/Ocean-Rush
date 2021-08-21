@@ -248,40 +248,40 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 5 )
 region = Rect2( 17, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 17, 10 )
+region = Rect2( 34, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 5 )
-region = Rect2( 17, 0, 17, 10 )
+region = Rect2( 51, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 5 )
-region = Rect2( 34, 0, 17, 10 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 5 )
-region = Rect2( 51, 0, 17, 10 )
+atlas = ExtResource( 8 )
+region = Rect2( 17, 0, 17, 10 )
 
 [sub_resource type="SpriteFrames" id=55]
 animations = [ {
-"frames": [ SubResource( 49 ), SubResource( 50 ) ],
-"loop": true,
-"name": "fast",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
+"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
 "loop": true,
 "name": "slow",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 53 ), SubResource( 54 ) ],
+"loop": true,
+"name": "fast",
+"speed": 10.0
 } ]
 
 [sub_resource type="Curve" id=56]
@@ -324,13 +324,12 @@ z_index = -1
 emitting = false
 
 [node name="Bubble" type="AnimatedSprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.662745 )
 position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
-frame = 16
+frame = 19
 playing = true
 script = ExtResource( 13 )
 
@@ -338,14 +337,14 @@ script = ExtResource( 13 )
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 33 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 42 )
-frame = 4
+frame = 1
 playing = true
 script = SubResource( 43 )
 
@@ -358,12 +357,14 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 48 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 55 )
 animation = "slow"
+frame = 2
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -415,6 +416,7 @@ script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GatherArea"]
 shape = SubResource( 57 )
+
 [connection signal="area_entered" from="DetectorEvil" to="." method="_on_DetectorEvil_area_entered"]
 [connection signal="animation_finished" from="Jetpack/Fuel" to="Jetpack" method="_on_Fuel_animation_finished"]
 [connection signal="frame_changed" from="Jetpack/Fuel" to="Jetpack" method="_on_Fuel_frame_changed"]
