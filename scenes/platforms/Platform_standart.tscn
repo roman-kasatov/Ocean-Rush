@@ -80,17 +80,12 @@ position = Vector2( -0.208332, -54.6543 )
 [node name="Place5" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
 "CoinSpawnerLevel1",
 ]]
-position = Vector2( -0.208332, -82.8954 )
+position = Vector2( -31.764, -54.654 )
 
 [node name="Place6" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
 "CoinSpawnerLevel1",
 ]]
-position = Vector2( -31.764, -82.895 )
-
-[node name="Place7" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
-"CoinSpawnerLevel1",
-]]
-position = Vector2( 31.764, -82.895 )
+position = Vector2( 31.764, -54.654 )
 
 [node name="CoinSpawner3" type="Node2D" parent="CoinSpawners"]
 
