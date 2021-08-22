@@ -42,7 +42,6 @@ func inc_score():
 	$GameHUD/ScorePanel/Score.text = str(score)
 
 func start_game():
-	print('asdfsad')
 	var score_timer = Timer.new()
 	score_timer.wait_time = 1.0
 	score_timer.one_shot = false
