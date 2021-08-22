@@ -1,11 +1,11 @@
 extends AnimatedSprite
 
-#onready var part = $CPUParticles2D2
+onready var part = $CPUParticles2D2
 var pos_y_saved : float
 var rot_saved : float
 
 var speed_x = 1.0
-var max_speed_x = 5.0
+var max_speed_x = 6.0
 var accel_x = 0.5
 
 var speed_y = 0.0
@@ -15,8 +15,6 @@ var accel_y = 0.15
 var phase_rot = 0.0
 var speed_rot = 0.15
 
-#func _ready():
-	#pos_y_saved = part.global_position.y
 
 func _process(delta):
 	if (speed_x < max_speed_x):
@@ -29,5 +27,4 @@ func _process(delta):
 	position += Vector2(-speed_x, speed_y)
 	phase_rot += speed_rot
 	rotation = sin(phase_rot) / 7
-#	part.rotation = -rotation
-#	part.global_position.y = pos_y_saved
+	part.rotation = -rotation
