@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flag_cnt_fr.png-b4e3c18ceab3ba00530729b59c66b83f.stex"
+path="res://.import/flag_mat_beg.png-313f41fb3d3d4e51110ace1b4804c404.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/scarfs/flag_cnt_fr.png"
-dest_files=[ "res://.import/flag_cnt_fr.png-b4e3c18ceab3ba00530729b59c66b83f.stex" ]
+source_file="res://drawable/scarfs/flag_mat_beg.png"
+dest_files=[ "res://.import/flag_mat_beg.png-313f41fb3d3d4e51110ace1b4804c404.stex" ]
 
 [params]
 

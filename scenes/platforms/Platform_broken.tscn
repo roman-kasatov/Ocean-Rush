@@ -90,3 +90,102 @@ amplitude = 3
 
 [node name="DestructModule" parent="." instance=ExtResource( 5 )]
 position = Vector2( 26.9588, 0.433884 )
+
+[node name="CoinSpawners" type="Node2D" parent="."]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="CoinSpawner1" type="Node2D" parent="CoinSpawners"]
+
+[node name="Place1" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -38.6573, -25.9211 )
+
+[node name="Place2" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel2",
+]]
+position = Vector2( -0.208332, -25.9213 )
+
+[node name="Place3" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 38.2407, -25.9213 )
+
+[node name="Place4" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -19.5619, -52.024 )
+
+[node name="Place5" type="Node2D" parent="CoinSpawners/CoinSpawner1" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 19.1457, -52.0243 )
+
+[node name="CoinSpawner2" type="Node2D" parent="CoinSpawners"]
+
+[node name="Place1" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -31.7643, -25.9213 )
+
+[node name="Place2" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel2",
+]]
+position = Vector2( -0.208332, -25.9213 )
+
+[node name="Place3" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 31.3477, -25.9213 )
+
+[node name="Place4" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -0.208332, -54.6543 )
+
+[node name="Place5" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -31.764, -54.654 )
+
+[node name="Place6" type="Node2D" parent="CoinSpawners/CoinSpawner2" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 31.764, -54.654 )
+
+[node name="CoinSpawner3" type="Node2D" parent="CoinSpawners"]
+
+[node name="Place1" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -19.562, -25.921 )
+
+[node name="Place2" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel2",
+]]
+position = Vector2( 0, -42.327 )
+
+[node name="Place3" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 19.562, -25.921 )
+
+[node name="Place4" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -19.5619, -59.631 )
+
+[node name="Place5" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 19.1457, -59.631 )
+
+[node name="Place6" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( -38.454, -42.327 )
+
+[node name="Place7" type="Node2D" parent="CoinSpawners/CoinSpawner3" groups=[
+"CoinSpawnerLevel1",
+]]
+position = Vector2( 38.454, -42.327 )
