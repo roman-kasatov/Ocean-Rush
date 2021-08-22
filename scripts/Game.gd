@@ -16,6 +16,7 @@ func _physics_process(delta):
 func _ready():
 	Events.connect('start_game', self, 'start_game')
 	$CanvasLayer/Blackout.open()
+	$GameHUD/Market.build()
 	randomize()
 	get_tree().paused = true
 
@@ -51,7 +52,8 @@ func start_game():
 	score_timer.start()
 
 	$Player/CPUParticles2D.emitting = true
-#	GameHUD.get_node("ScorePanel").visible = true
-#	GameHUD.get_node("SkinPanel").visible = false
+	GameHUD.get_node("ScorePanel").visible = true
+	GameHUD.get_node("Market").visible = false
+	GameHUD.get_node("DragChecker").visible = false
 #	GameHUD.get_node("SkinSwitches").visible = false
 	PlatformManager.place_section()
