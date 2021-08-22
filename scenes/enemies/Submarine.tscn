@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://drawable/enemies/submarine.png" type="Texture" id=1]
+[ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/DestructModule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/enemies/Submarine.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 212, 59 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 212, 0, 212, 59 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Timer
+
+export (Curve) var DAMP_EASING
+var last_shift = Vector2.ZERO
+var subject
+
+# SETTINGS --
+# also wait_time is a built-in property 
+export var amplitude : = 6
+export var die_on_timeout = true
+# --
+
+func _ready():
+	subject = get_parent()
+	if die_on_timeout:
+		connect(\"timeout\", self, \"die\")
+
+func _process(delta):
+	var damping = DAMP_EASING.interpolate(time_left / wait_time)
+	var shift = Vector2(
+		rand_range(-amplitude, amplitude) * damping,
+		rand_range(-amplitude, amplitude) * damping)
+	subject.position += shift - last_shift
+	last_shift = shift
+
+func die():
+	queue_free()
+"
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 25.9505
+height = 38.8294
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.832215 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="Submarine" type="AnimatedSprite"]
+scale = Vector2( 2.04, 2.04 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+script = ExtResource( 4 )
+
+[node name="ShakeModule" parent="." instance=ExtResource( 2 )]
+process_mode = 1
+wait_time = 5.893
+one_shot = false
+autostart = true
+script = SubResource( 4 )
+amplitude = 3
+
+[node name="Area" type="Area2D" parent="." groups=[
+"enemy",
+]]
+position = Vector2( -0.838039, -0.486887 )
+scale = Vector2( 0.851643, 0.76561 )
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+position = Vector2( -16.9808, 14.5803 )
+scale = Vector2( 4.05919, 0.417752 )
+shape = SubResource( 5 )
+
+[node name="DestructModule" parent="." instance=ExtResource( 3 )]
+position = Vector2( 120.179, 8.09641 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 95.7109, 9.11799 )
+amount = 40
+emission_shape = 2
+emission_rect_extents = Vector2( 7, 10 )
+spread = 15.0
+gravity = Vector2( 0, -80 )
+initial_velocity = 80.0
+scale_amount = 2.0
+color_ramp = SubResource( 6 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 95.5381, 10.3615 )
+scale = Vector2( 1, 1 )
+z_index = -1
+amount = 40
+emission_shape = 2
+emission_rect_extents = Vector2( 7, 10 )
+spread = 15.0
+gravity = Vector2( 0, -80 )
+initial_velocity = 80.0
+scale_amount = 2.0
+color_ramp = SubResource( 6 )

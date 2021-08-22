@@ -20,7 +20,6 @@ func _physics_process(delta):
 
 func start_moving():
 	var shark = Shark_res.instance()
-	# accounting Player's scale = 2
 	shark.position = Player.position + position * 2 + Vector2(300, -30)
 	Game.add_child(shark)
 	Player.change_anim_scared(1.8)
