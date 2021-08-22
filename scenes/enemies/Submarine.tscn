@@ -62,7 +62,6 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 [node name="Submarine" type="AnimatedSprite"]
 scale = Vector2( 2.04, 2.04 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -90,7 +89,7 @@ position = Vector2( 120.179, 8.09641 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 95.7109, 9.11799 )
-amount = 40
+amount = 55
 emission_shape = 2
 emission_rect_extents = Vector2( 7, 10 )
 spread = 15.0
@@ -101,9 +100,8 @@ color_ramp = SubResource( 6 )
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 position = Vector2( 95.5381, 10.3615 )
-scale = Vector2( 1, 1 )
 z_index = -1
-amount = 40
+amount = 55
 emission_shape = 2
 emission_rect_extents = Vector2( 7, 10 )
 spread = 15.0
