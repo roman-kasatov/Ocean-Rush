@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -51,16 +51,23 @@ func _physics_process(delta):
 
 "
 
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 0.160217, 0.410156, 1, 0.223892, 0.575871, 0.785156, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 4 )
+width = 10
+
 [sub_resource type="GDScript" id=2]
 script/source = "extends Sprite
 
-func _ready():
-	fill_screen()
-	get_tree().root.connect(\"size_changed\", self, \"fill_screen\")
+#func _ready():
+#	fill_screen()
+#	get_tree().root.connect(\"size_changed\", self, \"fill_screen\")
 
-func fill_screen():
-	var view_size = get_viewport_rect().size
-	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)	
+#func fill_screen():
+#	var view_size = get_viewport_rect().size
+#	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)	
 "
 
 [node name="Game" type="Node"]
@@ -125,12 +132,17 @@ script = SubResource( 1 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 pause_mode = 2
 
-[node name="FillBackground" type="Sprite" parent="ParallaxBackground"]
-modulate = Color( 0.145098, 0.435294, 0.607843, 1 )
-scale = Vector2( 53.2623, 52.9877 )
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -623.144, -61.8389 )
+motion_scale = Vector2( 0, 1 )
+
+[node name="FillBackground" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 65.4968, 2302.81 )
+rotation = -1.5708
+scale = Vector2( 300, 2500 )
 z_index = -100
 z_as_relative = false
-texture = ExtResource( 24 )
+texture = SubResource( 3 )
 centered = false
 script = SubResource( 2 )
 
