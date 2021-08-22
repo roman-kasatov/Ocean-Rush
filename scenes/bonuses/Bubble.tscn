@@ -20,6 +20,7 @@ func blow_up():
 "
 
 [node name="Bubble" type="Sprite"]
+pause_mode = 2
 visible = false
 modulate = Color( 1, 1, 1, 0.627451 )
 scale = Vector2( 1.2, 1.2 )

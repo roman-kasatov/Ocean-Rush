@@ -99,6 +99,7 @@ animations = [ {
 "gatherable",
 "money",
 ]]
+pause_mode = 2
 scale = Vector2( 0.845296, 0.845296 )
 script = SubResource( 1 )
 
@@ -111,11 +112,12 @@ shape = SubResource( 2 )
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
 frames = SubResource( 9 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( -1.01315, -1.58861 )
 scale = Vector2( 1.90462, 1.90462 )
 frames = SubResource( 16 )
-frame = 4
+frame = 2
 playing = true

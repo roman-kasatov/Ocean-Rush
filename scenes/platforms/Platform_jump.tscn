@@ -36,6 +36,7 @@ extents = Vector2( 32.5415, 6.07756 )
 [node name="Platform_jump" type="StaticBody2D" groups=[
 "touchable",
 ]]
+pause_mode = 2
 scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
 
@@ -49,7 +50,7 @@ texture = ExtResource( 2 )
 [node name="SpritePlatformAnim" type="AnimatedSprite" parent="."]
 position = Vector2( -1, -7 )
 frames = SubResource( 5 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
