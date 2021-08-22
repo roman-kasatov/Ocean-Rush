@@ -21,7 +21,6 @@ func _process(delta):
 	elif color_cur <= color_min:
 		color_cur = color_min
 		color_change = abs(color_change)
-	print(modulate.r)
 	modulate.r = color_cur / 255.0
 	modulate.g = color_cur / 255.0
 	

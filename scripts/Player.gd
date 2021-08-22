@@ -13,6 +13,7 @@ var max_fall_speed = 400
 var min_speed = 200
 var max_speed = 400
 var jump_speed = 700
+var boots_speed = 1
 var height_to_fail #being calculated at the start at "PlatformManager" script
 var was_falling = true
 var shifted_time_left = 0
@@ -94,6 +95,7 @@ func _physics_process(delta):
 	# bonuses
 	jump_bn_left -= delta if jump_bn_left > 0 else 0
 	if jump_bn_left <= 0:
+		boots_speed = 1
 		$Boots.disappear()
 		
 
@@ -103,12 +105,12 @@ func _unhandled_input(event):
 			if $Jetpack.working:
 				return
 			if is_on_floor():
-				motion.y = -jump_speed
+				motion.y = -jump_speed * boots_speed
 				var particles = Floor_part.instance()
 				particles.position = get_global_position() + Vector2(0, 16)
 				get_tree().get_root().call_deferred("add_child", particles)
 			elif jump_left > 0:
-				motion.y = -jump_speed
+				motion.y = -jump_speed * boots_speed
 				jump_left -= 1
 				var particles = Air_part.instance()
 				if jump_left == 0 and jump_bn_left > 0:
@@ -140,6 +142,7 @@ func blow_up():
 	$Boots.disappear()
 	$Bubble.disappear()
 	$Jetpack.disappear()
+	boots_speed = 1
 
 func change_anim_scared(time):
 	timer_anim.set_wait_time(time)
@@ -188,6 +191,7 @@ func add_bonus(type):
 			$Bubble.appear()
 	elif type == 'jump_bonus':
 		jump_bn_left = 4
+		boots_speed = 1.5
 		$Boots.appear()
 	elif type == 'jetpack_bonus':
 		$Jetpack.appear()
