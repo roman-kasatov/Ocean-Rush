@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://drawable/ui/Pause.png" type="Texture" id=8]
 [ext_resource path="res://drawable/ui/Text.png" type="Texture" id=9]
 [ext_resource path="res://scripts/ui/Coin_UI.gd" type="Script" id=10]
+[ext_resource path="res://drawable/NinePatchBackground.png" type="Texture" id=11]
 [ext_resource path="res://scripts/ui/SkinPanel.gd" type="Script" id=12]
 [ext_resource path="res://scripts/ui/FailurePanel.gd" type="Script" id=13]
 [ext_resource path="res://scripts/ui/PausePanel.gd" type="Script" id=14]
@@ -19,95 +20,147 @@
 [ext_resource path="res://scripts/ui/PauseBnt.gd" type="Script" id=18]
 [ext_resource path="res://scripts/ui/ResumeBtn.gd" type="Script" id=19]
 
+[sub_resource type="GDScript" id=28]
+script/source = "extends CanvasLayer
+
+func _ready():
+	$Market.DragChecker = $DragChecker
+"
+
+[sub_resource type="GDScript" id=27]
+script/source = "extends Control
+
+
+var is_drag = false
+var is_pressing = false
+var path_len = 0
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			path_len = 0
+	elif event is InputEventMouseMotion:
+		path_len += event.relative.length()
+"
+
 [sub_resource type="DynamicFont" id=1]
 size = 46
 font_data = ExtResource( 7 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 12, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 12, 0, 12, 16 )
+region = Rect2( 24, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 24, 0, 12, 16 )
+region = Rect2( 36, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 36, 0, 12, 16 )
+region = Rect2( 48, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
-region = Rect2( 48, 0, 12, 16 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 13.0
 } ]
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
 region = Rect2( 12, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
 region = Rect2( 24, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
 region = Rect2( 36, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
 region = Rect2( 48, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 13.0
 } ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=16]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=17]
 size = 42
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 26
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=19]
 size = 26
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=20]
-size = 26
-font_data = ExtResource( 7 )
+[sub_resource type="GDScript" id=26]
+script/source = "extends NinePatchRect
 
-[sub_resource type="DynamicFont" id=21]
+var SkinBlock = preload(\"res://scenes/UI/SkinBlock.tscn\")
+var DragChecker = null
+
+
+func build():
+	var names = dir_contents('res://drawable/scarfs/')
+	for name in names:
+		var skinBlock = SkinBlock.instance()
+		skinBlock.set_picture('flag', name)
+		skinBlock.DragChecker = DragChecker
+		$TabContainer/Flag/HBoxContainer.add_child(skinBlock) 
+	
+func dir_contents(path):
+	var names = []
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != \"\":
+			if not dir.current_is_dir() and file_name.ends_with('.png') or file_name.ends_with('.jpg'):
+				names.append(path + file_name)
+			file_name = dir.get_next()
+	return names
+"
+
+[sub_resource type="DynamicFont" id=20]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.54902, 0.886275, 0.862745, 0.337255 )
 border_width_left = 12
 border_width_top = 12
@@ -120,12 +173,12 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=22]
 font_data = ExtResource( 7 )
 
-[sub_resource type="Theme" id=9]
-default_font = SubResource( 23 )
-Panel/styles/panel = SubResource( 22 )
+[sub_resource type="Theme" id=23]
+default_font = SubResource( 22 )
+Panel/styles/panel = SubResource( 21 )
 
 [sub_resource type="Shader" id=24]
 code = "shader_type canvas_item;
@@ -139,9 +192,22 @@ void fragment(){
 shader = SubResource( 24 )
 
 [node name="GameHUD" type="CanvasLayer"]
+script = SubResource( 28 )
+
+[node name="DragChecker" type="Control" parent="."]
+pause_mode = 2
+process_priority = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScorePanel" type="Control" parent="."]
 pause_mode = 1
+visible = false
 anchor_right = 1.0
 margin_bottom = 74.0
 __meta__ = {
@@ -198,11 +264,11 @@ __meta__ = {
 self_modulate = Color( 0.976471, 0.94902, 0.301961, 1 )
 position = Vector2( -26.2245, 20.7448 )
 scale = Vector2( 2.66462, 2.66462 )
-frames = SubResource( 16 )
+frames = SubResource( 8 )
 script = ExtResource( 10 )
 
 [node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
-frames = SubResource( 17 )
+frames = SubResource( 15 )
 
 [node name="PausePanel" type="PanelContainer" parent="."]
 pause_mode = 2
@@ -230,28 +296,29 @@ size_flags_horizontal = 3
 
 [node name="ResumeBtn" type="Button" parent="PausePanel/VBoxContainer"]
 margin_right = 386.0
-margin_bottom = 76.0
+margin_bottom = 116.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 16 )
 text = "RESUME"
 flat = true
 script = ExtResource( 19 )
 
 [node name="OptionsBtn" type="Button" parent="PausePanel/VBoxContainer"]
+visible = false
 margin_top = 80.0
 margin_right = 386.0
 margin_bottom = 156.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 16 )
 text = "OPTIONS"
 flat = true
 
 [node name="MenuBtn" type="Button" parent="PausePanel/VBoxContainer"]
-margin_top = 160.0
+margin_top = 120.0
 margin_right = 386.0
 margin_bottom = 236.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 16 )
 text = "MENU"
 flat = true
 script = ExtResource( 15 )
@@ -290,7 +357,7 @@ margin_right = 169.5
 margin_bottom = -17.5956
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 17 )
 text = "YOUR SCORE:
 0"
 align = 1
@@ -309,7 +376,7 @@ margin_right = 146.0
 margin_bottom = 63.541
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 18 )
 text = "BEST SCORE: 
 999"
 align = 1
@@ -328,7 +395,7 @@ margin_right = 137.0
 margin_bottom = 129.117
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 19 )
 text = "Menu"
 script = ExtResource( 17 )
 __meta__ = {
@@ -361,33 +428,41 @@ __meta__ = {
 }
 
 [node name="TapZone" type="Control" parent="TapToStart"]
-anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -747.0
+margin_bottom = 372.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkinPanel" type="NinePatchRect" parent="."]
-visible = false
+[node name="Market" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.6, 0.462745, 0.752941, 1 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -365.0
-margin_top = -213.0
+margin_top = -197.0
 margin_right = 365.0
 theme = ExtResource( 1 )
+texture = ExtResource( 11 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+script = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TabContainer" type="TabContainer" parent="SkinPanel"]
+[node name="TabContainer" type="TabContainer" parent="Market"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 21 )
+margin_left = 14.0
+margin_top = 18.0
+margin_right = -15.0
+margin_bottom = 1.0
+mouse_filter = 2
+custom_fonts/font = SubResource( 20 )
 tab_align = 0
 tabs_visible = false
 script = ExtResource( 12 )
@@ -395,30 +470,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="HBoxContainer" parent="SkinPanel/TabContainer"]
+[node name="Menu" type="HBoxContainer" parent="Market/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -4.0
 custom_constants/separation = 40
+alignment = 1
 
-[node name="SkinMenuBlock" type="VBoxContainer" parent="SkinPanel/TabContainer/Menu"]
-margin_right = 160.0
+[node name="SkinMenuBlock" type="VBoxContainer" parent="Market/TabContainer/Menu"]
+visible = false
+margin_left = 81.0
+margin_right = 241.0
 margin_bottom = 201.0
-theme = SubResource( 9 )
+theme = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock"]
+[node name="Label" type="Label" parent="Market/TabContainer/Menu/SkinMenuBlock"]
 margin_right = 160.0
 margin_bottom = 16.0
 text = "Body"
 align = 1
 
-[node name="Icon" type="TextureButton" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock"]
+[node name="Icon" type="TextureButton" parent="Market/TabContainer/Menu/SkinMenuBlock"]
 margin_top = 20.0
 margin_right = 160.0
 margin_bottom = 180.0
@@ -430,7 +504,7 @@ stretch_mode = 5
 script = ExtResource( 5 )
 code = 1
 
-[node name="Highlight" type="Panel" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock/Icon"]
+[node name="Highlight" type="Panel" parent="Market/TabContainer/Menu/SkinMenuBlock/Icon"]
 modulate = Color( 1, 1, 1, 0.596078 )
 show_behind_parent = true
 anchor_right = 1.0
@@ -440,22 +514,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkinMenuBlock2" type="VBoxContainer" parent="SkinPanel/TabContainer/Menu"]
-margin_left = 200.0
-margin_right = 360.0
+[node name="SkinMenuBlock2" type="VBoxContainer" parent="Market/TabContainer/Menu"]
+visible = false
+margin_left = 181.0
+margin_right = 341.0
 margin_bottom = 201.0
-theme = SubResource( 9 )
+theme = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock2"]
+[node name="Label" type="Label" parent="Market/TabContainer/Menu/SkinMenuBlock2"]
 margin_right = 160.0
 margin_bottom = 16.0
 text = "Hat"
 align = 1
 
-[node name="Icon" type="TextureButton" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock2"]
+[node name="Icon" type="TextureButton" parent="Market/TabContainer/Menu/SkinMenuBlock2"]
 margin_top = 20.0
 margin_right = 160.0
 margin_bottom = 180.0
@@ -467,7 +542,7 @@ stretch_mode = 5
 script = ExtResource( 5 )
 code = 2
 
-[node name="Highlight" type="Panel" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock2/Icon"]
+[node name="Highlight" type="Panel" parent="Market/TabContainer/Menu/SkinMenuBlock2/Icon"]
 modulate = Color( 1, 1, 1, 0.596078 )
 show_behind_parent = true
 anchor_right = 1.0
@@ -477,22 +552,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkinMenuBlock3" type="VBoxContainer" parent="SkinPanel/TabContainer/Menu"]
-margin_left = 400.0
-margin_right = 560.0
-margin_bottom = 201.0
-theme = SubResource( 9 )
+[node name="SkinMenuBlock3" type="VBoxContainer" parent="Market/TabContainer/Menu"]
+margin_left = 270.0
+margin_right = 430.0
+margin_bottom = 180.0
+theme = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock3"]
+[node name="Label" type="Label" parent="Market/TabContainer/Menu/SkinMenuBlock3"]
 margin_right = 160.0
 margin_bottom = 16.0
 text = "Flag"
 align = 1
 
-[node name="Icon" type="TextureButton" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock3"]
+[node name="Icon" type="TextureButton" parent="Market/TabContainer/Menu/SkinMenuBlock3"]
 margin_top = 20.0
 margin_right = 160.0
 margin_bottom = 180.0
@@ -504,7 +579,7 @@ stretch_mode = 5
 script = ExtResource( 5 )
 code = 3
 
-[node name="Highlight" type="Panel" parent="SkinPanel/TabContainer/Menu/SkinMenuBlock3/Icon"]
+[node name="Highlight" type="Panel" parent="Market/TabContainer/Menu/SkinMenuBlock3/Icon"]
 modulate = Color( 1, 1, 1, 0.596078 )
 show_behind_parent = true
 anchor_right = 1.0
@@ -514,64 +589,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hat" type="ScrollContainer" parent="SkinPanel/TabContainer"]
+[node name="Hat" type="ScrollContainer" parent="Market/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -4.0
+mouse_filter = 1
 scroll_vertical_enabled = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SkinPanel/TabContainer/Hat"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Hat"]
 margin_right = 324.0
-margin_bottom = 200.0
+margin_bottom = 180.0
 
-[node name="SkinBlock" parent="SkinPanel/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
-margin_bottom = 200.0
+[node name="SkinBlock" parent="Market/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
+margin_bottom = 180.0
 
-[node name="SkinBlock2" parent="SkinPanel/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
+[node name="SkinBlock2" parent="Market/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
 margin_left = 164.0
 margin_right = 324.0
-margin_bottom = 200.0
+margin_bottom = 180.0
 
-[node name="Flag" type="ScrollContainer" parent="SkinPanel/TabContainer"]
+[node name="Control" type="ItemList" parent="Market/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -4.0
-scroll_vertical_enabled = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SkinPanel/TabContainer/Flag"]
-margin_right = 324.0
-margin_bottom = 200.0
-
-[node name="SkinBlock" parent="SkinPanel/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
-margin_bottom = 200.0
-
-[node name="SkinBlock2" parent="SkinPanel/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
-margin_left = 164.0
-margin_right = 324.0
-margin_bottom = 200.0
-
-[node name="Control" type="ItemList" parent="SkinPanel/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -4.0
+mouse_filter = 1
 max_text_lines = 2
 
-[node name="SkinBlock3" parent="SkinPanel/TabContainer/Control" instance=ExtResource( 6 )]
+[node name="SkinBlock3" parent="Market/TabContainer/Control" instance=ExtResource( 6 )]
 margin_bottom = 200.0
 
-[node name="Body" type="ScrollContainer" parent="SkinPanel/TabContainer/Control"]
+[node name="Body" type="ScrollContainer" parent="Market/TabContainer/Control"]
 material = SubResource( 25 )
 margin_left = 198.0
 margin_right = 710.0
@@ -581,17 +628,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SkinPanel/TabContainer/Control/Body"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Control/Body"]
 margin_right = 360.0
-margin_bottom = 200.0
+margin_bottom = 180.0
 custom_constants/separation = 40
 
-[node name="SkinBlock" parent="SkinPanel/TabContainer/Control/Body/HBoxContainer" instance=ExtResource( 6 )]
-margin_bottom = 200.0
+[node name="SkinBlock" parent="Market/TabContainer/Control/Body/HBoxContainer" instance=ExtResource( 6 )]
+margin_bottom = 180.0
 
-[node name="SkinBlock2" parent="SkinPanel/TabContainer/Control/Body/HBoxContainer" instance=ExtResource( 6 )]
+[node name="SkinBlock2" parent="Market/TabContainer/Control/Body/HBoxContainer" instance=ExtResource( 6 )]
 margin_left = 200.0
 margin_right = 360.0
-margin_bottom = 200.0
+margin_bottom = 180.0
 
+[node name="Flag" type="ScrollContainer" parent="Market/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Flag"]
+
+[node name="SkinBlock" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_bottom = 180.0
+
+[node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_left = 164.0
+margin_right = 324.0
+margin_bottom = 180.0
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]

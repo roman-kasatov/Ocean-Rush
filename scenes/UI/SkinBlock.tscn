@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.54902, 0.886275, 0.862745, 0.337255 )
 border_width_left = 12
 border_width_top = 12
@@ -16,36 +16,66 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
 
-[sub_resource type="Theme" id=23]
-default_font = SubResource( 22 )
-Panel/styles/panel = SubResource( 20 )
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+Panel/styles/panel = SubResource( 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends VBoxContainer
+
+var DragChecker = null
+
+func set_picture(type, path):
+	$Icon.texture_normal = load(path)
+	$Icon.skin_type = type
+	$Icon.skin_path = path
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends TextureButton
+
+var skin_type = null
+var skin_path = null
+
+var DragChecker
+
+func _ready():
+	DragChecker = get_parent().DragChecker
+	connect(\"button_up\", self, 'click')
+
+func click():
+	if DragChecker.path_len < 5:
+		Events.emit_signal('set_skin', skin_type, skin_path)
+"
 
 [node name="SkinBlock" type="VBoxContainer"]
 margin_right = 160.0
 margin_bottom = 216.0
-theme = SubResource( 23 )
+theme = SubResource( 3 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 160.0
 margin_bottom = 16.0
 text = "Simple Hat"
 align = 1
 
 [node name="Icon" type="TextureButton" parent="."]
-margin_top = 20.0
 margin_right = 160.0
-margin_bottom = 180.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 160, 160 )
 mouse_filter = 1
 texture_normal = ExtResource( 1 )
 expand = true
 stretch_mode = 5
+script = SubResource( 5 )
 
 [node name="Highlight" type="Panel" parent="Icon"]
 modulate = Color( 1, 1, 1, 0.596078 )
@@ -58,8 +88,8 @@ __meta__ = {
 }
 
 [node name="Price" type="Label" parent="."]
-margin_top = 184.0
+margin_top = 164.0
 margin_right = 160.0
-margin_bottom = 200.0
-text = "100 $"
+margin_bottom = 180.0
+text = "$100"
 align = 1

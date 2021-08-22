@@ -27,6 +27,13 @@ func _ready():
 	count = get_count(length)
 	resize_arrays()
 	init_position()
+	
+	Events.connect('set_skin', self, 'set_skin')
+
+func set_skin(type, path):
+	if type == 'flag':
+		var scarf_texture = load(path)
+		$Line2D.texture = scarf_texture
 
 func get_count(length: float):
 	var new_count = ceil(length / constrain)
