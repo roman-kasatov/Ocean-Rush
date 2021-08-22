@@ -29,8 +29,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 2.47396
-height = 63.0655
+radius = 1.90125
+height = 62.2093
 
 [node name="Jellyfish" type="AnimatedSprite"]
 position = Vector2( -143.535, -47.4426 )

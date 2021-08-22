@@ -86,7 +86,7 @@ smoothing_speed = 10.0
 
 [node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
 position = Vector2( -419.314, 33.2445 )
-scale = Vector2( -3.10554, 10.4235 )
+scale = Vector2( -3.10554, 14.2962 )
 
 [node name="BackGround" parent="Player" instance=ExtResource( 5 )]
 visible = false
