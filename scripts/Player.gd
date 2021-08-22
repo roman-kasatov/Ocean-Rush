@@ -191,7 +191,7 @@ func add_bonus(type):
 			$Bubble.appear()
 	elif type == 'jump_bonus':
 		jump_bn_left = 4
-		boots_speed = 1.5
+		boots_speed = 1.33
 		$Boots.appear()
 	elif type == 'jetpack_bonus':
 		$Jetpack.appear()
