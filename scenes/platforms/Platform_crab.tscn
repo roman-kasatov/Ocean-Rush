@@ -29,6 +29,7 @@ extents = Vector2( 6.33271, 4.48256 )
 extents = Vector2( 32.5415, 6.07756 )
 
 [node name="Platform_crab" type="StaticBody2D"]
+pause_mode = 2
 scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
 
@@ -42,6 +43,7 @@ texture = ExtResource( 2 )
 [node name="Crab" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0993247, -13.1435 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Area" type="Area2D" parent="Crab" groups=[
