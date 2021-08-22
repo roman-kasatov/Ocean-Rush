@@ -5,8 +5,8 @@ var max_speed_x = 4.0
 var accel_x = 0.5
 
 var speed_y = 0.0
-var max_speed_y = 4
-var accel_y = 0.25
+var max_speed_y = 6
+var accel_y = 0.18
 
 var color_max = 255
 var color_min = 110
@@ -29,6 +29,6 @@ func _process(delta):
 	if (abs(speed_y) <= abs(max_speed_y)):
 		speed_y += accel_y
 	else:
-		speed_y = max_speed_y
+		speed_y = max_speed_y * sign(speed_y)
 		accel_y *= -1
 	position += Vector2(-speed_x, speed_y)

@@ -36,7 +36,7 @@ height = 63.0655
 position = Vector2( -143.535, -47.4426 )
 scale = Vector2( 2.05093, 2.05093 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 script = ExtResource( 3 )
 

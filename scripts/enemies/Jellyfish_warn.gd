@@ -6,7 +6,7 @@ onready var Game = Player.get_parent()
 var timer_for_start = Timer.new()
 var timer_for_next = Timer.new()
 
-var spawns_left = 7
+var spawns_left = 5
 var started = 0
 
 var jellyfish_res = preload("res://scenes/enemies/Jellyfish.tscn")
