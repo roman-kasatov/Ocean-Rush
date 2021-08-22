@@ -27,6 +27,7 @@ animations = [ {
 [node name="Shark_av" type="AnimatedSprite"]
 position = Vector2( 0.5, -3 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 script = ExtResource( 2 )
 

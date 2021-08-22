@@ -55,7 +55,7 @@ var nodes_pl = {
 
 var Bonus = preload("res://scenes/bonuses/Bonus.tscn")
 
-var shark = preload("res://scenes/enemies/Shark_av.tscn")
+var shark = preload("res://scenes/enemies/Jellyfish_warn.tscn")
 
 
 func generate_section():

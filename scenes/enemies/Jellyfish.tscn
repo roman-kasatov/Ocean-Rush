@@ -34,11 +34,10 @@ height = 63.0655
 
 [node name="Jellyfish" type="AnimatedSprite"]
 position = Vector2( -143.535, -47.4426 )
-scale = Vector2( 1.48, 1.48 )
+scale = Vector2( 2.05093, 2.05093 )
 frames = SubResource( 5 )
 frame = 1
 playing = true
-offset = Vector2( 96.4452, 32.727 )
 script = ExtResource( 3 )
 
 [node name="DestructModule" parent="." instance=ExtResource( 1 )]
@@ -47,7 +46,7 @@ position = Vector2( 126.324, 30.7581 )
 [node name="Area" type="Area2D" parent="." groups=[
 "enemy",
 ]]
-position = Vector2( -0.838039, -0.486887 )
+position = Vector2( -96.6319, -32.4978 )
 scale = Vector2( 0.851643, 0.76561 )
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/ShakeModule.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/enemies/Jellyfish_warn.gd" type="Script" id=2]
+[ext_resource path="res://drawable/enemies/jellyfish_warn.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 15, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 15, 0, 15, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 30, 0, 15, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Timer
+
+export (Curve) var DAMP_EASING
+var last_shift = Vector2.ZERO
+var subject
+
+# SETTINGS --
+# also wait_time is a built-in property 
+export var amplitude : = 6
+export var die_on_timeout = true
+# --
+
+func _ready():
+	subject = get_parent()
+	if die_on_timeout:
+		connect(\"timeout\", self, \"die\")
+
+func _process(delta):
+	var damping = DAMP_EASING.interpolate(time_left / wait_time)
+	var shift = Vector2(
+		rand_range(-amplitude, amplitude) * damping,
+		rand_range(-amplitude, amplitude) * damping)
+	subject.position += shift - last_shift
+	last_shift = shift
+
+func die():
+	queue_free()
+"
+
+[node name="Jellyfish_warn" type="AnimatedSprite"]
+position = Vector2( -96.7778, -45.7566 )
+scale = Vector2( 1.389, 1.389 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+script = ExtResource( 2 )
+
+[node name="ShakeModule" parent="." instance=ExtResource( 1 )]
+process_mode = 1
+wait_time = 4.385
+one_shot = false
+autostart = true
+script = SubResource( 5 )
