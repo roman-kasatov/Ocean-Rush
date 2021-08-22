@@ -78,7 +78,6 @@ scale = Vector2( 1.19926, 0.671349 )
 pause_mode = 2
 position = Vector2( 0, 8 )
 current = true
-zoom = Vector2( 0.9, 0.9 )
 process_mode = 0
 drag_margin_v_enabled = true
 smoothing_enabled = true
@@ -165,5 +164,4 @@ position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 centered = false
-[connection signal="start_game" from="." to="GameHUD/SkinPanel" method="_on_Game_start_game"]
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
