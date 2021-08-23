@@ -17,7 +17,7 @@ var start_position: Vector2
 
 func _ready():
 	start_position = position
-	var scarf_texture = load("res://drawable/scarfs/000_empty.png")
+	var scarf_texture = load("res://drawable/scarfs/101_flag_mat_orng.png")
 	$Line2D.texture = scarf_texture
 	#if scarf_texture.get_size().x <= 20:
 		#length_add = 129

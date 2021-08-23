@@ -4,8 +4,8 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 
 var last_wave = -1
-var score_for_medium = 55
-var score_for_hard = 110
+var score_for_medium = 35
+var score_for_hard = 80
 
 var enemy_curr = 0
 var can_spawn = 1
