@@ -13,8 +13,10 @@ var end_pin = false
 var pos: PoolVector2Array
 var pos_ex: PoolVector2Array
 var count: int
+var start_position: Vector2
 
 func _ready():
+	start_position = position
 	var scarf_texture = load("res://drawable/scarfs/flag_painting_3.jpg")
 	$Line2D.texture = scarf_texture
 	if scarf_texture.get_size().x == 1:
@@ -31,13 +33,16 @@ func set_skin(type, path):
 	if type == 'flag':
 		var scarf_texture = load(path)
 		$Line2D.texture = scarf_texture
-		#length_add = 0
-		#if scarf_texture.get_size().x == 1:
-		#	length_add = 129
-		#length = 80 * scarf_texture.get_size().x / scarf_texture.get_size().y / 2 + length_add
-		#count = get_count(length)
-		#resize_arrays()
-		#init_position()
+		
+		position = start_position
+		
+		length_add = 0
+		if scarf_texture.get_size().x == 1:
+			length_add = 129
+		length = 80 * scarf_texture.get_size().x / scarf_texture.get_size().y / 2 + length_add
+		count = get_count(length)
+		resize_arrays()
+		init_position()
 
 func get_count(length: float):
 	var new_count = ceil(length / constrain)
