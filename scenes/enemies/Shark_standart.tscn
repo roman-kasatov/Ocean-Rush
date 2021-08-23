@@ -39,12 +39,13 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=8]
+radius = 7.40038
 
 [node name="Shark_standart" type="AnimatedSprite"]
 position = Vector2( 0, 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
-frame = 3
+frame = 4
 playing = true
 script = ExtResource( 3 )
 
@@ -61,7 +62,7 @@ position = Vector2( -0.838039, -0.486887 )
 scale = Vector2( 0.851643, 0.76561 )
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
-position = Vector2( -0.93581, 1.94942 )
+position = Vector2( -6.51957, 3.03911 )
 scale = Vector2( 4.05919, 0.417752 )
 shape = SubResource( 8 )
 

@@ -52,8 +52,8 @@ func die():
 "
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 25.9505
-height = 38.8294
+radius = 21.7419
+height = 34.9799
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.832215 )
@@ -81,7 +81,7 @@ position = Vector2( -0.838039, -0.486887 )
 scale = Vector2( 0.851643, 0.76561 )
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
-position = Vector2( -16.9808, 14.5803 )
+position = Vector2( -16.7995, 13.9753 )
 scale = Vector2( 4.05919, 0.417752 )
 shape = SubResource( 5 )
 

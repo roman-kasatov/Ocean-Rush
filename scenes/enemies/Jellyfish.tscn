@@ -30,13 +30,13 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 1.90125
-height = 62.2093
+height = 44.9421
 
 [node name="Jellyfish" type="AnimatedSprite"]
 position = Vector2( -143.535, -47.4426 )
 scale = Vector2( 2.05093, 2.05093 )
 frames = SubResource( 5 )
-frame = 2
+frame = 3
 playing = true
 script = ExtResource( 3 )
 
@@ -50,6 +50,6 @@ position = Vector2( -96.6319, -32.4978 )
 scale = Vector2( 0.851643, 0.76561 )
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
-position = Vector2( 113.694, 41.9303 )
+position = Vector2( 113.356, 40.7281 )
 scale = Vector2( 4.05919, 0.417752 )
 shape = SubResource( 6 )
