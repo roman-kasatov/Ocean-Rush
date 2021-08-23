@@ -7,19 +7,40 @@ onready var GameHUD = $GameHUD
 onready var PlatformManager = $PlatformManager
 onready var Coins = $GameHUD/ScorePanel/Coins
 
+var coins_amount = 0
+
 signal start_game
+var score_file = "user://coins.save"
 
 func _physics_process(delta):
 	if (rate < 100):
 		rate += 2 * delta
 
 func _ready():
+	load_data()
+	Coins.text = str(coins_amount)
 	Events.connect('start_game', self, 'start_game')
 	$CanvasLayer/Blackout.open()
 	$GameHUD/Market.build()
 	randomize()
 	get_tree().paused = true
 
+func load_data():
+	var file = File.new()
+	if file.file_exists(score_file):
+		file.open(score_file, File.READ)
+		coins_amount = file.get_var()
+		file.close()
+
+func add_coin(value):
+	coins_amount += value
+	save_coins_amount(coins_amount)
+
+func save_coins_amount(amount):
+	var file = File.new()
+	file.open(score_file, File.WRITE)
+	file.store_var(amount)
+	file.close()
 
 func fail():
 	get_tree().paused = true #надо чтоб ничего кроме камеры не останавливалось
