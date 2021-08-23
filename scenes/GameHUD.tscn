@@ -655,4 +655,5 @@ visible = false
 margin_left = 164.0
 margin_right = 324.0
 margin_bottom = 180.0
+
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]

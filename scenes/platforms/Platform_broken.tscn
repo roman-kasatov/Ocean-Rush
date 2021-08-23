@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://drawable/platforms/Grass_1.png" type="Texture" id=1]
 [ext_resource path="res://drawable/platforms/Platform_broken_ANIM.png" type="Texture" id=2]
@@ -9,7 +9,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5415, 6.07756 )
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.711409 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GDScript" id=3]
 script/source = "extends CPUParticles2D
 
 var timer
@@ -26,21 +30,21 @@ func die():
 	queue_free()
 "
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 65, 12 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 65, 0, 65, 12 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
 region = Rect2( 130, 0, 65, 12 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": false,
 "name": "default",
 "speed": 23.0
@@ -73,12 +77,13 @@ gravity = Vector2( 0, 200 )
 initial_velocity = 20.0
 scale_amount = 5.0
 scale_amount_random = 0.5
-script = SubResource( 2 )
+color_ramp = SubResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="SpritePlatformAnim" type="AnimatedSprite" parent="Sprites"]
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 
 [node name="SpriteGrass" type="Sprite" parent="Sprites"]
 position = Vector2( -1.98616, 2.01477 )

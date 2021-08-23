@@ -17,10 +17,10 @@ var start_position: Vector2
 
 func _ready():
 	start_position = position
-	var scarf_texture = load("res://drawable/scarfs/102_flag_mat_grn.png")
+	var scarf_texture = load("res://drawable/scarfs/000_empty.png")
 	$Line2D.texture = scarf_texture
-	if scarf_texture.get_size().x == 1:
-		length_add = 129
+	#if scarf_texture.get_size().x <= 20:
+		#length_add = 129
 	length = 80 * scarf_texture.get_size().x / scarf_texture.get_size().y / 2 + length_add
 	
 	count = get_count(length)
@@ -36,8 +36,8 @@ func set_skin(type, path):
 		position = start_position
 		
 		length_add = 0
-		if scarf_texture.get_size().x == 1:
-			length_add = 129
+		#if scarf_texture.get_size().x <= 20:
+			#length_add = 129
 		length = 80 * scarf_texture.get_size().x / scarf_texture.get_size().y / 2 + length_add
 		count = get_count(length)
 		resize_arrays()
