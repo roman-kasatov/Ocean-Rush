@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=1]
+[ext_resource path="res://drawable/scarfs/101_flag_mat_orng.png" type="Texture" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://drawable/ui/White32.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.984314, 0.972549, 0.972549, 0.121569 )
@@ -28,16 +29,22 @@ script/source = "extends VBoxContainer
 
 var DragChecker = null
 
-func set_picture(type, path):
+func initiate(type, path, price, locked=true):
 	var image = Image.new()
-	var text = ImageTexture.new()
+	var itext = ImageTexture.new()
 	image.load(path)
 	image.flip_x()
 	image.flip_y()
-	text.create_from_image(image, 0)
-	$Icon.texture_normal = text
+	itext.create_from_image(image, 0)
+	$Icon.texture_normal = itext
 	$Icon.skin_type = type
 	$Icon.skin_path = path
+	$Icon.locked = locked
+	$Icon.price = price
+	$Icon/Lock/Price.text = str(price)
+	
+	if not locked:
+		$Icon/Lock.visible = false
 "
 
 [sub_resource type="GDScript" id=5]
@@ -45,7 +52,10 @@ script/source = "extends TextureButton
 
 var skin_type = null
 var skin_path = null
+var locked = null
+var price = null
 
+onready var Game = get_node(\"/root/Game\")
 var DragChecker
 
 func _ready():
@@ -54,7 +64,14 @@ func _ready():
 
 func click():
 	if DragChecker.path_len < 5:
-		Events.emit_signal('set_skin', skin_type, skin_path)
+		if locked:
+			var answ = Game.buy_skin(price, skin_path, skin_type)
+			if answ:
+				locked = false
+				$Lock.visible = false
+				Events.emit_signal('set_skin', skin_type, skin_path)
+		else:
+			Events.emit_signal('set_skin', skin_type, skin_path)
 "
 
 [node name="SkinBlock" type="VBoxContainer"]
@@ -92,9 +109,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Price" type="Label" parent="."]
-margin_top = 164.0
-margin_right = 160.0
-margin_bottom = 180.0
+[node name="Lock" type="TextureRect" parent="Icon"]
+self_modulate = Color( 0, 0, 0, 0.709804 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="Icon/Lock"]
+margin_left = -10.0
+margin_top = 111.793
+margin_right = 150.0
+margin_bottom = 127.793
 text = "$100"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
