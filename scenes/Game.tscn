@@ -151,6 +151,17 @@ position = Vector2( 655.659, 356.785 )
 scale = Vector2( 6.38, 6.38 )
 z_index = -6
 
+[node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -1075.48, -126.674 )
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="BackGround" parent="ParallaxBackground/Background2" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.584314 )
+position = Vector2( 999.659, 468.785 )
+scale = Vector2( 6.38, 6.38 )
+z_index = -6
+
 [node name="Coras" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 0.239216, 0.329412, 0.47451, 0.588235 )
 motion_scale = Vector2( 0.2, 0.2 )
@@ -182,16 +193,5 @@ position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 centered = false
-
-[node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( -1075.48, -126.674 )
-motion_scale = Vector2( 0.3, 0.3 )
-motion_mirroring = Vector2( 1000, 0 )
-
-[node name="BackGround" parent="ParallaxBackground/Background2" instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 0.584314 )
-position = Vector2( 999.659, 468.785 )
-scale = Vector2( 6.38, 6.38 )
-z_index = -6
 
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
