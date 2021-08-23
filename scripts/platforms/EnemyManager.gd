@@ -7,8 +7,8 @@ var last_wave = -1
 var score_for_medium = 1
 var score_for_hard = 1
 
-var enemy_curr = 55
-var can_spawn = 105
+var enemy_curr = 65
+var can_spawn = 110
 
 var shark = preload("res://scenes/enemies/Shark_av.tscn")
 var jellyfish = preload("res://scenes/enemies/Jellyfish_warn.tscn")
@@ -29,10 +29,10 @@ var enemies_easy = [
 
 var enemies_medium = [
 	[[60, shark, 1.2], [60, shark, 0.001], [-60, shark, 1.2], [60, shark, 2.8]],
-	[[60, jellyfish, 0.001, 5], [-60, jellyfish, 1.5, 5]],
+	[[60, jellyfish, 0.001, 4], [-60, jellyfish, 1.5, 4]],
 	[[0, jellyfish, 2.0, 10]],
 	[[0, submarine, 2.5]],
-	[[0, shark, 0.001], [-60, jellyfish,2.0, 4]]
+	[[0, shark, 0.001], [-60, jellyfish, 2.0, 4]]
 ]
 
 var enemies_hard = [
@@ -40,7 +40,8 @@ var enemies_hard = [
 	[[0, jellyfish, 0.001, 5], [60, jellyfish, 0.001, 5], [-60, jellyfish, 3.0, 5]],
 	[[0, submarine, 1.5], [60, jellyfish, 0.001, 5], [-60, jellyfish, 3.0, 5]],
 	[[0, shark, 1.3], [0, shark, 1.3], [0, shark, 3.0]],
-	[[0, shark, 1.3], [0, jellyfish, 1.5, 7], [0, shark, 3.0]]
+	[[0, shark, 1.3], [0, jellyfish, 1.5, 6], [0, shark, 3.0]],
+	[[0, jellyfish, 11, 3.0]]
 ]
 
 
