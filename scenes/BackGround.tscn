@@ -12,18 +12,19 @@ script = ExtResource( 1 )
 modulate = Color( 1, 1, 1, 0.0392157 )
 position = Vector2( -0.529755, 0 )
 
-[node name="AbstractRects" type="Sprite" parent="CanvasModulate"]
-modulate = Color( 0.279167, 0.5, 0.25, 1 )
+[node name="AbstractRects3" type="Sprite" parent="CanvasModulate"]
+modulate = Color( 0, 0, 0, 0.513726 )
+position = Vector2( 0.529755, 0 )
 scale = Vector2( 1.2, 1.2 )
 texture = SubResource( 1 )
 
 [node name="AbstractRects2" type="Sprite" parent="CanvasModulate"]
-modulate = Color( 0.5, 0.354167, 0.25, 1 )
+modulate = Color( 0, 0, 0, 0.513726 )
+position = Vector2( 0.529755, 0 )
 scale = Vector2( 1.2, 1.2 )
 texture = SubResource( 1 )
 
-[node name="AbstractRects3" type="Sprite" parent="CanvasModulate"]
-modulate = Color( 0.25, 0.258333, 0.5, 1 )
-position = Vector2( -0.707916, 0.471935 )
+[node name="AbstractRects" type="Sprite" parent="CanvasModulate"]
+modulate = Color( 0, 0, 0, 0.513726 )
 scale = Vector2( 1.2, 1.2 )
 texture = SubResource( 1 )
