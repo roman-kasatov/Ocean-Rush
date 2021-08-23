@@ -3,6 +3,9 @@ extends Node2D
 onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 
+var score_for_medium = 60
+var score_for_hard = 110
+
 var enemy_curr = 0
 var can_spawn = 1
 
@@ -12,6 +15,8 @@ var submarine = preload("res://scenes/enemies/Submarine_warn.tscn")
 
 var wave = []
 var player_posy = 0
+
+var enemies_spawn_chance = 0.4
 
 var enemies_easy = [
 	[[0, shark, 1.3], [0, shark, 2.0]]
@@ -24,14 +29,22 @@ var enemies_hard = [
 ]
 
 
-func choose_waves(power):
+func begin_wave():
+	if !can_spawn:
+		return
+	if randf() > enemies_spawn_chance:
+		return
+	if Game.score >= score_for_hard:
+		choose_waves(enemies_hard)
+	elif Game.score >= score_for_medium:
+		choose_waves(enemies_medium)
+	else:
+		choose_waves(enemies_easy)
+
+
+func choose_waves(waves):
 	player_posy = Player.position.y
 	can_spawn = 0
-	var waves = enemies_easy
-	if power == 2:
-		waves = enemies_medium
-	elif power == 3:
-		waves = enemies_hard
 	wave = waves[randi() % len(waves)]
 	next_enemy()
 
@@ -39,6 +52,8 @@ func choose_waves(power):
 func spawn_enemy():
 	var to_spawn = wave[enemy_curr]
 	var enemy = to_spawn[1].instance()
+	if to_spawn[1] == jellyfish:
+		enemy.spawns_left = to_spawn[3]
 	var view_size = get_viewport_rect().size
 	enemy.position = Vector2(0.18 * view_size.x, (randf() - 0.5) * 140 + to_spawn[0])
 	enemy.coord_const = Player.position.y
@@ -55,7 +70,6 @@ func next_enemy():
 		timer.autostart = true
 		timer.one_shot = true
 		timer.connect("timeout", self, "next_enemy")
-		add_child(timer)
 		timer.wait_time = spawn_enemy()
+		add_child(timer)
 		enemy_curr += 1
-

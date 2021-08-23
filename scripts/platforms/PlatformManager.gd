@@ -6,9 +6,9 @@ onready var CoinManager = Game.get_node("CoinManager")
 onready var EnemyManager = Game.get_node("EnemyManager")
 
 var chance_bn = {
-	'shield_bonus': 0.011,
-	'jump_bonus': 0.011,
-	'jetpack_bonus': 0.005
+	'shield_bonus': 0.013,
+	'jump_bonus': 0.016,
+	'jetpack_bonus': 0.008
 } # sum should be less or equal than 1
 
 var lines = 15
@@ -41,8 +41,6 @@ var chance_pl = {
 	types_pl.CRAB : 1,
 	types_pl.JUMP : 1
 }
-
-var shark_spawn_chance = 0.5
 
 var nodes_pl = {
 	types_pl.BASIC : preload("res://scenes/platforms/Platform_standart.tscn"),
@@ -90,11 +88,11 @@ func generate_section():
 		section_cnt_of_crab_pl -= 1
 	return section
 
+
 func _physics_process(_delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
-		if (randf() < shark_spawn_chance):
-			EnemyManager.choose_waves(1)
+		EnemyManager.begin_wave()
 
 
 func place_section():

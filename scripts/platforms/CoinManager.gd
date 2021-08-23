@@ -22,7 +22,7 @@ onready var Coin = preload("res://scenes/bonuses/Coin.tscn")
 enum types_pl {BASIC, BROKEN, CHIPPED, CHIPPED_UP, CHIPPED_DOWN, CRAB, JUMP}
 
 var chances_having_coins = {
-	types_pl.BASIC : 0.17,
+	types_pl.BASIC : 0.2,
 	types_pl.BROKEN : 0,
 	types_pl.CHIPPED : 0, 
 	types_pl.CHIPPED_UP : 0, 
