@@ -4,11 +4,11 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 
 var last_wave = -1
-var score_for_medium = 1
-var score_for_hard = 1
+var score_for_medium = 55
+var score_for_hard = 110
 
-var enemy_curr = 65
-var can_spawn = 110
+var enemy_curr = 0
+var can_spawn = 1
 
 var shark = preload("res://scenes/enemies/Shark_av.tscn")
 var jellyfish = preload("res://scenes/enemies/Jellyfish_warn.tscn")
@@ -17,7 +17,7 @@ var submarine = preload("res://scenes/enemies/Submarine_warn.tscn")
 var wave = []
 var player_posy = 0
 
-var enemies_spawn_chance = 0.4
+var enemies_spawn_chance = 0.5
 
 var enemies_easy = [
 	[[0, shark, 1.3], [0, shark, 2.0]],
@@ -41,7 +41,7 @@ var enemies_hard = [
 	[[0, submarine, 1.5], [60, jellyfish, 0.001, 5], [-60, jellyfish, 3.0, 5]],
 	[[0, shark, 1.3], [0, shark, 1.3], [0, shark, 3.0]],
 	[[0, shark, 1.3], [0, jellyfish, 1.5, 6], [0, shark, 3.0]],
-	[[0, jellyfish, 11, 3.0]]
+	[[0, jellyfish, 3.0, 11]]
 ]
 
 
