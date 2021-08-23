@@ -19,6 +19,7 @@ func _physics_process(delta):
 		rate += 2 * delta
 
 func _ready():
+	randomize()
 	load_data()
 	
 	# DEBUG
