@@ -29,7 +29,13 @@ script/source = "extends VBoxContainer
 var DragChecker = null
 
 func set_picture(type, path):
-	$Icon.texture_normal = load(path)
+	var image = Image.new()
+	var text = ImageTexture.new()
+	image.load(path)
+	image.flip_x()
+	image.flip_y()
+	text.create_from_image(image, 0)
+	$Icon.texture_normal = text
 	$Icon.skin_type = type
 	$Icon.skin_path = path
 "

@@ -645,6 +645,7 @@ mouse_filter = 1
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Flag"]
+rect_pivot_offset = Vector2( 959.969, -45.8517 )
 
 [node name="SkinBlock" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
@@ -652,8 +653,5 @@ margin_bottom = 180.0
 
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-margin_left = 164.0
-margin_right = 324.0
 margin_bottom = 180.0
-
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]
