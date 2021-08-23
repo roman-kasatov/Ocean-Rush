@@ -22,6 +22,7 @@ func _area_entered(area):
 		var balance = int(Game.Coins.text)
 		balance += area.value
 		Game.Coins.text = str(balance)
+		Game.add_coin(area.value)
 	area.queue_free()
 	particles.emitting = true
 	particles.position = area.get_global_position()#get_global_position() + Vector2(40, 16)

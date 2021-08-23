@@ -645,8 +645,6 @@ mouse_filter = 1
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Flag"]
-margin_right = 160.0
-margin_bottom = 180.0
 
 [node name="SkinBlock" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
