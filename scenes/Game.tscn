@@ -185,6 +185,7 @@ centered = false
 
 [node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -1075.48, -126.674 )
+motion_scale = Vector2( 0.3, 0.3 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="BackGround" parent="ParallaxBackground/Background2" instance=ExtResource( 5 )]
