@@ -17,6 +17,7 @@ func _physics_process(delta):
 		rate += 2 * delta
 
 func _ready():
+	randomize()
 	load_data()
 	Coins.text = str(coins_amount)
 	Events.connect('start_game', self, 'start_game')

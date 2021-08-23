@@ -3,6 +3,7 @@ extends Node2D
 onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 onready var CoinManager = Game.get_node("CoinManager")
+onready var EnemyManager = Game.get_node("EnemyManager")
 
 var chance_bn = {
 	'shield_bonus': 0.011,
@@ -55,8 +56,6 @@ var nodes_pl = {
 
 var Bonus = preload("res://scenes/bonuses/Bonus.tscn")
 
-var shark = preload("res://scenes/enemies/Jellyfish_warn.tscn")
-
 
 func generate_section():
 	var line = []
@@ -95,16 +94,8 @@ func _physics_process(_delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
 		if (randf() < shark_spawn_chance):
-			place_enemy()
+			EnemyManager.choose_waves(1)
 
-
-func place_enemy():
-	var enemy = shark.instance()
-	var view_size = get_viewport_rect().size
-	# coourds accounting Player's scale = 2	
-	enemy.position = Vector2(0.18 * view_size.x, (randf() - 0.5) * 140)
-	enemy.coord_const = Player.position.y
-	Player.add_child(enemy)
 
 func place_section():
 	var section = generate_section()
