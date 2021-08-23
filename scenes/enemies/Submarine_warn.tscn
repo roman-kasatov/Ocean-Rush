@@ -56,9 +56,8 @@ func die():
 
 [node name="Submarine_warn" type="AnimatedSprite"]
 position = Vector2( -76.8952, -37.6377 )
-scale = Vector2( 1.52, 1.52 )
+scale = Vector2( 1.8, 1.8 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 script = ExtResource( 3 )
 
