@@ -96,11 +96,6 @@ smoothing_speed = 10.0
 position = Vector2( -419.314, 33.2445 )
 scale = Vector2( -3.10554, 14.2962 )
 
-[node name="BackGround" parent="Player" instance=ExtResource( 5 )]
-visible = false
-scale = Vector2( 2.5, 2.5 )
-z_index = -6
-
 [node name="Scarf" parent="." instance=ExtResource( 32 )]
 position = Vector2( 511.376, 274.397 )
 z_index = -5
@@ -190,9 +185,10 @@ centered = false
 
 [node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -1075.48, -126.674 )
-motion_mirroring = Vector2( 3000, 0 )
+motion_mirroring = Vector2( 1000, 0 )
 
 [node name="BackGround" parent="ParallaxBackground/Background2" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.584314 )
 position = Vector2( 999.659, 468.785 )
 scale = Vector2( 6.38, 6.38 )
 z_index = -6
