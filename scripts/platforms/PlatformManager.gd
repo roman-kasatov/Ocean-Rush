@@ -6,9 +6,9 @@ onready var CoinManager = Game.get_node("CoinManager")
 onready var EnemyManager = Game.get_node("EnemyManager")
 
 var chance_bn = {
-	'shield_bonus': 0.013,
-	'jump_bonus': 0.016,
-	'jetpack_bonus': 0.008
+	'shield_bonus': 0.025,
+	'jump_bonus': 0.018,
+	'jetpack_bonus': 0.015
 } # sum should be less or equal than 1
 
 var lines = 15
