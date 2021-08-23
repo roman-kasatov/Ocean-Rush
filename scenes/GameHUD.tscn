@@ -129,13 +129,23 @@ script/source = "extends NinePatchRect
 
 var SkinBlock = preload(\"res://scenes/UI/SkinBlock.tscn\")
 var DragChecker = null
+onready var Game = get_node(\"/root/Game\")
 
+var flags_path = 'res://drawable/scarfs/'
+
+var flag_prices = {
+	'0': 100, '1': 700, '2': 1000, 
+	'3': 1300, '4': 1600, '5': 2000,
+	'6': 2800}
 
 func build():
-	var names = dir_contents('res://drawable/scarfs/')
+	var names = dir_contents(flags_path)
 	for name in names:
 		var skinBlock = SkinBlock.instance()
-		skinBlock.set_picture('flag', name)
+		var price = flag_prices[name[0]]
+		var path = flags_path + name
+		var is_locked = not path in Game.opened_flags
+		skinBlock.initiate('flag', path, price, is_locked)
 		skinBlock.DragChecker = DragChecker
 		$TabContainer/Flag/HBoxContainer.add_child(skinBlock) 
 	
@@ -147,7 +157,7 @@ func dir_contents(path):
 		var file_name = dir.get_next()
 		while file_name != \"\":
 			if not dir.current_is_dir() and file_name.ends_with('.png') or file_name.ends_with('.jpg'):
-				names.append(path + file_name)
+				names.append(file_name)
 			file_name = dir.get_next()
 	return names
 "
@@ -594,7 +604,7 @@ scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Hat"]
 margin_right = 324.0
-margin_bottom = 180.0
+margin_bottom = 160.0
 
 [node name="SkinBlock" parent="Market/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
 margin_bottom = 180.0
@@ -626,7 +636,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Control/Body"]
 margin_right = 360.0
-margin_bottom = 180.0
+margin_bottom = 160.0
 custom_constants/separation = 40
 
 [node name="SkinBlock" parent="Market/TabContainer/Control/Body/HBoxContainer" instance=ExtResource( 6 )]
@@ -645,6 +655,7 @@ mouse_filter = 1
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Market/TabContainer/Flag"]
+rect_pivot_offset = Vector2( 959.969, -45.8517 )
 
 [node name="SkinBlock" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
@@ -652,8 +663,5 @@ margin_bottom = 180.0
 
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-margin_left = 164.0
-margin_right = 324.0
 margin_bottom = 180.0
-
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]

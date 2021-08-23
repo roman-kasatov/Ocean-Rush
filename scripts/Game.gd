@@ -8,9 +8,11 @@ onready var PlatformManager = $PlatformManager
 onready var Coins = $GameHUD/ScorePanel/Coins
 
 var coins_amount = 0
+var opened_flags = ['res://drawable/scarfs/101_flag_mat_orng.png']
 
 signal start_game
-var score_file = "user://coins.save"
+var coins_file = "user://coins.save"
+var flags_file = "user://flags.save"
 
 func _physics_process(delta):
 	if (rate < 100):
@@ -27,21 +29,47 @@ func _ready():
 	get_tree().paused = true
 
 func load_data():
+	# coins
 	var file = File.new()
-	if file.file_exists(score_file):
-		file.open(score_file, File.READ)
+	if file.file_exists(coins_file):
+		file.open(coins_file, File.READ)
 		coins_amount = file.get_var()
+		file.close()
+	# flags
+	if file.file_exists(flags_file):
+		file.open(flags_file, file.READ)
+		opened_flags = file.get_var()
 		file.close()
 
 func add_coin(value):
 	coins_amount += value
-	save_coins_amount(coins_amount)
+	save_coins_amount()
 
-func save_coins_amount(amount):
+func save_coins_amount():
 	var file = File.new()
-	file.open(score_file, File.WRITE)
-	file.store_var(amount)
+	file.open(coins_file, File.WRITE)
+	file.store_var(coins_amount)
 	file.close()
+
+func save_opened_flags():
+	var file = File.new()
+	file.open(flags_file, File.WRITE)
+	file.store_var(opened_flags)
+	file.close()	
+
+func buy_skin(price, path, type='flag'):
+	if price > coins_amount:
+		return false
+	coins_amount -= price
+	update_coins()
+	if type == 'flag':
+		opened_flags.append(path)
+		save_opened_flags()
+	return true
+
+func update_coins():
+	save_coins_amount()
+	Coins.text = str(coins_amount)
 
 func fail():
 	get_tree().paused = true #надо чтоб ничего кроме камеры не останавливалось

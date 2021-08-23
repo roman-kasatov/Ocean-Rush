@@ -180,5 +180,4 @@ position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 centered = false
-
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
