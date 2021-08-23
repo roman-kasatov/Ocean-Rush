@@ -156,6 +156,8 @@ func dir_contents(path):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != \"\":
+			if OS.get_name() == 'Android':
+				file_name = file_name.replace('.import', '')
 			if not dir.current_is_dir() and file_name.ends_with('.png') or file_name.ends_with('.jpg'):
 				names.append(file_name)
 			file_name = dir.get_next()
@@ -659,9 +661,9 @@ rect_pivot_offset = Vector2( 959.969, -45.8517 )
 
 [node name="SkinBlock" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-margin_bottom = 180.0
+margin_bottom = 160.0
 
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-margin_bottom = 180.0
+margin_bottom = 160.0
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]
