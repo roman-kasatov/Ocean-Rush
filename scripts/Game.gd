@@ -20,6 +20,13 @@ func _physics_process(delta):
 
 func _ready():
 	load_data()
+	
+	# DEBUG
+	coins_amount = 99999
+	update_coins()
+	opened_flags = ['res://drawable/scarfs/101_flag_mat_orng.png']
+	save_opened_flags()
+	
 	Coins.text = str(coins_amount)
 	Events.connect('start_game', self, 'start_game')
 	$CanvasLayer/Blackout.open()

@@ -30,9 +30,8 @@ script/source = "extends VBoxContainer
 var DragChecker = null
 
 func initiate(type, path, price, locked=true):
-	var image = Image.new()
 	var itext = ImageTexture.new()
-	image.load(path)
+	var image = load(path).get_data()
 	image.flip_x()
 	image.flip_y()
 	itext.create_from_image(image, 0)
