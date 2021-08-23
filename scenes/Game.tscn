@@ -51,14 +51,14 @@ func _physics_process(delta):
 
 "
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0, 0.160217, 0.410156, 1, 0.223892, 0.575871, 0.785156, 1 )
 
 [sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 4 )
+gradient = SubResource( 2 )
 width = 10
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Sprite
 
 #func _ready():
@@ -144,7 +144,7 @@ z_index = -100
 z_as_relative = false
 texture = SubResource( 3 )
 centered = false
-script = SubResource( 2 )
+script = SubResource( 4 )
 
 [node name="Coras" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 0.239216, 0.329412, 0.47451, 0.588235 )
