@@ -67,3 +67,4 @@ wait_time = 4.385
 one_shot = false
 autostart = true
 script = SubResource( 5 )
+amplitude = 2
