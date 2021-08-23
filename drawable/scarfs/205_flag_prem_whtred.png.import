@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/507_flag_abstr_2.jpg-20d52c351a38fac826aea3333f07bb55.stex"
+path="res://.import/205_flag_prem_whtred.png-5d7e72a36a9e383017f89b08daefb553.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawable/scarfs/507_flag_abstr_2.jpg"
-dest_files=[ "res://.import/507_flag_abstr_2.jpg-20d52c351a38fac826aea3333f07bb55.stex" ]
+source_file="res://drawable/scarfs/205_flag_prem_whtred.png"
+dest_files=[ "res://.import/205_flag_prem_whtred.png-5d7e72a36a9e383017f89b08daefb553.stex" ]
 
 [params]
 
