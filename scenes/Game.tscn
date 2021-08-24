@@ -144,7 +144,7 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="DetectorLeft" parent="Player" instance=ExtResource( 12 )]
-position = Vector2( -419.314, 33.2445 )
+position = Vector2( -921.51, 33.2445 )
 scale = Vector2( -3.10554, 14.2962 )
 
 [node name="Scarf" parent="." instance=ExtResource( 32 )]
@@ -187,9 +187,9 @@ position = Vector2( -623.144, -61.8389 )
 motion_scale = Vector2( 0, 1 )
 
 [node name="FillBackground" type="Sprite" parent="ParallaxBackground/Background"]
-position = Vector2( -466.503, 2314.81 )
+position = Vector2( -821.4, 2314.81 )
 rotation = -1.5708
-scale = Vector2( 300, 2500 )
+scale = Vector2( 300, 3332.53 )
 z_index = -100
 z_as_relative = false
 texture = SubResource( 5 )
@@ -209,7 +209,7 @@ motion_mirroring = Vector2( 1000, 0 )
 
 [node name="BackGround" parent="ParallaxBackground/Background2" instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 0.584314 )
-position = Vector2( 999.659, 468.785 )
+position = Vector2( 712.397, 468.785 )
 scale = Vector2( 6.38, 6.38 )
 z_index = -6
 
