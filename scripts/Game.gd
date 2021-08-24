@@ -105,7 +105,7 @@ func fail():
 	highscore = max(highscore, score)
 	last_score = score
 	save_scores()
-	get_tree().paused = true #надо чтоб ничего кроме камеры не останавливалось
+	$Player.set_physics_process(false)
 	$CanvasLayer/Blackout.hide()
 	$Scarf.start_pin = false
 	$Scarf.gravity *= 2
