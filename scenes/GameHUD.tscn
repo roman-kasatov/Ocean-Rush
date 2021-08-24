@@ -140,9 +140,9 @@ onready var Game = get_node(\"/root/Game\")
 var flags_path = 'res://drawable/scarfs/'
 
 var flag_prices = {
-	'0': 100, '1': 700, '2': 1000, 
-	'3': 1300, '4': 1600, '5': 2000,
-	'6': 2800}
+	'0': 100, '1': 150, '2': 250, 
+	'3': 300, '4': 350, '5': 400,
+	'6': 500}
 
 func build():
 	var names = dir_contents(flags_path)
@@ -455,10 +455,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -365.0
-margin_top = -218.357
-margin_right = 365.0
-margin_bottom = -21.3574
+margin_left = -377.39
+margin_top = -184.454
+margin_right = 583.566
+margin_bottom = 12.5454
+rect_scale = Vector2( 0.75, 0.75 )
 theme = ExtResource( 1 )
 texture = ExtResource( 11 )
 patch_margin_left = 16
@@ -495,9 +496,9 @@ alignment = 1
 
 [node name="SkinMenuBlock" type="VBoxContainer" parent="Market/TabContainer/Menu"]
 visible = false
-margin_left = 81.0
-margin_right = 241.0
-margin_bottom = 201.0
+margin_left = 285.0
+margin_right = 445.0
+margin_bottom = 180.0
 theme = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -570,8 +571,8 @@ __meta__ = {
 }
 
 [node name="SkinMenuBlock3" type="VBoxContainer" parent="Market/TabContainer/Menu"]
-margin_left = 270.0
-margin_right = 430.0
+margin_left = 385.0
+margin_right = 545.0
 margin_bottom = 180.0
 theme = SubResource( 25 )
 __meta__ = {
