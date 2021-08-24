@@ -45,7 +45,7 @@ radius = 7.40038
 position = Vector2( 0, 3 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
-frame = 4
+frame = 3
 playing = true
 script = ExtResource( 3 )
 
