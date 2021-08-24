@@ -89,10 +89,10 @@ scale = Vector2( 2, 2 )
 z_index = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ScorePanel"]
-margin_left = 52.9033
-margin_top = 41.6435
-margin_right = 212.904
-margin_bottom = 101.644
+margin_left = 50.719
+margin_top = 43.7462
+margin_right = 210.72
+margin_bottom = 103.747
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 32, 32 )
 patch_margin_left = 12
@@ -104,10 +104,10 @@ __meta__ = {
 }
 
 [node name="Highscore" type="Label" parent="ScorePanel"]
-margin_left = 77.5876
-margin_top = 55.9389
-margin_right = 201.588
-margin_bottom = 71.9389
+margin_left = 75.4033
+margin_top = 58.0416
+margin_right = 199.404
+margin_bottom = 74.0416
 custom_fonts/font = SubResource( 1 )
 text = "Highscore: 0"
 __meta__ = {
@@ -115,10 +115,10 @@ __meta__ = {
 }
 
 [node name="LastScore" type="Label" parent="ScorePanel"]
-margin_left = 77.5877
-margin_top = 73.777
-margin_right = 201.588
-margin_bottom = 89.777
+margin_left = 75.4034
+margin_top = 75.8797
+margin_right = 199.404
+margin_bottom = 91.8797
 custom_fonts/font = SubResource( 2 )
 text = "Last score: 0"
 __meta__ = {
@@ -245,4 +245,5 @@ position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 centered = false
+
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]

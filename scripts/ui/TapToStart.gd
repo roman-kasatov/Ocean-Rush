@@ -3,8 +3,8 @@ extends Control
 var need_to_erase = false
 
 var speed = 0.0
-var max_speed = 0.3
-var accel = 0.02
+var max_speed = 1.2
+var accel = 0.04
 var start_pause = true
 
 signal start_game
