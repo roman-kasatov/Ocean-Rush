@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=2]
@@ -219,32 +219,32 @@ func disappear():
 "
 
 [sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 14, 8 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 6 )
-region = Rect2( 14, 0, 14, 8 )
-
-[sub_resource type="AtlasTexture" id=46]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 15, 10 )
 
-[sub_resource type="AtlasTexture" id=47]
+[sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 3 )
 region = Rect2( 15, 0, 15, 10 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 14, 8 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 6 )
+region = Rect2( 14, 0, 14, 8 )
 
 [sub_resource type="SpriteFrames" id=48]
 animations = [ {
 "frames": [ SubResource( 44 ), SubResource( 45 ) ],
 "loop": true,
-"name": "small",
-"speed": 2.0
+"name": "big",
+"speed": 4.0
 }, {
 "frames": [ SubResource( 46 ), SubResource( 47 ) ],
 "loop": true,
-"name": "big",
-"speed": 4.0
+"name": "small",
+"speed": 2.0
 } ]
 
 [sub_resource type="AtlasTexture" id=49]
@@ -287,7 +287,11 @@ animations = [ {
 [sub_resource type="Curve" id=56]
 _data = [ Vector2( 0, 0.557955 ), 0.0, 3.04615, 0, 0, Vector2( 0.200758, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.795455, 1 ), 0.0220586, 0.0, 0, 0 ]
 
-[sub_resource type="CapsuleShape2D" id=57]
+[sub_resource type="Gradient" id=57]
+offsets = PoolRealArray( 0, 0.328859, 0.644295 )
+colors = PoolColorArray( 0.229771, 0.609612, 0.94873, 1, 0.313726, 0.65098, 0.952941, 0.52549, 0.568627, 0.780392, 0.968627, 0 )
+
+[sub_resource type="CapsuleShape2D" id=58]
 height = 8.40363
 
 [node name="Player" type="KinematicBody2D"]
@@ -330,7 +334,7 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
-frame = 9
+frame = 8
 playing = true
 script = ExtResource( 13 )
 
@@ -338,12 +342,14 @@ script = ExtResource( 13 )
 self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 33 )
+frame = 4
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 42 )
+frame = 4
 playing = true
 script = SubResource( 43 )
 
@@ -356,12 +362,14 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 48 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 55 )
 animation = "slow"
+frame = 2
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -389,7 +397,7 @@ hue_variation_random = 0.46
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
 pause_mode = 2
 emitting = false
-amount = 300
+amount = 500
 lifetime = 3.0
 one_shot = true
 preprocess = 0.1
@@ -399,13 +407,15 @@ lifetime_randomness = 0.3
 emission_shape = 1
 emission_sphere_radius = 8.0
 spread = 180.0
-initial_velocity = 125.0
-initial_velocity_random = 1.0
+gravity = Vector2( 0, 48 )
+initial_velocity = 200.0
+initial_velocity_random = 0.67
 linear_accel = -50.0
+radial_accel = 40.86
 angle = 45.0
 scale_amount = 3.0
 scale_amount_random = 0.4
-color = Color( 0.105882, 0.435294, 0.858824, 1 )
+color_ramp = SubResource( 57 )
 hue_variation = 0.1
 hue_variation_random = 1.0
 
@@ -413,7 +423,7 @@ hue_variation_random = 1.0
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GatherArea"]
-shape = SubResource( 57 )
+shape = SubResource( 58 )
 
 [connection signal="area_entered" from="DetectorEvil" to="." method="_on_DetectorEvil_area_entered"]
 [connection signal="animation_finished" from="Jetpack/Fuel" to="Jetpack" method="_on_Fuel_animation_finished"]
