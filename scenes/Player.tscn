@@ -334,27 +334,27 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
-frame = 8
+frame = 2
 playing = true
 script = ExtResource( 13 )
 
 [node name="Legs" type="AnimatedSprite" parent="."]
-self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
+self_modulate = Color( 0.411765, 0.631373, 0.913725, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 33 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 42 )
-frame = 4
+frame = 1
 playing = true
 script = SubResource( 43 )
 
 [node name="Body" type="Sprite" parent="."]
-self_modulate = Color( 0.341176, 0.717647, 0.901961, 1 )
+self_modulate = Color( 0.411765, 0.631373, 0.913725, 1 )
 position = Vector2( 1.078, -1.247 )
 texture = ExtResource( 4 )
 
@@ -369,7 +369,7 @@ playing = true
 position = Vector2( -3, 5 )
 frames = SubResource( 55 )
 animation = "slow"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
