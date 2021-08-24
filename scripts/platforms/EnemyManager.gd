@@ -20,6 +20,7 @@ var player_posy = 0
 var enemies_spawn_chance = 0.5
 
 var enemies_easy = [
+	[[0, shark, 1.0]],
 	[[0, shark, 1.3], [0, shark, 2.0]],
 	[[0, shark, 1.3], [0, jellyfish, 2.0, 3]],
 	[[0, jellyfish, 1.5, 5]], 

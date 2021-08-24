@@ -137,8 +137,5 @@ func init_score_timer():
 func start_game():
 	init_score_timer()
 	$Player/CPUParticles2D.emitting = true
-	GameHUD.get_node("ScorePanel").visible = true
-	GameHUD.get_node("Market").visible = false
-	GameHUD.get_node("DragChecker").visible = false
-#	GameHUD.get_node("SkinSwitches").visible = false
+	GameHUD.switch_to_game()
 	PlatformManager.place_section()

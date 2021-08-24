@@ -17,9 +17,11 @@ var min_in_column = 6
 var max_in_column = 9
 var dist_betw_lines = 80.0
 var dist_betw_columns = 250.0
-var dist_from_player = 500
+var dist_from_player = 2000
 var last_plat
 var enemy_type
+
+var enemy_free_sections = 3
 
 var section_cnt_of_broken_pl = 0
 var section_cnt_of_crab_pl = 0
@@ -92,7 +94,10 @@ func generate_section():
 func _physics_process(_delta):
 	if position.x < Player.position.x + dist_from_player:
 		place_section()
-		EnemyManager.begin_wave()
+		if enemy_free_sections <= 0:
+			EnemyManager.begin_wave()
+		else:
+			enemy_free_sections -= 1
 
 
 func place_section():

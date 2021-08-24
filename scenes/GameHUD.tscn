@@ -25,6 +25,12 @@ script/source = "extends CanvasLayer
 
 func _ready():
 	$Market.DragChecker = $DragChecker
+
+func switch_to_game():
+	$Market.visible = false
+	$DragChecker.visible = false
+	$ScorePanel/PauseBnt.visible = true
+	$ScorePanel/Score.visible = true
 "
 
 [sub_resource type="GDScript" id=2]
@@ -222,6 +228,7 @@ __meta__ = {
 }
 
 [node name="PauseBnt" type="TextureButton" parent="ScorePanel"]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -239,6 +246,7 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="ScorePanel"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
