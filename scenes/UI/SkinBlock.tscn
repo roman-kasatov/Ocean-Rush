@@ -109,15 +109,16 @@ __meta__ = {
 }
 
 [node name="Lock" type="TextureRect" parent="Icon"]
-self_modulate = Color( 0.886275, 0.886275, 0.886275, 0.537255 )
+self_modulate = Color( 1, 1, 1, 0.572549 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -70.0
-margin_top = -70.0
-margin_right = 70.0
-margin_bottom = 70.0
+margin_left = -56.7708
+margin_top = -72.8348
+margin_right = 83.2292
+margin_bottom = 67.1652
+rect_scale = Vector2( 0.84, 0.84 )
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {
@@ -125,12 +126,14 @@ __meta__ = {
 }
 
 [node name="Price" type="Label" parent="Icon/Lock"]
-margin_left = -10.0
-margin_top = 111.793
-margin_right = 150.0
-margin_bottom = 127.793
-text = "$100"
+margin_left = -98.5687
+margin_top = 145.025
+margin_right = 61.4313
+margin_bottom = 161.025
+rect_scale = Vector2( 2.07048, 2.07048 )
+text = "100"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
