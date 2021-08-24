@@ -2,6 +2,7 @@ extends Node
 
 var rate : float = 0
 var score = 0
+var score_max = 160
 onready var Player = $Player
 onready var GameHUD = $GameHUD
 onready var PlatformManager = $PlatformManager
@@ -18,7 +19,7 @@ var flags_file = "user://flags.save"
 var scores_file = "user://scores.save"
 
 func _physics_process(delta):
-	if (rate < 100):
+	if (rate < score_max):
 		rate += 2 * delta
 
 func _ready():
