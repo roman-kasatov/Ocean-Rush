@@ -35,7 +35,7 @@ var enemies_medium = [
 	[[0, submarine, 2.5]],
 	[[0, submarine, 2.5]],
 	[[0, submarine, 2.5]],
-	[[0, shark, 0.001], [-60, jellyfish, 2.0, 4]]
+	[[0, jellyfish, 0.001, 3], [60, jellyfish, 0.001, 3], [-60, jellyfish, 2.5, 3]]
 ]
 
 var enemies_hard = [

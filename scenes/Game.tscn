@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
@@ -61,23 +61,19 @@ func _physics_process(delta):
 "
 
 [sub_resource type="Gradient" id=4]
-colors = PoolColorArray( 0, 0.160217, 0.410156, 1, 0.223892, 0.575871, 0.785156, 1 )
+offsets = PoolRealArray( 0, 0.779141 )
+colors = PoolColorArray( 0, 0.160217, 0.410156, 1, 0.25058, 0.659106, 0.929688, 1 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
 width = 10
 
-[sub_resource type="GDScript" id=6]
-script/source = "extends Sprite
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.456954, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0.294118, 0, 0, 0, 0 )
 
-#func _ready():
-#	fill_screen()
-#	get_tree().root.connect(\"size_changed\", self, \"fill_screen\")
-
-#func fill_screen():
-#	var view_size = get_viewport_rect().size
-#	scale = Vector2.ONE * (max(view_size.x, view_size.y) / 32 + 1)	
-"
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )
@@ -195,13 +191,6 @@ z_index = -100
 z_as_relative = false
 texture = SubResource( 5 )
 centered = false
-script = SubResource( 6 )
-
-[node name="BackGround" parent="ParallaxBackground/Background" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 655.659, 356.785 )
-scale = Vector2( 6.38, 6.38 )
-z_index = -6
 
 [node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -1075.48, -126.674 )
@@ -244,6 +233,19 @@ motion_mirroring = Vector2( 6502, 0 )
 position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
+centered = false
+
+[node name="Background3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2( -623.144, -61.8389 )
+motion_scale = Vector2( 0, 1 )
+
+[node name="FillBackground" type="Sprite" parent="ParallaxBackground/Background3"]
+position = Vector2( -1059.47, 2787.76 )
+rotation = -1.5708
+scale = Vector2( 2, 4000 )
+z_index = 4096
+texture = SubResource( 7 )
 centered = false
 
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
