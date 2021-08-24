@@ -431,10 +431,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -104.529
-margin_top = -53.7862
-margin_right = 84.4713
-margin_bottom = -17.7862
+margin_left = 168.989
+margin_top = -39.5157
+margin_right = 357.989
+margin_bottom = -3.51569
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
@@ -674,4 +674,5 @@ margin_bottom = 160.0
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_bottom = 160.0
+
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]

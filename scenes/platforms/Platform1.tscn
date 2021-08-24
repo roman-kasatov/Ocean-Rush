@@ -13,7 +13,7 @@ position = Vector2( 0.992126, -17.8583 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.66615, -36.3423 )
+position = Vector2( 3.34181, -17.5368 )
 shape = SubResource( 1 )
 
 [node name="DestructModule" parent="." instance=ExtResource( 2 )]

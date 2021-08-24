@@ -89,10 +89,10 @@ scale = Vector2( 2, 2 )
 z_index = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ScorePanel"]
-margin_left = 55.9876
-margin_top = 13.9093
-margin_right = 215.988
-margin_bottom = 73.9093
+margin_left = 52.9033
+margin_top = 41.6435
+margin_right = 212.904
+margin_bottom = 101.644
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 32, 32 )
 patch_margin_left = 12
@@ -104,10 +104,10 @@ __meta__ = {
 }
 
 [node name="Highscore" type="Label" parent="ScorePanel"]
-margin_left = 80.672
-margin_top = 28.2047
-margin_right = 204.672
-margin_bottom = 42.2047
+margin_left = 77.5876
+margin_top = 55.9389
+margin_right = 201.588
+margin_bottom = 71.9389
 custom_fonts/font = SubResource( 1 )
 text = "Highscore: 0"
 __meta__ = {
@@ -115,10 +115,10 @@ __meta__ = {
 }
 
 [node name="LastScore" type="Label" parent="ScorePanel"]
-margin_left = 80.672
-margin_top = 46.0428
-margin_right = 204.672
-margin_bottom = 60.0428
+margin_left = 77.5877
+margin_top = 73.777
+margin_right = 201.588
+margin_bottom = 89.777
 custom_fonts/font = SubResource( 2 )
 text = "Last score: 0"
 __meta__ = {
@@ -148,12 +148,13 @@ position = Vector2( -921.51, 33.2445 )
 scale = Vector2( -3.10554, 14.2962 )
 
 [node name="Scarf" parent="." instance=ExtResource( 32 )]
-position = Vector2( 511.376, 274.397 )
+position = Vector2( 505.492, 269.856 )
 z_index = -5
 
 [node name="Platform1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 656.611, 418.057 )
+position = Vector2( 600.457, 373.917 )
 scale = Vector2( 2, 2 )
+z_index = -8
 collision_mask = 2147483649
 script = ExtResource( 9 )
 
