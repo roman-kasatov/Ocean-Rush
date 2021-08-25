@@ -16,9 +16,9 @@ _global_script_class_icons={
 
 config/name="Fastslow"
 run/main_scene="res://scenes/Game.tscn"
-boot_splash/image="res://drawable/theme.png"
+boot_splash/image="res://drawable/theme_big_cutted.png"
 boot_splash/use_filter=false
-boot_splash/bg_color=Color( 0.0705882, 0.458824, 0.733333, 1 )
+boot_splash/bg_color=Color( 0.0784314, 0.317647, 0.584314, 1 )
 config/icon="res://icon.png"
 config/macos_native_icon="res://icon.png"
 config/windows_native_icon="res://icon.png"
@@ -34,6 +34,7 @@ settings/fps/force_fps=60
 [display]
 
 window/size/width=960
+window/size/height=540
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
