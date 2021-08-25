@@ -69,8 +69,12 @@ func click():
 				locked = false
 				$Lock.visible = false
 				Events.emit_signal('set_skin', skin_type, skin_path)
+				Game.cur_flag = skin_path
+				Game.save_cur_flag()
 		else:
 			Events.emit_signal('set_skin', skin_type, skin_path)
+			Game.cur_flag = skin_path
+			Game.save_cur_flag()
 "
 
 [node name="SkinBlock" type="VBoxContainer"]

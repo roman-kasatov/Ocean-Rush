@@ -676,5 +676,4 @@ margin_bottom = 160.0
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_bottom = 160.0
-
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]

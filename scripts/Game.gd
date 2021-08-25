@@ -9,21 +9,36 @@ onready var PlatformManager = $PlatformManager
 onready var Coins = $GameHUD/ScorePanel/Coins
 
 var coins_amount = 0
-var opened_flags = ['res://drawable/scarfs/101_flag_mat_orng.png']
+var opened_flags
 var highscore = 0
 var last_score = 0
+var cur_flag
 
 signal start_game
 var coins_file = "user://coins.save"
 var flags_file = "user://flags.save"
+var cur_flag_file = "user://cur_flag.sav"
 var scores_file = "user://scores.save"
+
+var flags_path = 'res://drawable/scarfs/'
 
 func _physics_process(delta):
 	if (rate < score_max):
 		rate += 2 * delta
 
+func clear_saves():
+	var dir = Directory.new()
+	for file in [coins_file, flags_file, cur_flag_file, scores_file]:
+		dir.remove(file)	
+
 func _ready():
+	# DEBUG
+	#clear_saves()
+
 	randomize()
+	cur_flag = get_first_flag()
+	print(cur_flag)
+	opened_flags = [cur_flag]
 	load_data()
 	$ScorePanel/Highscore.text = 'Highscore: ' + str(highscore)
 	$ScorePanel/LastScore.text = 'Last score: ' + str(last_score)
@@ -40,6 +55,20 @@ func _ready():
 	$GameHUD/Market.build()
 	randomize()
 	get_tree().paused = true
+
+func get_first_flag():
+	var names = []
+	var dir = Directory.new()
+	if dir.open(flags_path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if OS.get_name() == 'Android':
+				file_name = file_name.replace('.import', '')
+			if not dir.current_is_dir() and file_name.ends_with('.png') or file_name.ends_with('.jpg'):
+				return flags_path + file_name
+			file_name = dir.get_next()
+	return null
 
 func load_data():
 	# coins
@@ -60,7 +89,12 @@ func load_data():
 		highscore = scores['highscore']
 		last_score = scores['last_score'] 
 		file.close()
-	
+	# current flag
+	if file.file_exists(cur_flag_file):
+		file.open(cur_flag_file, file.READ)
+		cur_flag = file.get_var()
+		$Scarf.set_skin('flag', cur_flag)
+		file.close()
 
 func add_coin(value):
 	coins_amount += value
@@ -85,6 +119,12 @@ func save_scores():
 		'highscore': highscore,
 		'last_score': last_score
 	})
+	file.close()
+
+func save_cur_flag():
+	var file = File.new()
+	file.open(cur_flag_file, File.WRITE)
+	file.store_var(cur_flag)
 	file.close()
 
 func buy_skin(price, path, type='flag'):
