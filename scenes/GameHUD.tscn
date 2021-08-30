@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
@@ -19,6 +19,11 @@
 [ext_resource path="res://scripts/ui/FailureBtn.gd" type="Script" id=17]
 [ext_resource path="res://scripts/ui/PauseBnt.gd" type="Script" id=18]
 [ext_resource path="res://scripts/ui/ResumeBtn.gd" type="Script" id=19]
+[ext_resource path="res://scripts/ui/HelpBnt.gd" type="Script" id=20]
+[ext_resource path="res://drawable/ui/Help.png" type="Texture" id=21]
+[ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=22]
+[ext_resource path="res://drawable/NinePatchBackground.png" type="Texture" id=23]
+[ext_resource path="res://scripts/ui/HelpPanelButton.gd" type="Script" id=24]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
@@ -31,6 +36,23 @@ func switch_to_game():
 	$DragChecker.visible = false
 	$ScorePanel/PauseBnt.visible = true
 	$ScorePanel/Score.visible = true
+	$ScorePanel/HelpBnt.visible = false
+
+func show_help():
+	$HelpPanel.visible = true
+	$TapToStart.visible = false
+	$Market.visible = false
+	$HelpShading.visible = true
+	
+	$TapToStart.help_active = true
+
+func hide_help():
+	$HelpPanel.visible = false
+	$TapToStart.visible = true
+	$Market.visible = true
+	$HelpShading.visible = false
+	
+	$TapToStart.help_active = false
 "
 
 [sub_resource type="GDScript" id=2]
@@ -49,6 +71,22 @@ func _input(event):
 	elif event is InputEventMouseMotion:
 		path_len += event.relative.length()
 "
+
+[sub_resource type="DynamicFont" id=17]
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 42
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 26
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 26
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 46
@@ -114,21 +152,57 @@ animations = [ {
 "speed": 13.0
 } ]
 
-[sub_resource type="DynamicFont" id=17]
-size = 32
+[sub_resource type="StyleBoxFlat" id=30]
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="Theme" id=29]
+Panel/styles/panel = SubResource( 30 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 20
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=18]
-size = 42
-font_data = ExtResource( 7 )
+[sub_resource type="StyleBoxEmpty" id=34]
 
-[sub_resource type="DynamicFont" id=19]
-size = 26
-font_data = ExtResource( 7 )
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=20]
-size = 26
-font_data = ExtResource( 7 )
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.137255, 0.686275, 0.443137, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.137255, 0.686275, 0.443137, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id=33]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 31 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 34 )
+Button/styles/hover = SubResource( 35 )
+Button/styles/normal = SubResource( 32 )
+Button/styles/pressed = null
 
 [sub_resource type="GDScript" id=21]
 script/source = "extends NinePatchRect
@@ -218,72 +292,6 @@ script = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ScorePanel" type="Control" parent="."]
-pause_mode = 1
-anchor_right = 1.0
-margin_bottom = 74.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseBnt" type="TextureButton" parent="ScorePanel"]
-visible = false
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -110.898
-margin_top = -21.0
-margin_right = -46.898
-margin_bottom = 43.0
-texture_normal = ExtResource( 8 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score" type="Label" parent="ScorePanel"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -36.0
-margin_top = -23.5
-margin_right = 36.0
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 3 )
-text = "0"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Coins" type="Label" parent="ScorePanel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 59.4798
-margin_top = -23.5
-margin_right = 131.48
-margin_bottom = 23.5
-custom_fonts/font = SubResource( 3 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Coin" type="AnimatedSprite" parent="ScorePanel/Coins"]
-self_modulate = Color( 0.976471, 0.94902, 0.301961, 1 )
-position = Vector2( -26.2245, 20.7448 )
-scale = Vector2( 2.66462, 2.66462 )
-frames = SubResource( 9 )
-script = ExtResource( 10 )
-
-[node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
-frames = SubResource( 16 )
 
 [node name="PausePanel" type="PanelContainer" parent="."]
 pause_mode = 2
@@ -421,6 +429,7 @@ __meta__ = {
 pause_mode = 2
 anchor_right = 1.0
 margin_bottom = 434.0
+mouse_filter = 1
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -445,10 +454,187 @@ __meta__ = {
 
 [node name="TapZone" type="Control" parent="TapToStart"]
 anchor_right = 1.0
+margin_top = 91.0
 margin_bottom = 372.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScorePanel" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+margin_bottom = 74.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseBnt" type="TextureButton" parent="ScorePanel"]
+pause_mode = 2
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.898
+margin_top = -21.0
+margin_right = -46.898
+margin_bottom = 43.0
+mouse_filter = 1
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpBnt" type="TextureButton" parent="ScorePanel"]
+pause_mode = 2
+process_priority = 2
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.898
+margin_top = -21.0
+margin_right = -46.898
+margin_bottom = 43.0
+mouse_filter = 1
+texture_normal = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="ScorePanel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -23.5
+margin_right = 36.0
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="ScorePanel"]
+pause_mode = 1
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 59.4798
+margin_top = -23.5
+margin_right = 131.48
+margin_bottom = 23.5
+custom_fonts/font = SubResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="AnimatedSprite" parent="ScorePanel/Coins"]
+self_modulate = Color( 0.976471, 0.94902, 0.301961, 1 )
+position = Vector2( -26.2245, 20.7448 )
+scale = Vector2( 2.66462, 2.66462 )
+frames = SubResource( 9 )
+script = ExtResource( 10 )
+
+[node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
+frames = SubResource( 16 )
+
+[node name="HelpShading" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.611765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.0
+margin_top = -173.0
+margin_right = 352.0
+margin_bottom = 184.0
+theme = SubResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HelpPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel"]
+pause_mode = 2
+margin_left = 19.0
+margin_top = 40.0
+margin_right = 684.0
+margin_bottom = 242.0
+size_flags_vertical = 3
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HelpPanel/HBoxContainer"]
+margin_right = 188.0
+margin_bottom = 202.0
+size_flags_horizontal = 3
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="HelpPanel/HBoxContainer"]
+margin_left = 238.0
+margin_right = 426.0
+margin_bottom = 202.0
+size_flags_horizontal = 3
+texture = ExtResource( 23 )
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="HelpPanel/HBoxContainer"]
+margin_left = 476.0
+margin_right = 665.0
+margin_bottom = 202.0
+size_flags_horizontal = 3
+texture = ExtResource( 22 )
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="HelpPanel"]
+pause_mode = 2
+margin_left = 302.0
+margin_top = 267.798
+margin_right = 400.0
+margin_bottom = 319.798
+focus_mode = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource( 33 )
+enabled_focus_mode = 1
+text = "Got it"
+script = ExtResource( 24 )
 
 [node name="Market" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -676,4 +862,5 @@ margin_bottom = 160.0
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_bottom = 160.0
+
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]

@@ -7,6 +7,8 @@ var max_speed = 1.2
 var accel = 0.04
 var start_pause = true
 
+var help_active = false
+
 signal start_game
 
 func _physics_process(_delta):
@@ -21,7 +23,7 @@ func _physics_process(_delta):
 			queue_free()
 			
 func _input(event):
-	if start_pause and event is InputEventScreenTouch and event.is_pressed():
+	if not help_active and start_pause and event is InputEventScreenTouch and event.is_pressed():
 		if Rect2($TapZone.get_global_rect().position, $TapZone.rect_size).has_point(event.position):
 			get_tree().paused = false
 			Events.emit_signal('start_game')
