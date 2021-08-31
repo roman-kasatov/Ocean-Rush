@@ -15,7 +15,6 @@
 [ext_resource path="res://scenes/bonuses/Bubble.gd" type="Script" id=13]
 [ext_resource path="res://scripts/bonuses/Jetpack.gd" type="Script" id=14]
 [ext_resource path="res://drawable/Character/jetpack_fuel.png" type="Texture" id=15]
-[ext_resource path="res://scenes/particles/particles_fuel.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.97516, 13.9638 )
@@ -86,6 +85,10 @@ animations = [ {
 "name": "default",
 "speed": 16.0
 } ]
+
+[sub_resource type="Gradient" id=59]
+offsets = PoolRealArray( 0, 0.449664, 1 )
+colors = PoolColorArray( 0.964706, 0.47451, 0.180392, 1, 0.966628, 0.503127, 0.225025, 1, 0.380392, 0.176471, 0.054902, 1 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 12 )
@@ -321,11 +324,23 @@ script = ExtResource( 14 )
 position = Vector2( -0.994476, -2.00012 )
 frames = SubResource( 17 )
 
-[node name="Fire" parent="." instance=ExtResource( 16 )]
+[node name="Fire" type="CPUParticles2D" parent="."]
 position = Vector2( -10.7392, 7.86102 )
 rotation = 0.0738437
 z_index = -1
 emitting = false
+amount = 300
+lifetime = 1.6
+lifetime_randomness = 0.5
+direction = Vector2( 0, 1 )
+spread = 15.0
+gravity = Vector2( 0, -60 )
+initial_velocity = 240.0
+angle = 45.0
+angle_random = 0.37
+scale_amount = 4.0
+scale_amount_random = 0.75
+color_ramp = SubResource( 59 )
 
 [node name="Bubble" type="AnimatedSprite" parent="."]
 visible = false
@@ -334,7 +349,7 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 24 )
-frame = 2
+frame = 10
 playing = true
 script = ExtResource( 13 )
 
@@ -342,14 +357,14 @@ script = ExtResource( 13 )
 self_modulate = Color( 0.411765, 0.631373, 0.913725, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 33 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 42 )
-frame = 1
+frame = 3
 playing = true
 script = SubResource( 43 )
 
@@ -369,7 +384,7 @@ playing = true
 position = Vector2( -3, 5 )
 frames = SubResource( 55 )
 animation = "slow"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

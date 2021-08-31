@@ -1,7 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.964706, 0.47451, 0.180392, 1, 0.258824, 0.113725, 0.0235294, 0.54902 )
+[sub_resource type="Gradient" id=59]
+offsets = PoolRealArray( 0, 0.677852, 1 )
+colors = PoolColorArray( 0.964706, 0.47451, 0.180392, 1, 0.966874, 0.506795, 0.230748, 1, 0.968627, 0.513726, 0.239216, 0.611765 )
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 amount = 100
@@ -15,4 +16,4 @@ angle = 45.0
 angle_random = 0.37
 scale_amount = 4.0
 scale_amount_random = 0.75
-color_ramp = SubResource( 1 )
+color_ramp = SubResource( 59 )
