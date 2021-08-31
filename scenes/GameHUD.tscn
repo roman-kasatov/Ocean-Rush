@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
@@ -21,9 +21,10 @@
 [ext_resource path="res://scripts/ui/ResumeBtn.gd" type="Script" id=19]
 [ext_resource path="res://scripts/ui/HelpBnt.gd" type="Script" id=20]
 [ext_resource path="res://drawable/ui/Help.png" type="Texture" id=21]
-[ext_resource path="res://drawable/WhiteCircle32.png" type="Texture" id=22]
-[ext_resource path="res://drawable/NinePatchBackground.png" type="Texture" id=23]
+[ext_resource path="res://drawable/hints/hint_2.png" type="Texture" id=22]
+[ext_resource path="res://drawable/hints/hint_3.png" type="Texture" id=23]
 [ext_resource path="res://scripts/ui/HelpPanelButton.gd" type="Script" id=24]
+[ext_resource path="res://drawable/hints/hint_1.png" type="Texture" id=25]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
@@ -72,102 +73,102 @@ func _input(event):
 		path_len += event.relative.length()
 "
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=4]
 size = 42
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=5]
 size = 26
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=6]
 size = 26
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=7]
 size = 46
 font_data = ExtResource( 7 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 24, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
 region = Rect2( 36, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 12, 16 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ) ],
+"frames": [ SubResource( 8 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 13.0
 } ]
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 12, 16 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 4 )
-region = Rect2( 12, 0, 12, 16 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 24, 0, 12, 16 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 4 )
-region = Rect2( 36, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 12, 16 )
+region = Rect2( 0, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
+region = Rect2( 12, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 24, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 4 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=20]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 13.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=30]
+[sub_resource type="StyleBoxFlat" id=21]
 corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
-[sub_resource type="Theme" id=29]
-Panel/styles/panel = SubResource( 30 )
+[sub_resource type="Theme" id=22]
+Panel/styles/panel = SubResource( 21 )
 
-[sub_resource type="DynamicFont" id=31]
+[sub_resource type="DynamicFont" id=23]
 size = 20
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxEmpty" id=34]
+[sub_resource type="StyleBoxEmpty" id=24]
 
-[sub_resource type="StyleBoxFlat" id=35]
+[sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -179,7 +180,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=32]
+[sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0.137255, 0.686275, 0.443137, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -191,20 +192,20 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="Theme" id=33]
+[sub_resource type="Theme" id=27]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 31 )
+Button/fonts/font = SubResource( 23 )
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 34 )
-Button/styles/hover = SubResource( 35 )
-Button/styles/normal = SubResource( 32 )
+Button/styles/focus = SubResource( 24 )
+Button/styles/hover = SubResource( 25 )
+Button/styles/normal = SubResource( 26 )
 Button/styles/pressed = null
 
-[sub_resource type="GDScript" id=21]
+[sub_resource type="GDScript" id=28]
 script/source = "extends NinePatchRect
 
 var SkinBlock = preload(\"res://scenes/UI/SkinBlock.tscn\")
@@ -244,11 +245,11 @@ func dir_contents(path):
 	return names
 "
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=29]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=30]
 bg_color = Color( 0.54902, 0.886275, 0.862745, 0.337255 )
 border_width_left = 12
 border_width_top = 12
@@ -261,14 +262,14 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=31]
 font_data = ExtResource( 7 )
 
-[sub_resource type="Theme" id=25]
-default_font = SubResource( 24 )
-Panel/styles/panel = SubResource( 23 )
+[sub_resource type="Theme" id=32]
+default_font = SubResource( 31 )
+Panel/styles/panel = SubResource( 30 )
 
-[sub_resource type="Shader" id=26]
+[sub_resource type="Shader" id=33]
 code = "shader_type canvas_item;
 
 void fragment(){
@@ -276,8 +277,8 @@ void fragment(){
 	COLOR.a = 1.0 - UV.x;
 }"
 
-[sub_resource type="ShaderMaterial" id=27]
-shader = SubResource( 26 )
+[sub_resource type="ShaderMaterial" id=34]
+shader = SubResource( 33 )
 
 [node name="GameHUD" type="CanvasLayer"]
 script = SubResource( 1 )
@@ -321,7 +322,7 @@ size_flags_horizontal = 3
 margin_right = 386.0
 margin_bottom = 116.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 3 )
 text = "RESUME"
 flat = true
 script = ExtResource( 19 )
@@ -332,7 +333,7 @@ margin_top = 80.0
 margin_right = 386.0
 margin_bottom = 156.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 3 )
 text = "OPTIONS"
 flat = true
 
@@ -341,7 +342,7 @@ margin_top = 120.0
 margin_right = 386.0
 margin_bottom = 236.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 3 )
 text = "MENU"
 flat = true
 script = ExtResource( 15 )
@@ -380,7 +381,7 @@ margin_right = 169.5
 margin_bottom = -17.5956
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 4 )
 text = "YOUR SCORE:
 0"
 align = 1
@@ -399,7 +400,7 @@ margin_right = 146.0
 margin_bottom = 63.541
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 5 )
 text = "BEST SCORE: 
 999"
 align = 1
@@ -418,7 +419,7 @@ margin_right = 137.0
 margin_bottom = 129.117
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 6 )
 text = "Menu"
 script = ExtResource( 17 )
 __meta__ = {
@@ -519,7 +520,7 @@ margin_left = -36.0
 margin_top = -23.5
 margin_right = 36.0
 margin_bottom = 23.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
 align = 1
 __meta__ = {
@@ -534,7 +535,7 @@ margin_left = 59.4798
 margin_top = -23.5
 margin_right = 131.48
 margin_bottom = 23.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -544,11 +545,11 @@ __meta__ = {
 self_modulate = Color( 0.976471, 0.94902, 0.301961, 1 )
 position = Vector2( -26.2245, 20.7448 )
 scale = Vector2( 2.66462, 2.66462 )
-frames = SubResource( 9 )
+frames = SubResource( 13 )
 script = ExtResource( 10 )
 
 [node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
-frames = SubResource( 16 )
+frames = SubResource( 20 )
 
 [node name="HelpShading" type="ColorRect" parent="."]
 visible = false
@@ -561,6 +562,7 @@ __meta__ = {
 
 [node name="HelpPanel" type="Panel" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -569,72 +571,74 @@ margin_left = -351.0
 margin_top = -173.0
 margin_right = 352.0
 margin_bottom = 184.0
-theme = SubResource( 29 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HelpPanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 11 )
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
+theme = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel"]
 pause_mode = 2
-margin_left = 19.0
-margin_top = 40.0
-margin_right = 684.0
-margin_bottom = 242.0
+margin_left = -100.073
+margin_top = -26.9868
+margin_right = 799.927
+margin_bottom = 373.013
 size_flags_vertical = 3
 custom_constants/separation = 50
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="HelpPanel/HBoxContainer"]
-margin_right = 188.0
-margin_bottom = 202.0
+margin_right = 266.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
-texture = ExtResource( 11 )
+texture = ExtResource( 25 )
 expand = true
 stretch_mode = 6
 
 [node name="TextureRect2" type="TextureRect" parent="HelpPanel/HBoxContainer"]
-margin_left = 238.0
-margin_right = 426.0
-margin_bottom = 202.0
-size_flags_horizontal = 3
-texture = ExtResource( 23 )
-stretch_mode = 6
-
-[node name="TextureRect3" type="TextureRect" parent="HelpPanel/HBoxContainer"]
-margin_left = 476.0
-margin_right = 665.0
-margin_bottom = 202.0
+margin_left = 316.0
+margin_right = 583.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 texture = ExtResource( 22 )
+expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="HelpPanel/HBoxContainer"]
+margin_left = 633.0
+margin_right = 900.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="HelpPanel"]
 pause_mode = 2
-margin_left = 302.0
-margin_top = 267.798
-margin_right = 400.0
-margin_bottom = 319.798
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -271.491
+margin_top = -172.832
+margin_right = -173.491
+margin_bottom = -120.832
+rect_scale = Vector2( 13.08, 13.08 )
 focus_mode = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = SubResource( 33 )
+theme = SubResource( 27 )
 enabled_focus_mode = 1
 text = "Got it"
 script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Market" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -652,7 +656,7 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
-script = SubResource( 21 )
+script = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -666,7 +670,7 @@ margin_top = 18.0
 margin_right = -15.0
 margin_bottom = 1.0
 mouse_filter = 2
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 29 )
 tab_align = 0
 tabs_visible = false
 script = ExtResource( 12 )
@@ -685,7 +689,7 @@ visible = false
 margin_left = 285.0
 margin_right = 445.0
 margin_bottom = 180.0
-theme = SubResource( 25 )
+theme = SubResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -723,7 +727,7 @@ visible = false
 margin_left = 181.0
 margin_right = 341.0
 margin_bottom = 201.0
-theme = SubResource( 25 )
+theme = SubResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -760,7 +764,7 @@ __meta__ = {
 margin_left = 385.0
 margin_right = 545.0
 margin_bottom = 180.0
-theme = SubResource( 25 )
+theme = SubResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -823,7 +827,7 @@ max_text_lines = 2
 margin_bottom = 200.0
 
 [node name="Body" type="ScrollContainer" parent="Market/TabContainer/Control"]
-material = SubResource( 27 )
+material = SubResource( 34 )
 margin_left = 198.0
 margin_right = 710.0
 margin_bottom = 200.0

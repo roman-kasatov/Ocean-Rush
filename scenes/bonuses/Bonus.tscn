@@ -203,6 +203,6 @@ texture = ExtResource( 3 )
 [node name="Bonus_icon" type="AnimatedSprite" parent="."]
 position = Vector2( -1.43407, -1.58861 )
 frames = SubResource( 36 )
-animation = "jetpack"
-frame = 3
+animation = "shield"
+frame = 4
 playing = true
