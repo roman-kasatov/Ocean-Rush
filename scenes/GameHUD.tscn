@@ -111,9 +111,9 @@ font_data = ExtResource( 7 )
 size = 26
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=7]
 resource_name = "New Anim"
-length = 2.0
+length = 4.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_rotation")
@@ -122,89 +122,89 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1.5, 1, 1.5 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1.5, 1, 1.5, 1, 1 ),
 "update": 0,
-"values": [ 107.0, 60.0, 107.0 ]
+"values": [ -15.0, 45.0, 105.0, 45.0, -15.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rect_scale")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1.5, 1, 1.5, 1, 1.5 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1.5, 1, 1.5, 1, 1.5, 1, 1.5, 1, 1.5 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 46
 font_data = ExtResource( 7 )
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 12, 16 )
-
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
-region = Rect2( 24, 0, 12, 16 )
+region = Rect2( 0, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
-region = Rect2( 36, 0, 12, 16 )
+region = Rect2( 24, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
-region = Rect2( 48, 0, 12, 16 )
+region = Rect2( 36, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ) ],
+"frames": [ SubResource( 9 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ), SubResource( 9 ) ],
 "loop": true,
 "name": "default",
 "speed": 13.0
 } ]
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
-region = Rect2( 12, 0, 12, 16 )
+region = Rect2( 0, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 4 )
-region = Rect2( 24, 0, 12, 16 )
+region = Rect2( 12, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
-region = Rect2( 36, 0, 12, 16 )
+region = Rect2( 24, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 12, 16 )
+region = Rect2( 36, 0, 12, 16 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 12, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
 region = Rect2( 60, 0, 12, 16 )
 
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="SpriteFrames" id=21]
 animations = [ {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ), SubResource( 14 ) ],
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ), SubResource( 15 ) ],
 "loop": true,
 "name": "default",
 "speed": 13.0
 } ]
 
-[sub_resource type="GDScript" id=21]
+[sub_resource type="GDScript" id=22]
 script/source = "extends NinePatchRect
 
 var SkinBlock = preload(\"res://scenes/UI/SkinBlock.tscn\")
@@ -244,11 +244,11 @@ func dir_contents(path):
 	return names
 "
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=23]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.54902, 0.886275, 0.862745, 0.337255 )
 border_width_left = 12
 border_width_top = 12
@@ -261,14 +261,14 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=25]
 font_data = ExtResource( 7 )
 
-[sub_resource type="Theme" id=25]
-default_font = SubResource( 24 )
-Panel/styles/panel = SubResource( 23 )
+[sub_resource type="Theme" id=26]
+default_font = SubResource( 25 )
+Panel/styles/panel = SubResource( 24 )
 
-[sub_resource type="Shader" id=26]
+[sub_resource type="Shader" id=27]
 code = "shader_type canvas_item;
 
 void fragment(){
@@ -276,25 +276,25 @@ void fragment(){
 	COLOR.a = 1.0 - UV.x;
 }"
 
-[sub_resource type="ShaderMaterial" id=27]
-shader = SubResource( 26 )
+[sub_resource type="ShaderMaterial" id=28]
+shader = SubResource( 27 )
 
-[sub_resource type="StyleBoxFlat" id=28]
+[sub_resource type="StyleBoxFlat" id=29]
 corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
-[sub_resource type="Theme" id=29]
-Panel/styles/panel = SubResource( 28 )
+[sub_resource type="Theme" id=30]
+Panel/styles/panel = SubResource( 29 )
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=31]
 size = 20
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxEmpty" id=31]
+[sub_resource type="StyleBoxEmpty" id=32]
 
-[sub_resource type="StyleBoxFlat" id=32]
+[sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -306,7 +306,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=33]
+[sub_resource type="StyleBoxFlat" id=34]
 bg_color = Color( 0.137255, 0.686275, 0.443137, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -318,17 +318,17 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="Theme" id=34]
+[sub_resource type="Theme" id=35]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 30 )
+Button/fonts/font = SubResource( 31 )
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 31 )
-Button/styles/hover = SubResource( 32 )
-Button/styles/normal = SubResource( 33 )
+Button/styles/focus = SubResource( 32 )
+Button/styles/hover = SubResource( 33 )
+Button/styles/normal = SubResource( 34 )
 Button/styles/pressed = null
 
 [node name="GameHUD" type="CanvasLayer"]
@@ -567,8 +567,7 @@ margin_left = -14.7317
 margin_top = 82.8887
 margin_right = 78.2683
 margin_bottom = 181.889
-rect_rotation = 82.5856
-rect_scale = Vector2( 0.920701, 0.920701 )
+rect_rotation = -15.0
 rect_pivot_offset = Vector2( 46.8189, -49.8781 )
 texture = ExtResource( 30 )
 expand = true
@@ -579,7 +578,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScorePanel/HelpBnt/HelpArrow"]
 pause_mode = 2
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 35 )
+"anims/New Anim" = SubResource( 7 )
 
 [node name="Score" type="Label" parent="ScorePanel"]
 visible = false
@@ -591,7 +590,7 @@ margin_left = -36.0
 margin_top = -23.5
 margin_right = 36.0
 margin_bottom = 23.5
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "0"
 align = 1
 __meta__ = {
@@ -606,7 +605,7 @@ margin_left = 59.4798
 margin_top = -23.5
 margin_right = 131.48
 margin_bottom = 23.5
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -616,11 +615,11 @@ __meta__ = {
 self_modulate = Color( 0.976471, 0.94902, 0.301961, 1 )
 position = Vector2( -26.2245, 20.7448 )
 scale = Vector2( 2.66462, 2.66462 )
-frames = SubResource( 13 )
+frames = SubResource( 14 )
 script = ExtResource( 10 )
 
 [node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
-frames = SubResource( 20 )
+frames = SubResource( 21 )
 
 [node name="Market" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -637,7 +636,7 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
-script = SubResource( 21 )
+script = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -651,7 +650,7 @@ margin_top = 10.1353
 margin_right = -15.0
 margin_bottom = 11.1353
 mouse_filter = 2
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 23 )
 tab_align = 0
 tabs_visible = false
 script = ExtResource( 12 )
@@ -671,7 +670,7 @@ visible = false
 margin_left = 189.0
 margin_right = 349.0
 margin_bottom = 180.0
-theme = SubResource( 25 )
+theme = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -709,7 +708,7 @@ visible = false
 margin_left = 181.0
 margin_right = 341.0
 margin_bottom = 201.0
-theme = SubResource( 25 )
+theme = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -747,7 +746,7 @@ visible = false
 margin_left = 289.0
 margin_right = 449.0
 margin_bottom = 180.0
-theme = SubResource( 25 )
+theme = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -808,7 +807,7 @@ max_text_lines = 2
 margin_bottom = 200.0
 
 [node name="Body" type="ScrollContainer" parent="Market/TabContainer/Control"]
-material = SubResource( 27 )
+material = SubResource( 28 )
 margin_left = 198.0
 margin_right = 710.0
 margin_bottom = 200.0
@@ -853,7 +852,7 @@ self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 461.35, 302 )
-theme = SubResource( 29 )
+theme = SubResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -866,7 +865,7 @@ margin_bottom = 600.0
 focus_mode = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = SubResource( 34 )
+theme = SubResource( 35 )
 enabled_focus_mode = 1
 text = "Got it"
 script = ExtResource( 24 )
@@ -899,7 +898,7 @@ margin_top = -184.923
 margin_right = 353.532
 margin_bottom = 172.077
 mouse_filter = 2
-theme = SubResource( 29 )
+theme = SubResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

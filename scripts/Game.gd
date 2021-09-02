@@ -120,7 +120,7 @@ func set_help_shown():
 	var file = File.new()
 	file.open(help_file, File.WRITE)
 	file.store_var(help_shown)
-	file.close()	
+	file.close()
 
 func save_opened_flags():
 	var file = File.new()
