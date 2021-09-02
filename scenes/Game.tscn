@@ -26,6 +26,13 @@ font_data = ExtResource( 8 )
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 8 )
 
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.0331126, 0.397351, 1 )
+colors = PoolColorArray( 0.101961, 0.0823529, 0.34902, 0.690196, 0.101961, 0.0823529, 0.34902, 0.188235, 0, 0, 0, 0.110769 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
 [sub_resource type="GDScript" id=3]
 script/source = "extends Sprite
 var step = 0
@@ -62,19 +69,12 @@ func _physics_process(delta):
 "
 
 [sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.779141 )
-colors = PoolColorArray( 0, 0.160217, 0.410156, 1, 0.25058, 0.659106, 0.929688, 1 )
+offsets = PoolRealArray( 0.112583, 0.569536, 0.880795 )
+colors = PoolColorArray( 0.103928, 0.275428, 0.542969, 1, 0.423529, 0.533333, 0.952941, 1, 0.664062, 0.913391, 1, 1 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
 width = 10
-
-[sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0, 0.456954, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0.294118, 0, 0, 0, 0 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )
@@ -157,6 +157,14 @@ script = ExtResource( 9 )
 
 [node name="PlatformManager" parent="." instance=ExtResource( 22 )]
 position = Vector2( 996.025, 418.722 )
+
+[node name="DarkOceanGradient" type="Sprite" parent="PlatformManager"]
+position = Vector2( -4151.31, 3330.88 )
+rotation = -1.5708
+scale = Vector2( 3.11999, 6239.99 )
+z_index = 4096
+texture = SubResource( 7 )
+centered = false
 
 [node name="CoinManager" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -246,20 +254,6 @@ motion_mirroring = Vector2( 6502, 0 )
 position = Vector2( 0, 665 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
-centered = false
-
-[node name="Background3" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -623.144, -61.8389 )
-motion_scale = Vector2( 0, 1 )
-
-[node name="FillBackground" type="Sprite" parent="ParallaxBackground/Background3"]
-position = Vector2( -1059.47, 2787.76 )
-rotation = -1.5708
-scale = Vector2( 2, 4000 )
-z_index = 4096
-texture = SubResource( 7 )
 centered = false
 
 [connection signal="body_entered" from="Player/DetectorLeft" to="Player/DetectorLeft" method="_on_DetectorLeft_body_entered"]
