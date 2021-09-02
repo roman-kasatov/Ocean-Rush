@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://scenesCard2.tres" type="Animation" id=27]
 [ext_resource path="res://scenesCard3.tres" type="Animation" id=28]
 [ext_resource path="res://scenesHelpShading.tres" type="Animation" id=29]
+[ext_resource path="res://drawable/arrow.png" type="Texture" id=30]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
@@ -54,6 +55,7 @@ func show_help():
 	$HelpPanel.visible = true
 	$TapToStart.visible = false
 	$Market.visible = false
+	$ScorePanel/HelpBnt/HelpArrow.visible = false
 	
 	$TapToStart.help_active = true
 
@@ -71,6 +73,9 @@ func on_hide_anim_finished():
 	if to_close_help:
 		$HelpPanel.visible = false
 		to_close_help = false
+
+func show_help_arrow():
+	$ScorePanel/HelpBnt/HelpArrow.visible = true
 "
 
 [sub_resource type="GDScript" id=2]
@@ -105,6 +110,35 @@ font_data = ExtResource( 7 )
 [sub_resource type="DynamicFont" id=6]
 size = 26
 font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=35]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1.5, 1, 1.5 ),
+"update": 0,
+"values": [ 107.0, 60.0, 107.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1.5, 1, 1.5, 1, 1.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=7]
 size = 46
@@ -527,6 +561,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HelpArrow" type="TextureRect" parent="ScorePanel/HelpBnt"]
+visible = false
+margin_left = -14.7317
+margin_top = 82.8887
+margin_right = 78.2683
+margin_bottom = 181.889
+rect_rotation = 82.5856
+rect_scale = Vector2( 0.920701, 0.920701 )
+rect_pivot_offset = Vector2( 46.8189, -49.8781 )
+texture = ExtResource( 30 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScorePanel/HelpBnt/HelpArrow"]
+pause_mode = 2
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 35 )
+
 [node name="Score" type="Label" parent="ScorePanel"]
 visible = false
 anchor_left = 0.5
@@ -614,8 +668,8 @@ alignment = 1
 
 [node name="SkinMenuBlock" type="VBoxContainer" parent="Market/TabContainer/Menu"]
 visible = false
-margin_left = 285.0
-margin_right = 445.0
+margin_left = 189.0
+margin_right = 349.0
 margin_bottom = 180.0
 theme = SubResource( 25 )
 __meta__ = {
@@ -689,6 +743,7 @@ __meta__ = {
 }
 
 [node name="SkinMenuBlock3" type="VBoxContainer" parent="Market/TabContainer/Menu"]
+visible = false
 margin_left = 289.0
 margin_right = 449.0
 margin_bottom = 180.0
@@ -726,6 +781,7 @@ __meta__ = {
 }
 
 [node name="Hat" type="ScrollContainer" parent="Market/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -870,11 +926,10 @@ anims/AnimHelp = ExtResource( 26 )
 
 [node name="TextureRect2" type="TextureRect" parent="HelpPanel/HelpPanel2"]
 pause_mode = 2
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 220.684
-margin_top = -250.0
-margin_right = 487.684
-margin_bottom = 149.0
+margin_left = 215.927
+margin_top = -26.9868
+margin_right = 482.927
+margin_bottom = 372.013
 mouse_filter = 2
 size_flags_horizontal = 3
 texture = ExtResource( 22 )
@@ -890,10 +945,10 @@ anims/AnimHelp = ExtResource( 27 )
 [node name="TextureRect3" type="TextureRect" parent="HelpPanel/HelpPanel2"]
 pause_mode = 2
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 762.812
-margin_top = -285.708
-margin_right = 1029.81
-margin_bottom = 113.292
+margin_left = 684.61
+margin_top = -96.911
+margin_right = 951.608
+margin_bottom = 302.089
 rect_rotation = 45.0
 rect_pivot_offset = Vector2( 267, 0 )
 mouse_filter = 2

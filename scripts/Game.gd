@@ -13,12 +13,14 @@ var opened_flags
 var highscore = 0
 var last_score = 0
 var cur_flag
+var help_shown = false
 
 signal start_game
 var coins_file = "user://coins.save"
 var flags_file = "user://flags.save"
 var cur_flag_file = "user://cur_flag.sav"
 var scores_file = "user://scores.save"
+var help_file = "user://help.save"
 
 var flags_path = 'res://drawable/scarfs/'
 
@@ -42,6 +44,8 @@ func _ready():
 	load_data()
 	$ScorePanel/Highscore.text = 'Highscore: ' + str(highscore)
 	$ScorePanel/LastScore.text = 'Last score: ' + str(last_score)
+	if not help_shown:
+		GameHUD.show_help_arrow()
 	
 	# DEBUG
 	"""coins_amount = 99999
@@ -95,6 +99,11 @@ func load_data():
 		cur_flag = file.get_var()
 		$Scarf.set_skin('flag', cur_flag)
 		file.close()
+	# if help message shown
+	if file.file_exists(help_file):
+		file.open(help_file, file.READ)
+		help_shown = file.get_var()
+		file.close()
 
 func add_coin(value):
 	coins_amount += value
@@ -105,6 +114,13 @@ func save_coins_amount():
 	file.open(coins_file, File.WRITE)
 	file.store_var(coins_amount)
 	file.close()
+
+func set_help_shown():
+	help_shown = true
+	var file = File.new()
+	file.open(help_file, File.WRITE)
+	file.store_var(help_shown)
+	file.close()	
 
 func save_opened_flags():
 	var file = File.new()
