@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://drawable/resources/new rects/6.png" type="Texture" id=2]
@@ -25,9 +25,17 @@
 [ext_resource path="res://drawable/hints/hint_3.png" type="Texture" id=23]
 [ext_resource path="res://scripts/ui/HelpPanelButton.gd" type="Script" id=24]
 [ext_resource path="res://drawable/hints/hint_1.png" type="Texture" id=25]
+[ext_resource path="res://scenesCard1.tres" type="Animation" id=26]
+[ext_resource path="res://scenesCard2.tres" type="Animation" id=27]
+[ext_resource path="res://scenesCard3.tres" type="Animation" id=28]
+[ext_resource path="res://scenesHelpShading.tres" type="Animation" id=29]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
+
+var to_close_help = false
+onready var HelpPanel = $HelpPanel
+onready var HelpPanelElemsAnim = [$HelpPanel/HelpShading, $HelpPanel/HelpPanel2/TextureRect, $HelpPanel/HelpPanel2/TextureRect2, $HelpPanel/HelpPanel2/TextureRect3]
 
 func _ready():
 	$Market.DragChecker = $DragChecker
@@ -40,20 +48,29 @@ func switch_to_game():
 	$ScorePanel/HelpBnt.visible = false
 
 func show_help():
+	for i in HelpPanelElemsAnim:
+		i.get_node(\"Anim\").play_backwards('AnimHelp')
+	$HelpPanel/Button.visible = true
 	$HelpPanel.visible = true
 	$TapToStart.visible = false
 	$Market.visible = false
-	$HelpShading.visible = true
 	
 	$TapToStart.help_active = true
 
 func hide_help():
-	$HelpPanel.visible = false
+	to_close_help = true
+	for i in HelpPanelElemsAnim:
+		i.get_node(\"Anim\").play('AnimHelp')
+	$HelpPanel/Button.visible = false
 	$TapToStart.visible = true
 	$Market.visible = true
-	$HelpShading.visible = false
 	
 	$TapToStart.help_active = false
+
+func on_hide_anim_finished():
+	if to_close_help:
+		$HelpPanel.visible = false
+		to_close_help = false
 "
 
 [sub_resource type="GDScript" id=2]
@@ -153,58 +170,6 @@ animations = [ {
 "speed": 13.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=21]
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
-
-[sub_resource type="Theme" id=22]
-Panel/styles/panel = SubResource( 21 )
-
-[sub_resource type="DynamicFont" id=23]
-size = 20
-font_data = ExtResource( 7 )
-
-[sub_resource type="StyleBoxEmpty" id=24]
-
-[sub_resource type="StyleBoxFlat" id=25]
-bg_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id=26]
-bg_color = Color( 0.137255, 0.686275, 0.443137, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.137255, 0.686275, 0.443137, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="Theme" id=27]
-Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 23 )
-Button/styles/disabled = null
-Button/styles/focus = SubResource( 24 )
-Button/styles/hover = SubResource( 25 )
-Button/styles/normal = SubResource( 26 )
-Button/styles/pressed = null
-
 [sub_resource type="GDScript" id=28]
 script/source = "extends NinePatchRect
 
@@ -279,6 +244,58 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=34]
 shader = SubResource( 33 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="Theme" id=27]
+Panel/styles/panel = SubResource( 26 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.137255, 0.686275, 0.443137, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.137255, 0.686275, 0.443137, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id=25]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 21 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 22 )
+Button/styles/hover = SubResource( 23 )
+Button/styles/normal = SubResource( 24 )
+Button/styles/pressed = null
 
 [node name="GameHUD" type="CanvasLayer"]
 script = SubResource( 1 )
@@ -551,105 +568,14 @@ script = ExtResource( 10 )
 [node name="Coin_blicking" type="AnimatedSprite" parent="ScorePanel/Coins/Coin"]
 frames = SubResource( 20 )
 
-[node name="HelpShading" type="ColorRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.611765 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HelpPanel" type="Panel" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -351.0
-margin_top = -173.0
-margin_right = 352.0
-margin_bottom = 184.0
-theme = SubResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel"]
-pause_mode = 2
-margin_left = -100.073
-margin_top = -26.9868
-margin_right = 799.927
-margin_bottom = 373.013
-size_flags_vertical = 3
-custom_constants/separation = 50
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="HelpPanel/HBoxContainer"]
-margin_right = 266.0
-margin_bottom = 400.0
-size_flags_horizontal = 3
-texture = ExtResource( 25 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect2" type="TextureRect" parent="HelpPanel/HBoxContainer"]
-margin_left = 316.0
-margin_right = 583.0
-margin_bottom = 400.0
-size_flags_horizontal = 3
-texture = ExtResource( 22 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="HelpPanel/HBoxContainer"]
-margin_left = 633.0
-margin_right = 900.0
-margin_bottom = 400.0
-size_flags_horizontal = 3
-texture = ExtResource( 23 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="HelpPanel"]
-pause_mode = 2
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -271.491
-margin_top = -172.832
-margin_right = -173.491
-margin_bottom = -120.832
-rect_scale = Vector2( 13.08, 13.08 )
-focus_mode = 1
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = SubResource( 27 )
-enabled_focus_mode = 1
-text = "Got it"
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Market" type="NinePatchRect" parent="."]
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -377.39
-margin_top = -184.454
-margin_right = 583.566
-margin_bottom = 12.5454
-rect_scale = Vector2( 0.75, 0.75 )
+margin_left = -408.162
+margin_top = 434.0
+margin_right = 141.838
+margin_bottom = 530.0
+rect_scale = Vector2( 1.5, 1.5 )
 theme = ExtResource( 1 )
 texture = ExtResource( 11 )
 patch_margin_left = 16
@@ -665,10 +591,11 @@ __meta__ = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 14.0
-margin_top = 18.0
-margin_right = -15.0
-margin_bottom = 1.0
+margin_left = 30.1083
+margin_top = 13.2133
+margin_right = 980.108
+margin_bottom = 137.213
+rect_scale = Vector2( 0.323333, 0.323333 )
 mouse_filter = 2
 custom_fonts/font = SubResource( 29 )
 tab_align = 0
@@ -681,6 +608,7 @@ __meta__ = {
 [node name="Menu" type="HBoxContainer" parent="Market/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_constants/separation = 40
 alignment = 1
 
@@ -761,9 +689,9 @@ __meta__ = {
 }
 
 [node name="SkinMenuBlock3" type="VBoxContainer" parent="Market/TabContainer/Menu"]
-margin_left = 385.0
-margin_right = 545.0
-margin_bottom = 180.0
+margin_left = 670.0
+margin_right = 830.0
+margin_bottom = 220.0
 theme = SubResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -866,5 +794,122 @@ margin_bottom = 160.0
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_bottom = 160.0
+
+[node name="HelpPanel" type="Panel" parent="."]
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HelpPanel"]
+pause_mode = 2
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 960.0
+margin_bottom = 600.0
+focus_mode = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource( 25 )
+enabled_focus_mode = 1
+text = "Got it"
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpShading" type="ColorRect" parent="HelpPanel"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.611765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="HelpPanel/HelpShading"]
+anims/AnimHelp = ExtResource( 29 )
+
+[node name="HelpPanel2" type="Panel" parent="HelpPanel"]
+pause_mode = 2
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -349.468
+margin_top = -184.923
+margin_right = 353.532
+margin_bottom = 172.077
+mouse_filter = 2
+theme = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HelpPanel/HelpPanel2"]
+pause_mode = 2
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -257.747
+margin_top = -96.9114
+margin_right = 8.25299
+margin_bottom = 302.088
+rect_rotation = -44.9999
+mouse_filter = 2
+size_flags_horizontal = 3
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="HelpPanel/HelpPanel2/TextureRect"]
+anims/AnimHelp = ExtResource( 26 )
+
+[node name="TextureRect2" type="TextureRect" parent="HelpPanel/HelpPanel2"]
+pause_mode = 2
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 220.684
+margin_top = -172.07
+margin_right = 487.684
+margin_bottom = 226.93
+mouse_filter = 2
+size_flags_horizontal = 3
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="HelpPanel/HelpPanel2/TextureRect2"]
+anims/AnimHelp = ExtResource( 27 )
+
+[node name="TextureRect3" type="TextureRect" parent="HelpPanel/HelpPanel2"]
+pause_mode = 2
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 762.812
+margin_top = -285.708
+margin_right = 1029.81
+margin_bottom = 113.292
+rect_rotation = 45.0
+rect_pivot_offset = Vector2( 267, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="HelpPanel/HelpPanel2/TextureRect3"]
+anims/AnimHelp = ExtResource( 28 )
 
 [connection signal="pause_pressed" from="ScorePanel/PauseBnt" to="PausePanel" method="pause_pressed"]
