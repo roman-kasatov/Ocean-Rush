@@ -26,14 +26,14 @@ font_data = ExtResource( 8 )
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 8 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.0331126, 0.397351, 1 )
 colors = PoolColorArray( 0.101961, 0.0823529, 0.34902, 0.690196, 0.101961, 0.0823529, 0.34902, 0.188235, 0, 0, 0, 0.110769 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=5]
 script/source = "extends Sprite
 var step = 0
 
@@ -68,12 +68,12 @@ func _physics_process(delta):
 
 "
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0.112583, 0.569536, 0.880795 )
 colors = PoolColorArray( 0.103928, 0.275428, 0.542969, 1, 0.423529, 0.533333, 0.952941, 1, 0.664062, 0.913391, 1, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 width = 10
 
 [node name="Game" type="Node"]
@@ -163,7 +163,7 @@ position = Vector2( -4151.31, 3330.88 )
 rotation = -1.5708
 scale = Vector2( 3.11999, 6239.99 )
 z_index = 4096
-texture = SubResource( 7 )
+texture = SubResource( 4 )
 centered = false
 
 [node name="CoinManager" type="Node2D" parent="."]
@@ -181,7 +181,7 @@ modulate = Color( 0.00784314, 0.00784314, 0.0705882, 1 )
 z_index = 100
 texture = ExtResource( 24 )
 centered = false
-script = SubResource( 3 )
+script = SubResource( 5 )
 
 [node name="GameHUD" parent="." instance=ExtResource( 3 )]
 
@@ -198,7 +198,7 @@ rotation = -1.5708
 scale = Vector2( 300, 3332.53 )
 z_index = -100
 z_as_relative = false
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 centered = false
 
 [node name="Background2" type="ParallaxLayer" parent="ParallaxBackground"]
