@@ -689,9 +689,9 @@ __meta__ = {
 }
 
 [node name="SkinMenuBlock3" type="VBoxContainer" parent="Market/TabContainer/Menu"]
-margin_left = 670.0
-margin_right = 830.0
-margin_bottom = 220.0
+margin_left = 669.0
+margin_right = 829.0
+margin_bottom = 219.0
 theme = SubResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -801,6 +801,7 @@ visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 461.35, 302 )
 theme = SubResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -876,9 +877,9 @@ anims/AnimHelp = ExtResource( 26 )
 pause_mode = 2
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 220.684
-margin_top = -172.07
+margin_top = -250.0
 margin_right = 487.684
-margin_bottom = 226.93
+margin_bottom = 149.0
 mouse_filter = 2
 size_flags_horizontal = 3
 texture = ExtResource( 22 )
