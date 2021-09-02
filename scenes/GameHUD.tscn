@@ -170,7 +170,7 @@ animations = [ {
 "speed": 13.0
 } ]
 
-[sub_resource type="GDScript" id=28]
+[sub_resource type="GDScript" id=21]
 script/source = "extends NinePatchRect
 
 var SkinBlock = preload(\"res://scenes/UI/SkinBlock.tscn\")
@@ -210,11 +210,11 @@ func dir_contents(path):
 	return names
 "
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="DynamicFont" id=22]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=30]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.54902, 0.886275, 0.862745, 0.337255 )
 border_width_left = 12
 border_width_top = 12
@@ -227,14 +227,14 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=31]
+[sub_resource type="DynamicFont" id=24]
 font_data = ExtResource( 7 )
 
-[sub_resource type="Theme" id=32]
-default_font = SubResource( 31 )
-Panel/styles/panel = SubResource( 30 )
+[sub_resource type="Theme" id=25]
+default_font = SubResource( 24 )
+Panel/styles/panel = SubResource( 23 )
 
-[sub_resource type="Shader" id=33]
+[sub_resource type="Shader" id=26]
 code = "shader_type canvas_item;
 
 void fragment(){
@@ -242,25 +242,25 @@ void fragment(){
 	COLOR.a = 1.0 - UV.x;
 }"
 
-[sub_resource type="ShaderMaterial" id=34]
-shader = SubResource( 33 )
+[sub_resource type="ShaderMaterial" id=27]
+shader = SubResource( 26 )
 
-[sub_resource type="StyleBoxFlat" id=26]
+[sub_resource type="StyleBoxFlat" id=28]
 corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
-[sub_resource type="Theme" id=27]
-Panel/styles/panel = SubResource( 26 )
+[sub_resource type="Theme" id=29]
+Panel/styles/panel = SubResource( 28 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=30]
 size = 20
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxEmpty" id=22]
+[sub_resource type="StyleBoxEmpty" id=31]
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=32]
 bg_color = Color( 0.0784314, 0.411765, 0.262745, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -272,7 +272,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0.137255, 0.686275, 0.443137, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -284,17 +284,17 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="Theme" id=25]
+[sub_resource type="Theme" id=34]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 21 )
+Button/fonts/font = SubResource( 30 )
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 22 )
-Button/styles/hover = SubResource( 23 )
-Button/styles/normal = SubResource( 24 )
+Button/styles/focus = SubResource( 31 )
+Button/styles/hover = SubResource( 32 )
+Button/styles/normal = SubResource( 33 )
 Button/styles/pressed = null
 
 [node name="GameHUD" type="CanvasLayer"]
@@ -570,19 +570,20 @@ frames = SubResource( 20 )
 
 [node name="Market" type="NinePatchRect" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -408.162
-margin_top = 434.0
-margin_right = 141.838
-margin_bottom = 530.0
-rect_scale = Vector2( 1.5, 1.5 )
+anchor_bottom = 0.5
+margin_left = -384.0
+margin_top = 103.782
+margin_right = 384.0
+margin_bottom = 282.782
 theme = ExtResource( 1 )
 texture = ExtResource( 11 )
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
-script = SubResource( 28 )
+script = SubResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -591,13 +592,12 @@ __meta__ = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 30.1083
-margin_top = 13.2133
-margin_right = 980.108
-margin_bottom = 137.213
-rect_scale = Vector2( 0.323333, 0.323333 )
+margin_left = 15.0
+margin_top = 10.1353
+margin_right = -15.0
+margin_bottom = 11.1353
 mouse_filter = 2
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 22 )
 tab_align = 0
 tabs_visible = false
 script = ExtResource( 12 )
@@ -617,7 +617,7 @@ visible = false
 margin_left = 285.0
 margin_right = 445.0
 margin_bottom = 180.0
-theme = SubResource( 32 )
+theme = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -655,7 +655,7 @@ visible = false
 margin_left = 181.0
 margin_right = 341.0
 margin_bottom = 201.0
-theme = SubResource( 32 )
+theme = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -689,10 +689,10 @@ __meta__ = {
 }
 
 [node name="SkinMenuBlock3" type="VBoxContainer" parent="Market/TabContainer/Menu"]
-margin_left = 669.0
-margin_right = 829.0
-margin_bottom = 219.0
-theme = SubResource( 32 )
+margin_left = 289.0
+margin_right = 449.0
+margin_bottom = 180.0
+theme = SubResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -726,7 +726,6 @@ __meta__ = {
 }
 
 [node name="Hat" type="ScrollContainer" parent="Market/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -737,12 +736,10 @@ margin_right = 324.0
 margin_bottom = 160.0
 
 [node name="SkinBlock" parent="Market/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
-margin_bottom = 180.0
 
 [node name="SkinBlock2" parent="Market/TabContainer/Hat/HBoxContainer" instance=ExtResource( 6 )]
 margin_left = 164.0
 margin_right = 324.0
-margin_bottom = 180.0
 
 [node name="Control" type="ItemList" parent="Market/TabContainer"]
 visible = false
@@ -755,7 +752,7 @@ max_text_lines = 2
 margin_bottom = 200.0
 
 [node name="Body" type="ScrollContainer" parent="Market/TabContainer/Control"]
-material = SubResource( 34 )
+material = SubResource( 27 )
 margin_left = 198.0
 margin_right = 710.0
 margin_bottom = 200.0
@@ -789,11 +786,9 @@ rect_pivot_offset = Vector2( 959.969, -45.8517 )
 
 [node name="SkinBlock" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-margin_bottom = 160.0
 
 [node name="SkinBlock2" parent="Market/TabContainer/Flag/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-margin_bottom = 160.0
 
 [node name="HelpPanel" type="Panel" parent="."]
 pause_mode = 2
@@ -802,7 +797,7 @@ self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 461.35, 302 )
-theme = SubResource( 27 )
+theme = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -815,7 +810,7 @@ margin_bottom = 600.0
 focus_mode = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = SubResource( 25 )
+theme = SubResource( 34 )
 enabled_focus_mode = 1
 text = "Got it"
 script = ExtResource( 24 )
@@ -848,7 +843,7 @@ margin_top = -184.923
 margin_right = 353.532
 margin_bottom = 172.077
 mouse_filter = 2
-theme = SubResource( 27 )
+theme = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -79,7 +79,8 @@ func click():
 
 [node name="SkinBlock" type="VBoxContainer"]
 margin_right = 160.0
-margin_bottom = 216.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 160, 160 )
 theme = SubResource( 3 )
 script = SubResource( 4 )
 __meta__ = {
