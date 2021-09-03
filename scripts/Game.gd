@@ -21,6 +21,7 @@ var flags_file = "user://flags.save"
 var cur_flag_file = "user://cur_flag.sav"
 var scores_file = "user://scores.save"
 var help_file = "user://help.save"
+var is_alive = true
 
 var flags_path = 'res://drawable/scarfs/'
 
@@ -39,7 +40,6 @@ func _ready():
 
 	randomize()
 	cur_flag = get_first_flag()
-	print(cur_flag)
 	opened_flags = [cur_flag]
 	load_data()
 	$ScorePanel/Highscore.text = 'Highscore: ' + str(highscore)
@@ -158,6 +158,7 @@ func update_coins():
 	Coins.text = str(coins_amount)
 
 func fail():
+	is_alive = false
 	highscore = max(highscore, score)
 	last_score = score
 	save_scores()
@@ -178,8 +179,9 @@ func reset():
 	get_tree().paused = false
 
 func inc_score():
-	score += 1
-	$GameHUD/ScorePanel/Score.text = str(score)
+	if is_alive:
+		score += 1
+		$GameHUD/ScorePanel/Score.text = str(score)
 
 func init_score_timer():
 	var score_timer = Timer.new()
