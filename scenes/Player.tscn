@@ -251,40 +251,40 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 5 )
 region = Rect2( 17, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 17, 10 )
+region = Rect2( 34, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 5 )
-region = Rect2( 17, 0, 17, 10 )
+region = Rect2( 51, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 5 )
-region = Rect2( 34, 0, 17, 10 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 17, 10 )
 
 [sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 5 )
-region = Rect2( 51, 0, 17, 10 )
+atlas = ExtResource( 8 )
+region = Rect2( 17, 0, 17, 10 )
 
 [sub_resource type="SpriteFrames" id=56]
 animations = [ {
-"frames": [ SubResource( 50 ), SubResource( 51 ) ],
-"loop": true,
-"name": "fast",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ],
 "loop": true,
 "name": "slow",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 54 ), SubResource( 55 ) ],
+"loop": true,
+"name": "fast",
+"speed": 10.0
 } ]
 
 [sub_resource type="Curve" id=57]
@@ -351,27 +351,27 @@ position = Vector2( -0.315033, 0 )
 scale = Vector2( 0.673967, 0.673967 )
 z_index = 1
 frames = SubResource( 25 )
-frame = 15
+frame = 20
 playing = true
 script = ExtResource( 13 )
 
 [node name="Legs" type="AnimatedSprite" parent="."]
-self_modulate = Color( 0.333333, 0.627451, 0.929412, 1 )
+self_modulate = Color( 0.403922, 0.631373, 0.862745, 1 )
 position = Vector2( 0.078, 11.7 )
 frames = SubResource( 34 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Boots" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.0780029, 11.7 )
 frames = SubResource( 43 )
-frame = 3
+frame = 1
 playing = true
 script = SubResource( 44 )
 
 [node name="Body" type="Sprite" parent="."]
-self_modulate = Color( 0.439216, 0.776471, 1, 1 )
+self_modulate = Color( 0.243137, 0.839216, 0.980392, 1 )
 position = Vector2( 1.078, -1.247 )
 texture = ExtResource( 4 )
 
@@ -379,13 +379,14 @@ texture = ExtResource( 4 )
 position = Vector2( -1, -6 )
 frames = SubResource( 49 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Mouth" type="AnimatedSprite" parent="Body"]
 position = Vector2( -3, 5 )
 frames = SubResource( 56 )
 animation = "slow"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
