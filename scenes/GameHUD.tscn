@@ -76,6 +76,7 @@ func on_hide_anim_finished():
 
 func show_help_arrow():
 	$ScorePanel/HelpBnt/HelpArrow.visible = true
+	$TapToStart.visible = false
 "
 
 [sub_resource type="GDScript" id=2]

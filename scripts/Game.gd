@@ -30,8 +30,8 @@ func _physics_process(delta):
 
 func clear_saves():
 	var dir = Directory.new()
-	for file in [coins_file, flags_file, cur_flag_file, scores_file]:
-		dir.remove(file)	
+	for file in [coins_file, flags_file, cur_flag_file, scores_file, help_file]:
+		dir.remove(file)
 
 func _ready():
 	# DEBUG
