@@ -4,6 +4,7 @@ onready var Game = get_parent()
 onready var Player = Game.get_node("Player")
 
 var last_wave = -1
+var score_for_easy = 10
 var score_for_medium = 35
 var score_for_hard = 80
 
@@ -31,7 +32,6 @@ var enemies_easy = [
 var enemies_medium = [
 	[[60, shark, 1.2], [60, shark, 0.001], [-60, shark, 1.2], [60, shark, 2.8]],
 	[[60, jellyfish, 0.001, 4], [-60, jellyfish, 1.5, 4]],
-	[[0, jellyfish, 2.0, 10]],
 	[[0, submarine, 2.5]],
 	[[0, submarine, 2.5]],
 	[[0, submarine, 2.5]],
@@ -45,7 +45,7 @@ var enemies_hard = [
 	[[0, submarine, 1.5], [60, jellyfish, 0.001, 5], [-60, jellyfish, 3.0, 5]],
 	[[0, shark, 1.3], [0, shark, 1.3], [0, shark, 3.0]],
 	[[0, shark, 1.3], [0, jellyfish, 1.5, 6], [0, shark, 3.0]],
-	[[0, jellyfish, 3.0, 11]]
+	[[0, jellyfish, 3.0, 8]]
 ]
 
 
@@ -58,7 +58,7 @@ func begin_wave():
 		choose_waves(enemies_hard)
 	elif Game.score >= score_for_medium:
 		choose_waves(enemies_medium)
-	else:
+	elif Game.score >= score_for_easy:
 		choose_waves(enemies_easy)
 
 
